@@ -7,6 +7,8 @@ import "./Navbar.css";
 
 export default function Navbar() {
   const [isHovered, setIsHovered] = useState(false);
+  const [isHovered1, setIsHovered1] = useState(false);
+  const [isHovered2, setIsHovered2] = useState(false);
 
   const handleMouseEnter = () => {
     setIsHovered(true);
@@ -16,24 +18,44 @@ export default function Navbar() {
     setIsHovered(false);
   };
 
+  const handleMouseEnter1 = () => {
+    setIsHovered1(true);
+  };
+
+  const handleMouseLeave1 = () => {
+    setIsHovered1(false);
+  };
+  const handleMouseEnter2 = () => {
+    setIsHovered2(true);
+  };
+
+  const handleMouseLeave2 = () => {
+    setIsHovered2(false);
+  };
+
   return (
     <>
       <div className="flex justify-center ">
         <img src={cvr} alt="Logo" className="h-24 w-24" />
         <div className="flex justify-center">
-          <p className="text-4xl m-auto font-bold">
+          <p className="text-4xl m-auto font-bold heading">
             Department of Emerging Technologies
           </p>
         </div>
       </div>
-      <hr className="ml-6 mr-6" style={{ borderColor: "#33110e" }} />
-      <div className="relative">
+      <hr className="ml-6 mr-6" />
+      <div className="relative navitems">
         <ul
           className="flex justify-center"
-          style={{ fontFamily: "sans-serif" }}
         >
+          <li className="mr-8 m-2">
+            <a href="/">Home</a>
+          </li>
+          <li className="mr-8 m-2">
+            <a href="/">Faculty</a>
+          </li>
           <li
-            className="mr-6 m-2 relative flex items-center"
+            className="mr-8 m-2 relative flex items-center"
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
           >
@@ -66,7 +88,7 @@ export default function Navbar() {
                 {isHovered && (
                   <ul className="p-3">
                     <li className="m-2">
-                      <div className="cursor-pointer">Aiml</div>
+                      <div className="cursor-pointer">AI/ML</div>
                     </li>
                     <hr />
                     <li className="m-2">
@@ -74,7 +96,7 @@ export default function Navbar() {
                     </li>
                     <hr />
                     <li className="m-2">
-                      <div className="cursor-pointer">Csit</div>
+                      <div className="cursor-pointer">CSIT</div>
                     </li>
                     <hr />
                     <li className="m-2">
@@ -85,11 +107,107 @@ export default function Navbar() {
               </div>
             </div>
           </li>
-          <li className="mr-6 m-2">
-            <a href="/">Admissions</a>
+          <li className="mr-8 m-2">
+            <a href="/">Infrastructure</a>
           </li>
-          <li className="mr-6 m-2">
+          <li className="mr-8 m-2">
             <a href="/">Research</a>
+          </li>
+          <li
+            className="mr-8 m-2 relative flex items-center"
+            onMouseEnter={handleMouseEnter1}
+            onMouseLeave={handleMouseLeave1}
+          >
+            <div className="flex flex-col">
+              <div className="flex">
+                <a className="" href="/">
+                  Happenings
+                </a>
+                <div className="ml-2">
+                  {!isHovered1 ? (
+                    <FontAwesomeIcon icon={faCaretUp} />
+                  ) : (
+                    <FontAwesomeIcon icon={faCaretDown} />
+                  )}
+                </div>
+              </div>
+              <div
+                className={`mt-6 z-80 absolute  ${
+                  isHovered1 ? "block animate-fade-in" : "hidden"
+                }`}
+                style={{
+                  maxHeight: "200px",
+                  overflow: "hidden",
+                  boxShadow: "0 0 10px rgba(0,0,0,0.1)",
+                  borderRadius: "5px",
+                  background: "#fff",
+                  width: "200px",
+                }}
+              >
+                {isHovered1 && (
+                  <ul className="p-3">
+                    <li className="m-2">
+                      <div className="cursor-pointer">Sports</div>
+                    </li>
+                    <hr />
+                    <li className="m-2">
+                      <div className="cursor-pointer">Club</div>
+                    </li>
+                  </ul>
+                )}
+              </div>
+            </div>
+          </li>
+          <li className="mr-8 m-2">
+            <a href="/">Faculty</a>
+          </li>
+          <li className="mr-8 m-2">
+            <a href="/">Forum</a>
+          </li>
+          <li
+            className="mr-8 m-2 relative flex items-center"
+            onMouseEnter={handleMouseEnter2}
+            onMouseLeave={handleMouseLeave2}
+          >
+            <div className="flex flex-col">
+              <div className="flex">
+                <a className="" href="/">
+                  About Us
+                </a>
+                <div className="ml-2">
+                  {!isHovered2 ? (
+                    <FontAwesomeIcon icon={faCaretUp} />
+                  ) : (
+                    <FontAwesomeIcon icon={faCaretDown} />
+                  )}
+                </div>
+              </div>
+              <div
+                className={`mt-6 z-80 absolute  ${
+                  isHovered2 ? "block animate-fade-in" : "hidden"
+                }`}
+                style={{
+                  maxHeight: "200px",
+                  overflow: "hidden",
+                  boxShadow: "0 0 10px rgba(0,0,0,0.1)",
+                  borderRadius: "5px",
+                  background: "#fff",
+                  width: "200px",
+                }}
+              >
+                {isHovered2 && (
+                  <ul className="p-3">
+                    <li className="m-2">
+                      <div className="cursor-pointer">Contact Us</div>
+                    </li>
+                    <hr />
+                    <li className="m-2">
+                      <div className="cursor-pointer">Development Team</div>
+                    </li>
+                  </ul>
+                )}
+              </div>
+            </div>
           </li>
         </ul>
       </div>
