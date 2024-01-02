@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap");
 @keyframes fadeIn {
     0% {
       max-height: 0;
@@ -11,7 +12,20 @@
   }
   
   .animate-fade-in {
-    animation: fadeIn 0.5s ease-in-out; /* Adjust the duration as needed */
+    animation: fadeIn 1.5s ease-in-out; /* Adjust the duration as needed */
     overflow: hidden; /* Ensure content doesn't overflow during animation */
   }
-  
+
+body{
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji"
+}
+
+
+
+.navitems{
+  font-size: 18px;
+}
+
+.heading{
+  font-family: 'Roboto', sans-serif;
+}
