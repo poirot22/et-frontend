@@ -1,6 +1,12 @@
 import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCaretDown, faCaretUp } from "@fortawesome/free-solid-svg-icons";
+import {
+  faCaretDown,
+  faCaretUp,
+  faBars,
+  faPlus,
+  faTimes,
+} from "@fortawesome/free-solid-svg-icons";
 import cvr from "../assets/cvr.png";
 import "@fortawesome/fontawesome-free/css/all.css";
 import "./Navbar.css";
@@ -33,21 +39,54 @@ export default function Navbar() {
     setIsHovered2(false);
   };
 
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const openMenu = () => {
+    setMenuOpen(!menuOpen);
+  };
+
+  const [Academics, setAcademics] = useState(false);
+
+  const openAcadamics = () => {
+    setAcademics(!Academics);
+  };
+
+  const [Hapenings, setHapenings] = useState(false);
+
+  const openHapenings = () => {
+    setHapenings(!Hapenings);
+  };
+
+  const [About, setAbout] = useState(false);
+
+  const openAbout = () => {
+    setAbout(!About);
+  }
+
   return (
     <>
       <div className="flex justify-center ">
-        <img src={cvr} alt="Logo" className="h-24 w-24" />
+        <div
+          className="flex justify-center items-center my mr-4 lg:hidden"
+          onClick={openMenu}
+        >
+          {/* menu icon  */}
+          {!menuOpen ? (
+            <FontAwesomeIcon icon={faBars} className="h-6 w-6" />
+          ) : (
+            <FontAwesomeIcon icon={faTimes} className="h-6 w-6" />
+          )}
+        </div>
+        <img src={cvr} alt="Logo" className="h-16 w-16" />
         <div className="flex justify-center">
-          <p className="text-4xl m-auto font-bold heading">
+          <p className="lg:text-4xl m-auto font-bold heading text-center text-2xl">
             Department of Emerging Technologies
           </p>
         </div>
       </div>
       <hr className="ml-6 mr-6" />
-      <div className="relative navitems">
-        <ul
-          className="flex justify-center"
-        >
+      <div className="relative navitems hidden lg:flex justify-center">
+        <ul className="flex justify-center">
           <li className="mr-8 m-2">
             <a href="/">Home</a>
           </li>
@@ -211,6 +250,95 @@ export default function Navbar() {
           </li>
         </ul>
       </div>
+      {/* mobile menu */}
+      {menuOpen && (
+        <div className="lg:hidden min-h-fit bg-gray-200 w-fit animate-left-right">
+          <ul className="flex flex-col items-start">
+            <li className="mr-8 m-2 relative">
+              <a href="/">Home</a>
+            </li>
+            <li className="mr-8 m-2 relative">
+              <a href="/">Faculty</a>
+            </li>
+            <li className="mr-8 m-2 relative">
+              <div>
+                <a href="/">Academics</a>
+                <FontAwesomeIcon
+                  icon={faPlus}
+                  className="h-6 w-6 ml-2"
+                  onClick={openAcadamics}
+                />
+              </div>
+              {Academics && (
+                <ul className="p-3">
+                  <li className="m-2">
+                    <div className="cursor-pointer">AI/ML</div>
+                  </li>
+                  <hr />
+                  <li className="m-2">
+                    <div className="cursor-pointer">Cyber Security</div>
+                  </li>
+                  <hr />
+                  <li className="m-2">
+                    <div className="cursor-pointer">CSIT</div>
+                  </li>
+                  <hr />
+                  <li className="m-2">
+                    <div className="cursor-pointer">Data Science</div>
+                  </li>
+                </ul>
+              )}
+            </li>
+            <li className="mr-8 m-2 relative">
+              <a href="/">Infrastructure</a>
+            </li>
+            <li className="mr-8 m-2 relative">
+              <a href="/">Research</a>
+            </li>
+            <li className="mr-8 m-2 relative">
+              <div>
+                <a href="/">Happenings</a>
+                <FontAwesomeIcon
+                  icon={faPlus}
+                  className="h-6 w-6 ml-2"
+                  onClick={openHapenings}
+                />
+              </div>
+              {Hapenings && (
+                <ul className="p-3">
+                  <li className="m-2">
+                    <div className="cursor-pointer">Sports</div>
+                  </li>
+                  <hr />
+                  <li className="m-2">
+                    <div className="cursor-pointer">Club</div>
+                  </li>
+                </ul>
+              )}
+            </li>
+            <li className="mr-8 m-2 relative">
+              <a href="/">Forum</a>
+            </li>
+            <li className="mr-8 m-2 relative">
+              <div>
+                <a href="/">About Us</a>
+                <FontAwesomeIcon icon={faPlus} className="h-6 w-6 ml-2" onClick={openAbout} />
+              </div>
+              {About && (
+                <ul className="p-3">
+                  <li className="m-2">
+                    <div className="cursor-pointer">Contact Us</div>
+                  </li>
+                  <hr />
+                  <li className="m-2">
+                    <div className="cursor-pointer">Development Team</div>
+                  </li>
+                </ul>
+              )}
+            </li>
+          </ul>
+        </div>
+      )}
     </>
   );
 }
