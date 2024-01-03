@@ -252,8 +252,8 @@ export default function Navbar() {
       </div>
       {/* mobile menu */}
       {menuOpen && (
-        <div className="lg:hidden min-h-fit bg-gray-200 w-fit animate-left-right">
-          <ul className="flex flex-col items-start">
+        <div className="lg:hidden min-h-fit bg-gray-200 w-fit animate-left-right overflow-y-scroll">
+          <ul className="flex flex-col items-start animate-fade-in">
             <li className="mr-8 m-2 relative">
               <a href="/">Home</a>
             </li>
@@ -269,8 +269,9 @@ export default function Navbar() {
                   onClick={openAcadamics}
                 />
               </div>
+              <div className="animate-fade-in">
               {Academics && (
-                <ul className="p-3">
+                <ul className="p-3 animate-fade-in">
                   <li className="m-2">
                     <div className="cursor-pointer">AI/ML</div>
                   </li>
@@ -288,6 +289,7 @@ export default function Navbar() {
                   </li>
                 </ul>
               )}
+              </div>
             </li>
             <li className="mr-8 m-2 relative">
               <a href="/">Infrastructure</a>
