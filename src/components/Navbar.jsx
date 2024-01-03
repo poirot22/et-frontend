@@ -4,11 +4,15 @@ import { faCaretDown, faCaretUp } from "@fortawesome/free-solid-svg-icons";
 import cvr from "../assets/cvr.png";
 import "@fortawesome/fontawesome-free/css/all.css";
 import "./Navbar.css";
+import {BrowserRouter as Router, Link, Route, Switch} from "react-router-dom";
+import Home from "./Home";
+import { useNavigate } from "react-router-dom";
 
 export default function Navbar() {
   const [isHovered, setIsHovered] = useState(false);
   const [isHovered1, setIsHovered1] = useState(false);
   const [isHovered2, setIsHovered2] = useState(false);
+  const navigate = useNavigate();
 
   const handleMouseEnter = () => {
     setIsHovered(true);
@@ -34,7 +38,8 @@ export default function Navbar() {
   };
 
   return (
-    <>
+   
+       <>
       <div className="flex justify-center ">
         <img src={cvr} alt="Logo" className="h-24 w-24" />
         <div className="flex justify-center">
@@ -48,8 +53,8 @@ export default function Navbar() {
         <ul
           className="flex justify-center"
         >
-          <li className="mr-8 m-2">
-            <a href="/">Home</a>
+          <li className="mr-8 m-2" onClick={()=>navigate("/home")}>
+            <a>Home</a>
           </li>
           <li className="mr-8 m-2">
             <a href="/">Faculty</a>
@@ -211,6 +216,10 @@ export default function Navbar() {
           </li>
         </ul>
       </div>
-    </>
+      </>
+     
+      
+     
+   
   );
 }
