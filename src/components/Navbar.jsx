@@ -10,8 +10,6 @@ import {
 import cvr from "../assets/cvr.png";
 import "@fortawesome/fontawesome-free/css/all.css";
 import "./Navbar.css";
-import { BrowserRouter as Router, Link, Route, Switch } from "react-router-dom";
-import Home from "./Home";
 import { useNavigate } from "react-router-dom";
 
 export default function Navbar() {
@@ -91,10 +89,16 @@ export default function Navbar() {
       <hr className="ml-6 mr-6" />
       <div className="relative navitems hidden lg:flex justify-evenly">
         <ul className="flex justify-center">
-          <li className="mr-8 m-2 cursor-pointer" onClick={() => navigate("/home")}>
+          <li
+            className="mr-8 m-2 cursor-pointer"
+            onClick={() => navigate("/home")}
+          >
             <a>Home</a>
           </li>
-          <li className="mr-8 m-2 cursor-pointer" onClick={()=>navigate("/faculty")}>
+          <li
+            className="mr-8 m-2 cursor-pointer"
+            onClick={() => navigate("/faculty")}
+          >
             <a>Faculty</a>
           </li>
           <li
@@ -116,7 +120,7 @@ export default function Navbar() {
                 </div>
               </div>
               <div
-                className={`mt-6 z-80 absolute  ${
+                className={`mt-6 m-3 z-80 absolute  ${
                   isHovered ? "block animate-fade-in" : "hidden"
                 }`}
                 style={{
@@ -126,23 +130,24 @@ export default function Navbar() {
                   borderRadius: "5px",
                   background: "#fff",
                   width: "200px",
+                  zIndex: "100",
                 }}
               >
                 {isHovered && (
-                  <ul className="p-3">
-                    <li className="m-2">
-                      <div className="cursor-pointer">AI/ML</div>
+                  <ul>
+                    <li className="animate-color p-2">
+                      <div className="cursor-pointer ">AI/ML</div>
                     </li>
                     <hr />
-                    <li className="m-2">
+                    <li className="animate-color p-2">
                       <div className="cursor-pointer">Cyber Security</div>
                     </li>
                     <hr />
-                    <li className="m-2">
+                    <li className="animate-color p-2">
                       <div className="cursor-pointer">CSIT</div>
                     </li>
                     <hr />
-                    <li className="m-2">
+                    <li className="animate-color p-2">
                       <div className="cursor-pointer">Data Science</div>
                     </li>
                   </ul>
@@ -185,15 +190,16 @@ export default function Navbar() {
                   borderRadius: "5px",
                   background: "#fff",
                   width: "200px",
+                  zIndex: "100",
                 }}
               >
                 {isHovered1 && (
-                  <ul className="p-3">
-                    <li className="m-2">
+                  <ul className="">
+                    <li className="animate-color p-2">
                       <div className="cursor-pointer">Sports</div>
                     </li>
                     <hr />
-                    <li className="m-2">
+                    <li className="animate-color p-2">
                       <div className="cursor-pointer">Club</div>
                     </li>
                   </ul>
@@ -233,15 +239,16 @@ export default function Navbar() {
                   borderRadius: "5px",
                   background: "#fff",
                   width: "200px",
+                  zIndex: "100",
                 }}
               >
                 {isHovered2 && (
-                  <ul className="p-3">
-                    <li className="m-2">
+                  <ul className="">
+                    <li className="animate-color p-2">
                       <div className="cursor-pointer">Contact Us</div>
                     </li>
                     <hr />
-                    <li className="m-2">
+                    <li className="animate-color p-2">
                       <div className="cursor-pointer">Development Team</div>
                     </li>
                   </ul>
@@ -259,13 +266,19 @@ export default function Navbar() {
               className="mr-8 m-2 relative"
               onClick={() => {
                 navigate("/home");
-                setMenuOpen(false)
+                setMenuOpen(false);
               }}
             >
               Home
             </li>
-            <li className="mr-8 m-2 relative">
-              <a href="/">Faculty</a>
+            <li
+              className="mr-8 m-2 relative"
+              onClick={() =>{ 
+                navigate("/faculty");
+                setMenuOpen(false);
+              }}
+            >
+              <a>Faculty</a>
             </li>
             <li className="mr-8 m-2 relative">
               <div>
