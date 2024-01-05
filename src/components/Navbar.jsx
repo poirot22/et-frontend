@@ -89,10 +89,16 @@ export default function Navbar() {
       <hr className="ml-6 mr-6" />
       <div className="relative navitems hidden lg:flex justify-evenly">
         <ul className="flex justify-center">
-          <li className="mr-8 m-2 cursor-pointer" onClick={() => navigate("/home")}>
+          <li
+            className="mr-8 m-2 cursor-pointer"
+            onClick={() => navigate("/home")}
+          >
             <a>Home</a>
           </li>
-          <li className="mr-8 m-2 cursor-pointer" onClick={()=>navigate("/faculty")}>
+          <li
+            className="mr-8 m-2 cursor-pointer"
+            onClick={() => navigate("/faculty")}
+          >
             <a>Faculty</a>
           </li>
           <li
@@ -124,6 +130,7 @@ export default function Navbar() {
                   borderRadius: "5px",
                   background: "#fff",
                   width: "200px",
+                  zIndex: "100",
                 }}
               >
                 {isHovered && (
@@ -183,6 +190,7 @@ export default function Navbar() {
                   borderRadius: "5px",
                   background: "#fff",
                   width: "200px",
+                  zIndex: "100",
                 }}
               >
                 {isHovered1 && (
@@ -231,6 +239,7 @@ export default function Navbar() {
                   borderRadius: "5px",
                   background: "#fff",
                   width: "200px",
+                  zIndex: "100",
                 }}
               >
                 {isHovered2 && (
@@ -257,13 +266,19 @@ export default function Navbar() {
               className="mr-8 m-2 relative"
               onClick={() => {
                 navigate("/home");
-                setMenuOpen(false)
+                setMenuOpen(false);
               }}
             >
               Home
             </li>
-            <li className="mr-8 m-2 relative">
-              <a href="/">Faculty</a>
+            <li
+              className="mr-8 m-2 relative"
+              onClick={() =>{ 
+                navigate("/faculty");
+                setMenuOpen(false);
+              }}
+            >
+              <a>Faculty</a>
             </li>
             <li className="mr-8 m-2 relative">
               <div>
