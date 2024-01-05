@@ -4,6 +4,7 @@ import { Card, CardHeader, CardBody, CardFooter,Image,Heading,Stack,Text,Divider
 export default function Faculty(){
     return (
         <>
+        asdf
         </>
     )
 }
