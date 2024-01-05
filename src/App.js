@@ -2,7 +2,9 @@ import './App.css';
 import Navbar from './components/Navbar';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './components/Home.jsx';
-import Login from './components/forum/Login.jsx';
+import Faculty from './components/Faculty/faculty.jsx';
+import { ChakraProvider } from '@chakra-ui/react'
+
 
 function App() {
   return (
@@ -11,8 +13,8 @@ function App() {
    
      
         <Routes>
-          <Route path="/home" element={<Home/>}/>    
-          <Route path='/login' element={<Login/>}/>      
+          <Route path="/home" element={<Home/>}/>       
+          <Route path="/faculty" element={<Faculty/>}/>   
         </Routes>
 
     
