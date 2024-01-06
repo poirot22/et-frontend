@@ -86,7 +86,7 @@ export default function Navbar() {
           </p>
         </div>
       </div>
-      <hr className="ml-6 mr-6" />
+      <hr className="ml-10 mr-10" />
       <div className="relative navitems hidden lg:flex justify-evenly">
         <ul className="flex justify-center">
           <li
