@@ -92,7 +92,7 @@ export default function Navbar() {
       <div className="relative navitems hidden lg:flex justify-evenly">
         <ul className="flex justify-center">
           <li className="mr-8 m-2" onClick={() => navigate("/home")}>
-            <a>Home</a>
+            Home
           </li>
           <li className="mr-8 m-2">
             <a href="/">Faculty</a>
