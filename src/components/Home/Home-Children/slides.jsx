@@ -1,15 +1,15 @@
 import React from "react";
 import { Carousel } from 'react-carousel-minimal';
-import img1 from "../../../assets/img1.jpg";
-import img4 from "../../../assets/img4.jpg";
+import img1 from "../../../assets/Faculty.jpg";
+import img4 from "../../../assets/FestFinal.JPG";
 import img5 from "../../../assets/img5.jpg";
 import faculty4 from "../../../assets/faculty4.png";
 
 export default function Slide(){
 
     var data=[
-        {caption:"",image:faculty4},
         {caption:"",image:img1},
+        {caption:"",image:img4},
         {caption:"",image:img4},
         {caption:"",image:img5},
     ]
@@ -28,10 +28,10 @@ export default function Slide(){
                 data={data}
                 time={5000}
                 width="1450px"
-                height="500px"
+                height="530px"
                 captionStyle={captionStyle}
-                radius="10px"
-                slideNumber={true}
+                //radius="10px"
+                slideNumber={false}
                 slideNumberStyle={slideNumberStyle}
                 captionPosition="bottom"
                 automatic={true}
@@ -45,7 +45,7 @@ export default function Slide(){
                 textAlign: "center",
                 maxWidth: "1450px",
                 maxHeight: "500px",
-                margin: "40px auto",
+                margin: "10px auto",
                 }}
             />
 
