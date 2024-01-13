@@ -1,0 +1,10 @@
+.sprite{
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.icon__ug {
+    background-position: -84px -204px;
+    width: 72px;
+    height: 72px;
+}
