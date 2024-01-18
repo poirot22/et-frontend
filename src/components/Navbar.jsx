@@ -223,7 +223,7 @@ export default function Navbar() {
             </div>
           </li>
           <li className="mr-8 m-2">
-            <a href="/">Forum</a>
+            <a href="/login">Forum</a>
           </li>
           <li
             className="mr-8 m-2 relative flex items-center"
