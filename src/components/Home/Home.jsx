@@ -4,7 +4,7 @@ import hod from "../../assets/hod.png";
 import Slide from "./Home-Children/slides.jsx";
 import Info from "./Home-Children/info.jsx";
 import Events from "./Home-Children/events.jsx";
-import News from "./Home-Children/news.jsx";
+import Numbers from "./Home-Children/numbers.jsx";
 
 export default function Home() {
 
@@ -12,13 +12,9 @@ export default function Home() {
     return (
         <>
            <Slide/>
-           <div class="flex flex-wrap lg:flex-nowrap xl:flex-nowrap ">
                 <Info/>
-                <div>
-                    <Events/> <br />
-                    <News/>
-                </div>
-           </div>
+                <Events/>
+                <Numbers/>
             
         </>
     )
