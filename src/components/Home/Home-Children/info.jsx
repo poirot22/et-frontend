@@ -5,7 +5,7 @@ export default function Info() {
 
     return (
         <>
-            <div  class="ml-8 w-3/5 border  p-2">
+            <div  class="lg:ml-8 xl:ml-8 lg:w-3/5 border items-center  p-2">
                 <div class=""> 
                     <img src={hod} alt="" class="p-2"/>
                     <p class="text-center mb-4 font-bold">Dr. Lakshmi H.N, Professor and Head</p>

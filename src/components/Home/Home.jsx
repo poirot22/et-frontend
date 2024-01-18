@@ -12,7 +12,7 @@ export default function Home() {
     return (
         <>
            <Slide/>
-           <div class="flex">
+           <div class="flex flex-wrap lg:flex-nowrap xl:flex-nowrap ">
                 <Info/>
                 <div>
                     <Events/> <br />
