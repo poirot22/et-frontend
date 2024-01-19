@@ -14,7 +14,7 @@ export default function Info() {
                         <img class="hod-image mt-5 p-2 h-96 mr-5" src={hod} alt=""/>
                         <div class="text-justify p-2 mt-4 Message">
                             <p>
-                                True to its vision of “In pursuit of Excellence”, CVR College of
+                                Ttrue to its vision of “In pursuit of Excellence”, CVR College of
                                 Engineering was the first college in the State to introduce M.Tech
                                 programs in Artificial Intelligence and Data Sciences, well before AICTE
                                 could recognize them as emerging areas. Continuing the trend, CVR College
