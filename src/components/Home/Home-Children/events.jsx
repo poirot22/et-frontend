@@ -45,7 +45,7 @@ export default function Events() {
                 </table>*/}
 
             </div>
-            <div class="flex justify-around mt-3 events" >
+            <div class="flex flex-wrap  justify-around mt-3 events" >
                 <div class="mt-8 ml-4">
                     <Card sx={{ maxWidth: 345 }}>
                         <CardMedia

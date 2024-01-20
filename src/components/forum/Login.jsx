@@ -17,9 +17,9 @@ export default function Login() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    axios.post('https://localhost:9000/login',formData)
+    axios.post('http://localhost:9000/login',formData)
     .then((res)=>{
-      console.log("Logged in successfully")
+      console.log(res.data)
     })
   };
 
