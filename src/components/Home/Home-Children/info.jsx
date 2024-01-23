@@ -37,7 +37,7 @@ export default function Info() {
             </p>
             {!show && (
               <button class="md:hidden" onClick={() => setShow(true)}>
-                Read More
+                Read More...
               </button>
             )}
           </div>
