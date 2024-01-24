@@ -5,8 +5,9 @@ export default function AIML() {
     return (
         <>
        <div class=" ml-12 mr-12 relative">
-            <img src={aimlcover} alt=""  class=" mt-10 h-48 md:h-96" id="aimlcover" />
-            <div class="absolute sm:top-0 md:top-36 left-1/3 text-white font-bold text-4xl"><h1>Department of AI/ML</h1></div>
+            <img src={aimlcover} alt=""  class=" mt-10 h-48 md:h-96 w-full" id="aimlcover" /> 
+            <div class="absolute text-white font-bold text-4xl"><h1 class="m-auto">Department of AI/ML</h1></div> 
+            
             <h1 class="pl-4 text-3xl font-semibold heading-top mt-10">
                 About the Department
             </h1>
