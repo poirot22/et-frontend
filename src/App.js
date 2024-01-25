@@ -19,6 +19,7 @@ function App() {
           <Route path="/home" element={<Home/>}/>       
           <Route path="/faculty" element={<Faculty/>}/>  
           <Route path="/login" element={<Login/>}/> 
+          <Route path="/aiml" element={<AIML/>}/>
         </Routes>
       
       </>
