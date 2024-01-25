@@ -170,8 +170,10 @@ export default function Navbar() {
               </div>
             </div>
           </li>
-          <li className="mr-8 m-2">
-            <a href="/">Infrastructure</a>
+          <li className="mr-8 m-2 cursor-pointer"
+          onClick={() => navigate("/infrastructure")}
+          >
+            <a >Infrastructure</a>
           </li>
           <li className="mr-8 m-2">
             <a href="/">Research</a>
