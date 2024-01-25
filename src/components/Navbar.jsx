@@ -151,7 +151,11 @@ export default function Navbar() {
                 {isHovered && (
                   <ul>
                     <li className="animate-color p-2">
-                      <div className="cursor-pointer ">AI/ML</div>
+                      <div className="cursor-pointer" 
+                      onClick={() => {
+                        navigate("/aiml");
+                        setMenuOpen(false);
+                      }}>AI/ML</div>
                     </li>
                     <hr />
                     <li className="animate-color p-2">
