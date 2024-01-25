@@ -1,19 +1,32 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
+
 const Modal = ({ selectedFaculty, onClose }) => {
   return (
     <div className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex items-center justify-center">
-      <div className="bg-white p-8 rounded-lg">
-        <h1 className="text-lg font-bold mb-2">{selectedFaculty.id}</h1>
-        <h1 className="text-sm mb-2">
-          {selectedFaculty.lastName + " " + selectedFaculty.firstName}
-        </h1>
-        <h2 className="text-xs text-gray-600 mb-2">
-          {selectedFaculty.designation}
-        </h2>
-        <h3 className="text-xs text-gray-500 mb-2">{selectedFaculty.email}</h3>
-        <button onClick={onClose}>Close</button>
+      <div className="bg-white rounded-lg">
+        <div class="flex justify-end mt-2 mr-3">
+          <button
+            class="transform transform-origin-center transition duration-300 ease-in-out hover:rotate-90"
+            onClick={onClose}
+          >
+            X
+          </button>
+        </div>
+
+        <div class="pl-4 pr-4 pb-4">
+          <h1 className="text-lg font-bold mb-2">{selectedFaculty.id}</h1>
+          <h1 className="text-sm mb-2">
+            {selectedFaculty.lastName + " " + selectedFaculty.firstName}
+          </h1>
+          <h2 className="text-xs text-gray-600 mb-2">
+            {selectedFaculty.designation}
+          </h2>
+          <h3 className="text-xs text-gray-500 mb-2">
+            {selectedFaculty.email}
+          </h3>
+        </div>
       </div>
     </div>
   );
