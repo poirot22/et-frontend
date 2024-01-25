@@ -1,14 +1,30 @@
 import React from "react";
 import aimlcover from "../../assets/aiml-cover.jpg";
 import "./aiml.css";
+import collegeoverview from "../../assets/college-overview.jpg";
+import { useState, useEffect } from "react";
 export default function AIML() {
+  const [count, setCount] = useState(0);
+  const targetNumber = 11;
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (count < targetNumber) {
+        setCount((prevCount) => prevCount + 1);
+      } else {
+        clearInterval(interval);
+      }
+    }, 50);
+
+    return () => clearInterval(interval);
+  }, [count, targetNumber]);
   return (
     <>
       <div class=" ml-12 mr-12 relative mt-4">
         {/* <img src={aimlcover} alt=""  class=" mt-10 h-48 md:h-96 w-full" id="aimlcover" /> 
             <div class="absolute text-white font-bold text-4xl"><h1 class="m-auto">Department of AI/ML</h1></div>  */}
 
-        <div className="relative h-64">
+        <div className="relative h-64 header">
           <div
             className="absolute inset-0 bg-cover bg-center"
             style={{
@@ -16,8 +32,11 @@ export default function AIML() {
               filter: "blur(5px)",
             }}
           />
-          <div className="absolute inset-0 flex justify-center items-center">
-            <h1 className="text-4xl text-white font-bold">
+          <div
+            className="absolute inset-0 flex justify-center items-center"
+            id="aiml-heading"
+          >
+            <h1 className="text-5xl text-white font-bold">
               Department of AI/ML
             </h1>
           </div>
@@ -49,6 +68,48 @@ export default function AIML() {
             and Machine Learning.
           </div>{" "}
           <br />
+        </div>
+
+        <div>
+            
+        </div>
+
+        <div className="relative h-64 header">
+          <div
+            className="absolute inset-0 bg-cover bg-center"
+            style={{
+              backgroundImage: `url(${collegeoverview})`,
+              filter: "blur(10px)",
+            }}
+          />
+          <div className="absolute inset-0 flex justify-center items-center">
+            <div className="flex flex-wrap space-x-60">
+              <div className="flex flex-col justify-center">
+                <span className="text-white text-4xl font-bold">{count}</span>
+                <p className="text-white text-xl  font-semibold">
+                  Staasdfasdfaff
+                </p>
+              </div>
+              <div className="flex flex-col justify-center">
+                <span className="text-white text-4xl font-bold">{count}</span>
+                <p className="text-white text-xl  font-semibold">
+                  Staasdfasdfaff
+                </p>
+              </div>
+              <div className="flex flex-col justify-center">
+                <span className="text-white text-4xl font-bold">{count}</span>
+                <p className="text-white text-xl  font-semibold">
+                  Staasdfasdfaff
+                </p>
+              </div>
+              <div className="flex flex-col justify-center">
+                <span className="text-white text-4xl font-bold">{count}</span>
+                <p className="text-white text-xl  font-semibold">
+                  Staasdfasdfaff
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </>

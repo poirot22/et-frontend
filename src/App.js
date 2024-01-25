@@ -6,6 +6,7 @@ import Faculty from './components/Faculty/faculty.jsx';
 //import { ChakraProvider } from '@chakra-ui/react'
 import Login from './components/forum/Login.jsx';
 import AIML from './components/Branches/aiml.jsx';
+import Infrastructure from './components/infrastructure/Infrastructure.jsx';
 
 
 function App() {
