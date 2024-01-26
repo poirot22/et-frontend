@@ -1,16 +1,11 @@
 import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faCaretDown,
-  faCaretUp,
-  faBars,
-  faPlus,
-  faTimes,
-} from "@fortawesome/free-solid-svg-icons";
+import { faBars, faPlus, faTimes } from "@fortawesome/free-solid-svg-icons";
 import cvr from "../assets/cvr.png";
 import "@fortawesome/fontawesome-free/css/all.css";
 import "./Navbar.css";
 import { useNavigate } from "react-router-dom";
+import { RiArrowDropUpLine } from "react-icons/ri";
 
 export default function Navbar() {
   const [isHovered, setIsHovered] = useState(false);
@@ -123,15 +118,13 @@ export default function Navbar() {
           >
             <div className="flex flex-col">
               <div className="flex">
-                <a className="cursor-pointer">
-                  Academics
-                </a>
+                <a className="cursor-pointer">Academics</a>
                 <div className="ml-2">
-                  {!isHovered ? (
-                    <FontAwesomeIcon icon={faCaretUp} />
-                  ) : (
-                    <FontAwesomeIcon icon={faCaretDown} />
-                  )}
+                  <RiArrowDropUpLine
+                    className={`text-3xl cursor-pointer ${
+                      !isHovered ? "transform rotate-180" : ""
+                    }`}
+                  />
                 </div>
               </div>
               <div
@@ -151,11 +144,15 @@ export default function Navbar() {
                 {isHovered && (
                   <ul>
                     <li className="animate-color p-2">
-                      <div className="cursor-pointer" 
-                      onClick={() => {
-                        navigate("/aiml");
-                        setMenuOpen(false);
-                      }}>AI/ML</div>
+                      <div
+                        className="cursor-pointer"
+                        onClick={() => {
+                          navigate("/aiml");
+                          setMenuOpen(false);
+                        }}
+                      >
+                        AI/ML
+                      </div>
                     </li>
                     <hr />
                     <li className="animate-color p-2">
@@ -174,10 +171,11 @@ export default function Navbar() {
               </div>
             </div>
           </li>
-          <li className="mr-8 m-2 cursor-pointer"
-          onClick={() => navigate("/infrastructure")}
+          <li
+            className="mr-8 m-2 cursor-pointer"
+            onClick={() => navigate("/infrastructure")}
           >
-            <a >Infrastructure</a>
+            <a>Infrastructure</a>
           </li>
           <li className="mr-8 m-2">
             <a href="/">Research</a>
@@ -189,15 +187,13 @@ export default function Navbar() {
           >
             <div className="flex flex-col">
               <div className="flex">
-                <a className="cursor-pointer">
-                  Happenings
-                </a>
+                <a className="cursor-pointer">Happenings</a>
                 <div className="ml-2">
-                  {!isHovered1 ? (
-                    <FontAwesomeIcon icon={faCaretUp} />
-                  ) : (
-                    <FontAwesomeIcon icon={faCaretDown} />
-                  )}
+                  <RiArrowDropUpLine
+                    className={`text-3xl cursor-pointer ${
+                      !isHovered1 ? "transform rotate-180" : ""
+                    }`}
+                  />
                 </div>
               </div>
               <div
@@ -238,15 +234,13 @@ export default function Navbar() {
           >
             <div className="flex flex-col">
               <div className="flex">
-                <a className="cursor-pointer">
-                  About Us
-                </a>
+                <a className="cursor-pointer">About Us</a>
                 <div className="ml-2">
-                  {!isHovered2 ? (
-                    <FontAwesomeIcon icon={faCaretUp} />
-                  ) : (
-                    <FontAwesomeIcon icon={faCaretDown} />
-                  )}
+                <RiArrowDropUpLine
+                    className={`text-3xl cursor-pointer  ${
+                      !isHovered2 ? "transform rotate-180" : ""
+                    }`}
+                  />
                 </div>
               </div>
               <div
