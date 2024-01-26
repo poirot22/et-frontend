@@ -123,7 +123,7 @@ export default function Navbar() {
           >
             <div className="flex flex-col">
               <div className="flex">
-                <a className="" href="/">
+                <a className="cursor-pointer">
                   Academics
                 </a>
                 <div className="ml-2">
@@ -189,7 +189,7 @@ export default function Navbar() {
           >
             <div className="flex flex-col">
               <div className="flex">
-                <a className="" href="/">
+                <a className="cursor-pointer">
                   Happenings
                 </a>
                 <div className="ml-2">
@@ -238,7 +238,7 @@ export default function Navbar() {
           >
             <div className="flex flex-col">
               <div className="flex">
-                <a className="" href="/">
+                <a className="cursor-pointer">
                   About Us
                 </a>
                 <div className="ml-2">
@@ -281,7 +281,7 @@ export default function Navbar() {
       </div>
       {/* mobile menu */}
       {menuOpen && (
-        <div className="lg:hidden min-h-fit bg-gray-200 w-1/2 animate-left-right overflow-y-scroll absolute top-0 left-0 z-50 mt-16 rounded-r-lg shadow-2xl">
+        <div className="lg:hidden min-h-fit bg-gray-200 animate-left-right overflow-y-scroll absolute top-0 left-0 z-50 mt-16 rounded-r-lg shadow-2xl">
           <ul className="flex flex-col items-start animate-fade-in">
             <li
               className="mr-8 m-2 relative"

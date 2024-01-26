@@ -2,14 +2,19 @@ import React from "react";
 import aimlcover from "../../assets/aiml-cover.jpg";
 import "./aiml.css";
 import collegeoverview from "../../assets/college-overview.jpg";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCaretUp } from "@fortawesome/free-solid-svg-icons";
+import { faCaretDown } from "@fortawesome/free-solid-svg-icons";
+
 export default function AIML() {
   const [count, setCount] = useState(0);
   const targetNumber = 11;
+  const [isVisibleNumbers, setIsVisibleNumbers] = useState(false);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      if (count < targetNumber) {
+      if (isVisibleNumbers && count < targetNumber) {
         setCount((prevCount) => prevCount + 1);
       } else {
         clearInterval(interval);
@@ -17,13 +22,53 @@ export default function AIML() {
     }, 50);
 
     return () => clearInterval(interval);
-  }, [count, targetNumber]);
+  }, [count, isVisibleNumbers, targetNumber]);
+
+  const divRef = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setIsVisibleNumbers(true);
+          } else {
+            setIsVisibleNumbers(false);
+          }
+        });
+      },
+      {
+        root: null,
+        rootMargin: "0px",
+        threshold: 0.5,
+      }
+    );
+
+    if (divRef.current) {
+      observer.observe(divRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, [divRef]);
+  const [firstYear, setFirstYear] = useState(false);
+
+  const handleFirstYearClick = () => {
+    setFirstYear((prevFirstYear) => !prevFirstYear);
+    if (divRef.current) {
+        const rect = divRef.current.getBoundingClientRect();
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        const targetY = rect.top + scrollTop - window.innerHeight / 2 + rect.height;
+    
+        window.scrollTo({
+          top: targetY,
+          behavior: "smooth",
+        });
+      }
+  };
+
   return (
     <>
       <div class=" ml-12 mr-12 relative mt-4">
-        {/* <img src={aimlcover} alt=""  class=" mt-10 h-48 md:h-96 w-full" id="aimlcover" /> 
-            <div class="absolute text-white font-bold text-4xl"><h1 class="m-auto">Department of AI/ML</h1></div>  */}
-
         <div className="relative h-64 header">
           <div
             className="absolute inset-0 bg-cover bg-center"
@@ -70,11 +115,60 @@ export default function AIML() {
           <br />
         </div>
 
-        <div>
+        <div className="ml-12 mr-12 mt-4">
+          <h1 className="text-3xl font-semibold mb-4">AIML Course Structure</h1>
+
+          <div
+            className="flex flex-col"
             
+          >
+            <div className="flex items-center cursor-pointer" onClick={handleFirstYearClick}>
+              <FontAwesomeIcon
+                icon={firstYear ? faCaretDown : faCaretUp}
+                className="text-gray-600 mr-2"
+              />
+              <h1 className="text-xl font-semibold">First Year</h1>
+            </div>
+
+            {firstYear && (
+              <div className="mt-4 animate-fade-in">
+                <div className="grid grid-cols-2 gap-8">
+                  {[1, 2].map((semester) => (
+                    <div key={semester}>
+                      <h1 className="text-xl font-semibold mb-2">
+                        Semester-{semester}
+                      </h1>
+                      <table className="w-full" border={1}>
+                        <thead>
+                          <tr>
+                            <th className="py-2 px-4 bg-gray-200">
+                              Subject Code
+                            </th>
+                            <th className="py-2 px-4 bg-gray-200">Subject</th>
+                            <th className="py-2 px-4 bg-gray-200">Credits</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {Array.from({ length: 7 }).map((_, index) => (
+                            <tr key={index}>
+                              <td className="py-2 px-4">18MAT11</td>
+                              <td className="py-2 px-4">
+                                Engineering Mathematics-I
+                              </td>
+                              <td className="py-2 px-4">4</td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
         </div>
 
-        <div className="relative h-64 header">
+        <div className="relative h-64 header mt-10">
           <div
             className="absolute inset-0 bg-cover bg-center"
             style={{
@@ -82,10 +176,14 @@ export default function AIML() {
               filter: "blur(10px)",
             }}
           />
-          <div className="absolute inset-0 flex justify-center items-center">
-            <div className="flex flex-wrap space-x-60">
+          <div
+            className="absolute inset-0 flex justify-center items-center "
+            ref={divRef}
+          >
+            <div className="w-full flex justify-evenly">
               <div className="flex flex-col justify-center">
                 <span className="text-white text-4xl font-bold">{count}</span>
+
                 <p className="text-white text-xl  font-semibold">
                   Staasdfasdfaff
                 </p>
