@@ -3,9 +3,7 @@ import aimlcover from "../../assets/aiml-cover.jpg";
 import "./aiml.css";
 import collegeoverview from "../../assets/college-overview.jpg";
 import { useState, useEffect, useRef } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCaretUp } from "@fortawesome/free-solid-svg-icons";
-import { faCaretDown } from "@fortawesome/free-solid-svg-icons";
+import { RiArrowDropDownLine } from "react-icons/ri";
 
 export default function AIML() {
   const [count, setCount] = useState(0);
@@ -115,7 +113,7 @@ export default function AIML() {
           <br />
         </div>
 
-        <div className="ml-12 mr-12 mt-4">
+        <div className=" mr-12 mt-4">
           <h1 className="text-3xl font-semibold mb-4">AIML Course Structure</h1>
 
           <div
@@ -123,10 +121,11 @@ export default function AIML() {
             
           >
             <div className="flex items-center cursor-pointer" onClick={handleFirstYearClick}>
-              <FontAwesomeIcon
-                icon={firstYear ? faCaretDown : faCaretUp}
-                className="text-gray-600 mr-2"
-              />
+                <RiArrowDropDownLine
+                    className={`text-3xl mr-2 ${
+                    firstYear ? "transform rotate-180" : ""
+                    }`}
+                />
               <h1 className="text-xl font-semibold">First Year</h1>
             </div>
 
