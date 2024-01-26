@@ -12,6 +12,117 @@ export default function AIML() {
   const targetNumber = 11;
   const [isVisibleNumbers, setIsVisibleNumbers] = useState(false);
 
+  const courses1 = [
+    [
+      {
+        code: "68102",
+        name: "Mathematics-I",
+        credits: 3,
+      },
+      {
+        code: "68103",
+        name: "Engineering Chemistry",
+        credits: 3,
+      },
+      {
+        code: "68105",
+        name: "Environmental Science",
+        credits: 3,
+      },
+      {
+        code: "65101",
+        name: "Problem Solving Through C",
+        credits: 3,
+      },
+      {
+        code: "63102",
+        name: "Engineering Drawing",
+        credits: 3,
+      },
+      
+    ],
+    [
+      {
+        code: "68152",
+        name: "Mathematics-II",
+        credits: 3,
+      },
+      {
+        code: "68151",
+        name: "English",
+        credits: 3,
+      },
+      {
+        code: "68157",
+        name: "Applied Physics",
+        credits: 3,
+      },
+      {
+        code: "69151",
+        name: "Python Programming",
+        credits: 3,
+      },
+      {
+        code: "62151",
+        name: "Basic Electrical and Electronics Engineering (EEE)",
+        credits: 3,
+      },
+     
+    ],
+  ];
+
+  const practicals1 = [
+    [
+      {
+        code: "68131",
+        name: "English Language Communication Skills Lab - I",
+        credits: 1,
+      },
+      {
+        code: "68133",
+        name: "Engineering Chemistry Lab",
+        credits: 1,
+      },
+      {
+        code: "65131",
+        name: "Computer Programming Lab",
+        credits: 1.5,
+      },
+      {
+        code: "67131",
+        name: "IT Workshop Lab ",
+        credits: 1,
+      },
+    ],
+    [
+      {
+        code: "68181",
+        name: "English Language Communication Skills Lab - II",
+        credits: 1,
+      },
+      {
+        code: "68187",
+        name: "Applied Physics Lab",
+        credits: 1,
+      },
+      {
+        code: "69181",
+        name: "Python Programming Lab",
+        credits: 1.5,
+      },
+      {
+        code: "62181",
+        name: "Electrical and Electronics Engineering Lab",
+        credits: 1.5,
+      },
+      {
+        code: "63181",
+        name: "Engineering Workshop",
+        credits: 1,
+      },
+    ]
+  ]
+
   useEffect(() => {
     const interval = setInterval(() => {
       if (isVisibleNumbers && count < targetNumber) {
@@ -55,15 +166,17 @@ export default function AIML() {
   const handleFirstYearClick = () => {
     setFirstYear((prevFirstYear) => !prevFirstYear);
     if (divRef.current) {
-        const rect = divRef.current.getBoundingClientRect();
-        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-        const targetY = rect.top + scrollTop - window.innerHeight / 2 + rect.height;
-    
-        window.scrollTo({
-          top: targetY,
-          behavior: "smooth",
-        });
-      }
+      const rect = divRef.current.getBoundingClientRect();
+      const scrollTop =
+        window.pageYOffset || document.documentElement.scrollTop;
+      const targetY =
+        rect.top + scrollTop - window.innerHeight / 2 + rect.height;
+
+      window.scrollTo({
+        top: targetY,
+        behavior: "smooth",
+      });
+    }
   };
 
   return (
@@ -118,11 +231,11 @@ export default function AIML() {
         <div className="ml-12 mr-12 mt-4">
           <h1 className="text-3xl font-semibold mb-4">AIML Course Structure</h1>
 
-          <div
-            className="flex flex-col"
-            
-          >
-            <div className="flex items-center cursor-pointer" onClick={handleFirstYearClick}>
+          <div className="flex flex-col">
+            <div
+              className="flex items-center cursor-pointer"
+              onClick={handleFirstYearClick}
+            >
               <FontAwesomeIcon
                 icon={firstYear ? faCaretDown : faCaretUp}
                 className="text-gray-600 mr-2"
@@ -149,16 +262,37 @@ export default function AIML() {
                           </tr>
                         </thead>
                         <tbody>
-                          {Array.from({ length: 7 }).map((_, index) => (
+                          {Array.from({ length: 5 }).map((_, index) => (
                             <tr key={index}>
-                              <td className="py-2 px-4">18MAT11</td>
                               <td className="py-2 px-4">
-                                Engineering Mathematics-I
+                                {courses1[semester - 1][index]["code"]}
                               </td>
-                              <td className="py-2 px-4">4</td>
+                              <td className="py-2 px-4">
+                                {courses1[semester - 1][index]["name"]}
+                              </td>
+                              <td className="py-2 px-4">
+                                {courses1[semester - 1][index]["credits"]}
+                              </td>
                             </tr>
                           ))}
+                          <tr class="text-center items-center font-bold">Practicals</tr>
+                          {
+                            Array.from({ length: 4 }).map((_, index) => (
+                              <tr key={index}>
+                                <td className="py-2 px-4">
+                                  {practicals1[semester - 1][index]["code"]}
+                                </td>
+                                <td className="py-2 px-4">
+                                  {practicals1[semester - 1][index]["name"]}
+                                </td>
+                                <td className="py-2 px-4">
+                                  {practicals1[semester - 1][index]["credits"]}
+                                </td>
+                              </tr>
+                            ))
+                          }
                         </tbody>
+                      
                       </table>
                     </div>
                   ))}
