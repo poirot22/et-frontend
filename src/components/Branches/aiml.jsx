@@ -14,7 +14,7 @@ export default function AIML() {
       } else {
         clearInterval(interval);
       }
-    }, 50);
+    }, 10);
 
     return () => clearInterval(interval);
   }, [count, targetNumber]);

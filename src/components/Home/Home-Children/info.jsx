@@ -36,7 +36,7 @@ export default function Info() {
               Science and Cyber Security.
             </p>
             {!show && (
-              <button class="md:hidden" onClick={() => setShow(true)}>
+              <button class="md:hidden text-gray-500" onClick={() => setShow(true)}>
                 Read More...
               </button>
             )}
@@ -65,7 +65,7 @@ export default function Info() {
            </p>
          )}
          {show &&(
-            <button class="md:hidden" onClick={() => setShow(false)}>Read Less</button>
+            <button class="md:hidden text-gray-500" onClick={() => setShow(false)}>Read Less</button>
          )}
          <p className="hidden md:flex">
               The program is designed with an intent to educate the engineering

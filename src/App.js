@@ -20,6 +20,7 @@ function App() {
           <Route path="/faculty" element={<Faculty/>}/>  
           <Route path="/login" element={<Login/>}/> 
           <Route path="/aiml" element={<AIML/>}/>
+          <Route path='/infrastructure' element={<Infrastructure/>}/>
         </Routes>
       
       </>

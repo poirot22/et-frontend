@@ -337,8 +337,13 @@ export default function Navbar() {
               </div>
             </li>
             <hr />
-            <li className="mr-8 m-2 relative">
-              <a href="/">Infrastructure</a>
+            <li className="mr-8 m-2 relative"
+            onClick={() => {
+              navigate("/infrastructure");
+              setMenuOpen(false);
+            }}>
+              <a>Infrastructure</a>
+
             </li>
             <hr />
             <li className="mr-8 m-2 relative">
