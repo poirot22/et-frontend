@@ -1,7 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import { useSpring, animated } from "react-spring";
 
 export default function ContactUs() {
+  // Define state to store form data
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+
   // Define fade-in animation for contact information
   const infoAnimation = useSpring({
     opacity: 1,
@@ -16,9 +23,34 @@ export default function ContactUs() {
     config: { duration: 800, delay: 300 },
   });
 
+  // Handle input changes
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
+
+  // Handle form submission
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // You can send the formData to your server or perform any desired actions here
+    console.log("Form Data Submitted:", formData);
+
+    // Optionally, reset the form data after submission
+    setFormData({
+      name: "",
+      email: "",
+      message: "",
+    });
+  };
+
   return (
     <div className="min-h-screen py-16">
-      <div className="container mx-auto max-w-4xl p-8 bg-white rounded-lg shadow-lg">
+      <div className="container mx-auto max-w-4xl p-8 bg-white rounded-md"
+      style={{ boxShadow: "0px 0px 20px 0px rgba(0,0,0,0.1)" }}
+      >
         <h1 className="text-4xl font-bold mb-8 text-center">Contact Us</h1>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
@@ -42,7 +74,7 @@ export default function ContactUs() {
           {/* Animated Contact Form */}
           <animated.div style={formAnimation}>
             <h2 className="text-2xl font-semibold">Send Us a Message</h2>
-            <form className="space-y-4">
+            <form className="space-y-4" onSubmit={handleSubmit}>
               <div>
                 <label className="block text-sm font-medium text-gray-700">
                   Your Name
@@ -50,6 +82,8 @@ export default function ContactUs() {
                 <input
                   type="text"
                   name="name"
+                  value={formData.name}
+                  onChange={handleInputChange}
                   className="mt-1 p-3 w-full border rounded-md focus:outline-none focus:border-blue-500"
                   placeholder="John Doe"
                 />
@@ -62,6 +96,8 @@ export default function ContactUs() {
                 <input
                   type="email"
                   name="email"
+                  value={formData.email}
+                  onChange={handleInputChange}
                   className="mt-1 p-3 w-full border rounded-md focus:outline-none focus:border-blue-500"
                   placeholder="john.doe@example.com"
                 />
@@ -74,6 +110,8 @@ export default function ContactUs() {
                 <textarea
                   name="message"
                   rows="4"
+                  value={formData.message}
+                  onChange={handleInputChange}
                   className="mt-1 p-3 w-full border rounded-md focus:outline-none focus:border-blue-500"
                   placeholder="Your message..."
                 ></textarea>

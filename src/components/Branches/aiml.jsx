@@ -4,11 +4,8 @@ import "./aiml.css";
 import collegeoverview from "../../assets/college-overview.jpg";
 import { useState, useEffect, useRef } from "react";
 import { RiArrowDropDownLine } from "react-icons/ri";
-import { FaRegFileAlt } from "react-icons/fa";
 
 export default function AIML() {
-  const [count, setCount] = useState(0);
-  const targetNumber = 11;
   const [isVisibleNumbers, setIsVisibleNumbers] = useState(false);
 
   const [faculty, setFaculty] = useState(0);
@@ -152,7 +149,7 @@ export default function AIML() {
     return () => {
       observer.disconnect();
     };
-  }, [12]); // Update effect when the target changes
+  }, []); // Update effect when the target changes
 
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
@@ -414,9 +411,10 @@ export default function AIML() {
                     firstYear ? "transform rotate-180" : ""
                   }`}
                 />
-                <h1 className="text-xl font-semibold">First Year</h1>
+                <h1 className="text-xl font-semibold user-select-none">First Year</h1>
               </div>
 
+              <div className={`${firstYear?"":"animation-fade-out"}`}>
               {firstYear && (
                 <div className="mt-4 animate-fade-in ml-5">
                   <div className="md:grid md:grid-cols-2 gap-8">
@@ -484,6 +482,7 @@ export default function AIML() {
                   </div>
                 </div>
               )}
+              </div>
               <div className="bg-gray-300 w-full h-0.5"></div>
               <div
                 className="flex items-center cursor-pointer"
