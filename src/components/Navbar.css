@@ -12,12 +12,12 @@
   }
   
   .animate-fade-in {
-    animation: fadeIn 1.5s ease-in-out; 
+    animation: fadeIn 1s ease-in-out; 
     overflow: hidden; 
   }
 
   .animate-left-right{
-    animation: left-right 1s ease-in-out;
+    animation: left-right 1.5s ease-in-out;
     overflow: hidden; 
   }
 
@@ -46,3 +46,23 @@ body{
 .heading{
   font-family: 'Roboto', sans-serif;
 }
+
+@keyframes changecolor {
+  0% {
+    background-color: white;
+  }
+  50% {
+    background-color: #ba2b2b;
+  }
+  100% {
+    background-color: #c00404;
+  }
+
+}
+
+.animate-color:hover {
+  animation: changecolor 0.5s ease-in-out;
+  color: white;
+    background-color: #c00404;
+  } 
+
