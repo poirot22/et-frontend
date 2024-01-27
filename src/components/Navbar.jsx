@@ -224,8 +224,14 @@ export default function Navbar() {
               </div>
             </div>
           </li>
-          <li className="mr-8 m-2">
-            <a href="/login">Forum</a>
+          <li className="mr-8 m-2 cursor-pointer"
+          onClick={() => {
+            navigate("/login");
+            setMenuOpen(false);
+          }
+          }
+          >
+            <p >Forum</p>
           </li>
           <li
             className="mr-8 m-2 relative flex items-center"
@@ -259,7 +265,12 @@ export default function Navbar() {
               >
                 {isHovered2 && (
                   <ul className="">
-                    <li className="animate-color p-2">
+                    <li className="animate-color p-2"
+                    onClick={() => {
+                      navigate("/contactus");
+                      setMenuOpen(false);
+                    }}
+                    >
                       <div className="cursor-pointer">Contact Us</div>
                     </li>
                     <hr />

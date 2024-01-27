@@ -7,6 +7,7 @@ import Faculty from './components/Faculty/faculty.jsx';
 import Login from './components/forum/Login.jsx';
 import AIML from './components/Branches/aiml.jsx';
 import Infrastructure from './components/infrastructure/Infrastructure.jsx';
+import Contactus from './components/contact-us/Contactus.jsx';
 
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
           <Route path="/login" element={<Login/>}/> 
           <Route path="/aiml" element={<AIML/>}/>
           <Route path='/infrastructure' element={<Infrastructure/>}/>
+          <Route path='/contactus' element={<Contactus/>}/>
         </Routes>
       
       </>

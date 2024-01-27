@@ -4,6 +4,7 @@ import "./aiml.css";
 import collegeoverview from "../../assets/college-overview.jpg";
 import { useState, useEffect, useRef } from "react";
 import { RiArrowDropDownLine } from "react-icons/ri";
+import { FaRegFileAlt } from "react-icons/fa";
 
 export default function AIML() {
   const [count, setCount] = useState(0);
@@ -402,104 +403,127 @@ export default function AIML() {
           <h1 className="text-3xl font-semibold mb-4 heading-top pl-4">
             AI/ML Course Structure
           </h1>
-
-          <div className="flex flex-col">
-            <div
-              className="flex items-center cursor-pointer"
-              onClick={handleFirstYearClick}
-            >
-              <RiArrowDropDownLine
-                className={`text-3xl mr-2 ${
-                  firstYear ? "transform rotate-180" : ""
-                }`}
-              />
-              <h1 className="text-xl font-semibold">First Year</h1>
-            </div>
-
-            {firstYear && (
-              <div className="mt-4 animate-fade-in">
-                <div className="md:grid md:grid-cols-2 gap-8">
-                  {[1, 2].map((semester) => (
-                    <div key={semester}>
-                      <h1 className="text-xl font-semibold mb-2">
-                        Semester-{semester}
-                      </h1>
-                      <table className="w-full" border={1}>
-                        <thead>
-                          <tr>
-                            <th className="py-2 px-4 bg-gray-200">
-                              Subject Code
-                            </th>
-                            <th className="py-2 px-4 bg-gray-200">Subject</th>
-                            <th className="py-2 px-4 bg-gray-200">Credits</th>
-                          </tr>
-                        </thead>
-
-                        <tbody>
-                          {courses1[semester - 1].map((course) => (
-                            <tr>
-                              <td className="py-2 px-4">{course.code}</td>
-                              <td className="py-2 px-4">{course.name}</td>
-                              <td className="py-2 px-4">{course.credits}</td>
-                            </tr>
-                          ))}
-                          <tr>
-                            <td class="px-2 py-2 font-bold justify-center col-span-3">
-                              Practicals
-                            </td>
-                          </tr>
-                          {practicals1[semester - 1].map((course) => (
-                            <tr>
-                              <td className="py-2 px-4">{course.code}</td>
-                              <td className="py-2 px-4">{course.name}</td>
-                              <td className="py-2 px-4">{course.credits}</td>
-                            </tr>
-                          ))}
-                        </tbody>
-                      </table>
-                    </div>
-                  ))}
-                </div>
+          <div className="shadow-lg p-3 ring-4 ring-gray-300 rounded-lg">
+            <div className="flex flex-col p-1 rounded-md">
+              <div
+                className="flex items-center cursor-pointer m-2 "
+                onClick={handleFirstYearClick}
+              >
+                <RiArrowDropDownLine
+                  className={`text-3xl mr-2 ${
+                    firstYear ? "transform rotate-180" : ""
+                  }`}
+                />
+                <h1 className="text-xl font-semibold">First Year</h1>
               </div>
-            )}
-            <div
-              className="flex items-center cursor-pointer"
-              onClick={handleSecondYearClick}
-            >
-              <RiArrowDropDownLine
-                className={`text-3xl mr-2 ${
-                  firstYear ? "transform rotate-180" : ""
-                }`}
-              />
-              <h1 className="text-xl font-semibold">Second Year</h1>
-            </div>
-            {secondYear && <>enter syllabus here</>}
 
-            <div
-              className="flex items-center cursor-pointer"
-              onClick={handleThirdYearClick}
-            >
-              <RiArrowDropDownLine
-                className={`text-3xl mr-2 ${
-                  firstYear ? "transform rotate-180" : ""
-                }`}
-              />
-              <h1 className="text-xl font-semibold">Third Year</h1>
+              {firstYear && (
+                <div className="mt-4 animate-fade-in ml-5">
+                  <div className="md:grid md:grid-cols-2 gap-8">
+                    {[1, 2].map((semester) => (
+                      <div key={semester} className="mb-8">
+                        <h1 className="text-xl font-semibold mb-2">
+                          Semester-{semester}
+                        </h1>
+                        <table className="w-full border-collapse border border-gray-300">
+                          <thead>
+                            <tr>
+                              <th className="py-2 px-4 bg-gray-200 border border-gray-300">
+                                Subject Code
+                              </th>
+                              <th className="py-2 px-4 bg-gray-200 border border-gray-300">
+                                Subject
+                              </th>
+                              <th className="py-2 px-4 bg-gray-200 border border-gray-300">
+                                Credits
+                              </th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {courses1[semester - 1].map((course) => (
+                              <tr
+                                key={course.code}
+                                className="border border-gray-300"
+                              >
+                                <td className="py-2 px-4 border border-gray-300">
+                                  {course.code}
+                                </td>
+                                <td className="py-2 px-4 border border-gray-300">
+                                  {course.name}
+                                </td>
+                                <td className="py-2 px-4 border border-gray-300">
+                                  {course.credits}
+                                </td>
+                              </tr>
+                            ))}
+                            <tr>
+                              <td className="px-2 py-2 font-bold justify-center col-span-3 border border-gray-300">
+                                Practicals
+                              </td>
+                            </tr>
+                            {practicals1[semester - 1].map((course) => (
+                              <tr
+                                key={course.code}
+                                className="border border-gray-300"
+                              >
+                                <td className="py-2 px-4 border border-gray-300">
+                                  {course.code}
+                                </td>
+                                <td className="py-2 px-4 border border-gray-300">
+                                  {course.name}
+                                </td>
+                                <td className="py-2 px-4 border border-gray-300">
+                                  {course.credits}
+                                </td>
+                              </tr>
+                            ))}
+                          </tbody>
+                        </table>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+              <div className="bg-gray-300 w-full h-0.5"></div>
+              <div
+                className="flex items-center cursor-pointer"
+                onClick={handleSecondYearClick}
+              >
+                <RiArrowDropDownLine
+                  className={`text-3xl mr-2 ${
+                    firstYear ? "transform rotate-180" : ""
+                  }`}
+                />
+                <h1 className="text-xl font-semibold">Second Year</h1>
+              </div>
+              {secondYear && <>enter syllabus here</>}
+              <div className="bg-gray-300 w-full h-0.5"></div>
+              <div
+                className="flex items-center cursor-pointer"
+                onClick={handleThirdYearClick}
+              >
+                <RiArrowDropDownLine
+                  className={`text-3xl mr-2 ${
+                    firstYear ? "transform rotate-180" : ""
+                  }`}
+                />
+                <h1 className="text-xl font-semibold">Third Year</h1>
+              </div>
+              {thirdYear && <>enter syllabus here</>}
+              <div className="bg-gray-300 w-full h-0.5"></div>
+              <div
+                className="flex items-center cursor-pointer"
+                onClick={handleFourthYearClick}
+              >
+                <RiArrowDropDownLine
+                  className={`text-3xl mr-2 ${
+                    firstYear ? "transform rotate-180" : ""
+                  }`}
+                />
+                <h1 className="text-xl font-semibold">Fourth Year</h1>
+              </div>
+              {fourthYear && <>enter syllabus here</>}
             </div>
-            {thirdYear && <>enter syllabus here</>}
-
-            <div
-              className="flex items-center cursor-pointer"
-              onClick={handleFourthYearClick}
-            >
-              <RiArrowDropDownLine
-                className={`text-3xl mr-2 ${
-                  firstYear ? "transform rotate-180" : ""
-                }`}
-              />
-              <h1 className="text-xl font-semibold">Fourth Year</h1>
-            </div>
-            {fourthYear && <>enter syllabus here</>}
           </div>
         </div>
 
