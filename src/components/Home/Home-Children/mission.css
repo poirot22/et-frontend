@@ -1,0 +1,23 @@
+#vision-head{
+	text-align: center;
+  }
+  #vision-text{
+	font-size: large;
+	text-align: center;
+    line-height: 1.5;
+  }
+  #mission-head{
+	text-align: center;
+  }
+  .mission-outcomes li{
+	list-style: none;
+	border: 2px solid black;
+	border-radius: 2px;
+	padding:4px;
+	background-color: white;
+    border-bottom: none;
+  }
+
+  .mission-outcomes li.bottom{
+    border-bottom:2px solid black;
+  }

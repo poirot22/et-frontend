@@ -1,16 +1,11 @@
 import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faCaretDown,
-  faCaretUp,
-  faBars,
-  faPlus,
-  faTimes,
-} from "@fortawesome/free-solid-svg-icons";
+import { faBars, faPlus, faTimes } from "@fortawesome/free-solid-svg-icons";
 import cvr from "../assets/cvr.png";
 import "@fortawesome/fontawesome-free/css/all.css";
 import "./Navbar.css";
 import { useNavigate } from "react-router-dom";
+import { RiArrowDropUpLine } from "react-icons/ri";
 
 export default function Navbar() {
   const [isHovered, setIsHovered] = useState(false);
@@ -45,24 +40,33 @@ export default function Navbar() {
 
   const openMenu = () => {
     setMenuOpen(!menuOpen);
+    setAbout(false);
+    setAcademics(false);
+    setHapenings(false);
   };
 
   const [Academics, setAcademics] = useState(false);
 
   const openAcadamics = () => {
     setAcademics(!Academics);
+    setHapenings(false);
+    setAbout(false);
   };
 
   const [Hapenings, setHapenings] = useState(false);
 
   const openHapenings = () => {
     setHapenings(!Hapenings);
+    setAcademics(false);
+    setAbout(false);
   };
 
   const [About, setAbout] = useState(false);
 
   const openAbout = () => {
     setAbout(!About);
+    setAcademics(false);
+    setHapenings(false);
   };
 
   return (
@@ -86,7 +90,13 @@ export default function Navbar() {
           </p>
         </div>
       </div>
-      <hr className="ml-10 mr-10" />
+      <hr className="ml-6 mr-6" />
+      {menuOpen && (
+        <div
+          className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 z-40"
+          onClick={() => setMenuOpen(false)}
+        ></div>
+      )}
       <div className="relative navitems hidden lg:flex justify-evenly">
         <ul className="flex justify-center">
           <li
@@ -108,15 +118,13 @@ export default function Navbar() {
           >
             <div className="flex flex-col">
               <div className="flex">
-                <a className="" href="/">
-                  Academics
-                </a>
+                <a className="cursor-pointer">Academics</a>
                 <div className="ml-2">
-                  {!isHovered ? (
-                    <FontAwesomeIcon icon={faCaretUp} />
-                  ) : (
-                    <FontAwesomeIcon icon={faCaretDown} />
-                  )}
+                  <RiArrowDropUpLine
+                    className={`text-3xl cursor-pointer ${
+                      !isHovered ? "transform rotate-180" : ""
+                    }`}
+                  />
                 </div>
               </div>
               <div
@@ -136,7 +144,15 @@ export default function Navbar() {
                 {isHovered && (
                   <ul>
                     <li className="animate-color p-2">
-                      <div className="cursor-pointer ">AI/ML</div>
+                      <div
+                        className="cursor-pointer"
+                        onClick={() => {
+                          navigate("/aiml");
+                          setMenuOpen(false);
+                        }}
+                      >
+                        AI/ML
+                      </div>
                     </li>
                     <hr />
                     <li className="animate-color p-2">
@@ -155,8 +171,11 @@ export default function Navbar() {
               </div>
             </div>
           </li>
-          <li className="mr-8 m-2">
-            <a href="/">Infrastructure</a>
+          <li
+            className="mr-8 m-2 cursor-pointer"
+            onClick={() => navigate("/infrastructure")}
+          >
+            <a>Infrastructure</a>
           </li>
           <li className="mr-8 m-2">
             <a href="/">Research</a>
@@ -168,15 +187,13 @@ export default function Navbar() {
           >
             <div className="flex flex-col">
               <div className="flex">
-                <a className="" href="/">
-                  Happenings
-                </a>
+                <a className="cursor-pointer">Happenings</a>
                 <div className="ml-2">
-                  {!isHovered1 ? (
-                    <FontAwesomeIcon icon={faCaretUp} />
-                  ) : (
-                    <FontAwesomeIcon icon={faCaretDown} />
-                  )}
+                  <RiArrowDropUpLine
+                    className={`text-3xl cursor-pointer ${
+                      !isHovered1 ? "transform rotate-180" : ""
+                    }`}
+                  />
                 </div>
               </div>
               <div
@@ -208,7 +225,7 @@ export default function Navbar() {
             </div>
           </li>
           <li className="mr-8 m-2">
-            <a href="/">Forum</a>
+            <a href="/login">Forum</a>
           </li>
           <li
             className="mr-8 m-2 relative flex items-center"
@@ -217,15 +234,13 @@ export default function Navbar() {
           >
             <div className="flex flex-col">
               <div className="flex">
-                <a className="" href="/">
-                  About Us
-                </a>
+                <a className="cursor-pointer">About Us</a>
                 <div className="ml-2">
-                  {!isHovered2 ? (
-                    <FontAwesomeIcon icon={faCaretUp} />
-                  ) : (
-                    <FontAwesomeIcon icon={faCaretDown} />
-                  )}
+                <RiArrowDropUpLine
+                    className={`text-3xl cursor-pointer  ${
+                      !isHovered2 ? "transform rotate-180" : ""
+                    }`}
+                  />
                 </div>
               </div>
               <div
@@ -260,7 +275,7 @@ export default function Navbar() {
       </div>
       {/* mobile menu */}
       {menuOpen && (
-        <div className="lg:hidden min-h-fit bg-gray-200 w-fit animate-left-right overflow-y-scroll absolute top-0 left-0 z-50 mt-16">
+        <div className="lg:hidden min-h-fit bg-gray-200 animate-left-right overflow-y-scroll absolute top-0 left-0 z-50 mt-16 rounded-r-lg shadow-2xl">
           <ul className="flex flex-col items-start animate-fade-in">
             <li
               className="mr-8 m-2 relative"
@@ -271,27 +286,31 @@ export default function Navbar() {
             >
               Home
             </li>
+            <hr />
             <li
               className="mr-8 m-2 relative"
-              onClick={() =>{ 
+              onClick={() => {
                 navigate("/faculty");
                 setMenuOpen(false);
               }}
             >
               <a>Faculty</a>
             </li>
+            <hr />
             <li className="mr-8 m-2 relative">
               <div>
-                <a href="/">Academics</a>
+                <a href="" style={{ color: Academics ? "red" : "black" }}>
+                  Acadamics
+                </a>
                 <FontAwesomeIcon
                   icon={faPlus}
                   className="h-6 w-6 ml-2"
                   onClick={openAcadamics}
                 />
               </div>
-              <div className="animate-fade-in">
+              <div>
                 {Academics && (
-                  <ul className="p-3 animate-fade-in">
+                  <ul className="animate-fade-in">
                     <li className="m-2">
                       <div className="cursor-pointer">AI/ML</div>
                     </li>
@@ -311,15 +330,25 @@ export default function Navbar() {
                 )}
               </div>
             </li>
-            <li className="mr-8 m-2 relative">
-              <a href="/">Infrastructure</a>
+            <hr />
+            <li className="mr-8 m-2 relative"
+            onClick={() => {
+              navigate("/infrastructure");
+              setMenuOpen(false);
+            }}>
+              <a>Infrastructure</a>
+
             </li>
+            <hr />
             <li className="mr-8 m-2 relative">
               <a href="/">Research</a>
             </li>
+            <hr />
             <li className="mr-8 m-2 relative">
               <div>
-                <a href="/">Happenings</a>
+                <a href="/" style={{ color: Hapenings ? "red" : "black" }}>
+                  Happenings
+                </a>
                 <FontAwesomeIcon
                   icon={faPlus}
                   className="h-6 w-6 ml-2"
@@ -327,7 +356,7 @@ export default function Navbar() {
                 />
               </div>
               {Hapenings && (
-                <ul className="p-3">
+                <ul className="animate-fade-in">
                   <li className="m-2">
                     <div className="cursor-pointer">Sports</div>
                   </li>
@@ -338,12 +367,16 @@ export default function Navbar() {
                 </ul>
               )}
             </li>
+            <hr />
             <li className="mr-8 m-2 relative">
               <a href="/">Forum</a>
             </li>
+            <hr />
             <li className="mr-8 m-2 relative">
               <div>
-                <a href="/">About Us</a>
+                <a href="/" style={{ color: About ? "red" : "black" }}>
+                  About Us
+                </a>
                 <FontAwesomeIcon
                   icon={faPlus}
                   className="h-6 w-6 ml-2"
@@ -351,7 +384,7 @@ export default function Navbar() {
                 />
               </div>
               {About && (
-                <ul className="p-3">
+                <ul className="animate-fade-in">
                   <li className="m-2">
                     <div className="cursor-pointer">Contact Us</div>
                   </li>
