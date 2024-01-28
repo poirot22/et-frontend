@@ -135,6 +135,20 @@ const Club = () => {
                 Code Frenzy with C
               </h3>
               <p style={{ color: "#fff" }}>Description 2</p>
+              <div className="flex justify-end">
+                <button
+                  onClick={() => handleViewMore(data)}
+                  style={{
+                    background: "white",
+                    color: "rgb(33, 150, 243)",
+                    padding: "8px 16px",
+                    borderRadius: "4px",
+                    cursor: "pointer",
+                  }}
+                >
+                  View More
+                </button>
+              </div>
             </VerticalTimelineElement>
 
             <VerticalTimelineElement
@@ -153,6 +167,20 @@ const Club = () => {
                 Neural Networks and Deep Learning Models Workshop
               </h3>
               <p style={{ color: "#fff" }}>Description 3</p>
+              <div className="flex justify-end">
+                <button
+                  onClick={() => handleViewMore(data1)}
+                  style={{
+                    background: "white",
+                    color: "rgb(33, 150, 243)",
+                    padding: "8px 16px",
+                    borderRadius: "4px",
+                    cursor: "pointer",
+                  }}
+                >
+                  View More
+                </button>
+              </div>
             </VerticalTimelineElement>
 
             <VerticalTimelineElement
@@ -172,7 +200,20 @@ const Club = () => {
                 Big Data Analytics Workshop
               </h3>
               <p style={{ color: "#fff" }}>Description 2</p>
-              <button onClick={() => handleViewMore(data2)}>View More</button>
+              <div className="flex justify-end">
+                <button
+                  onClick={() => handleViewMore(data2)}
+                  style={{
+                    background: "white",
+                    color: "rgb(33, 150, 243)",
+                    padding: "8px 16px",
+                    borderRadius: "4px",
+                    cursor: "pointer",
+                  }}
+                >
+                  View More
+                </button>
+              </div>
             </VerticalTimelineElement>
 
             <VerticalTimelineElement
@@ -191,6 +232,20 @@ const Club = () => {
                 Cyber Security and Ethical Hacking Workshop
               </h3>
               <p style={{ color: "#fff" }}>Description 1</p>
+              <div className="flex justify-end">
+                <button
+                  onClick={() => handleViewMore(data3)}
+                  style={{
+                    background: "white",
+                    color: "rgb(33, 150, 243)",
+                    padding: "8px 16px",
+                    borderRadius: "4px",
+                    cursor: "pointer",
+                  }}
+                >
+                  View More
+                </button>
+              </div>
             </VerticalTimelineElement>
           </VerticalTimeline>
         </div>

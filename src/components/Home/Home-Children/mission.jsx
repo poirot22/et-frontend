@@ -1,54 +1,60 @@
 import React from "react";
+import './mission.css';
 
 export default function Mission() {
   return (
     <>
-      <div class="flex flex-col md:flex-row bg-gray-100">
-        <div class="md:w-1/2 flex items-center justify-center">
-          <div class="p-8 text-center">
-            <h2 id="vision-head" class="text-4xl mb-4 font-bold">
-              Vision of the Department
-            </h2>
-            <p id="vision-text" class="text-base leading-6">
-              To evolve as a Center of Excellence in emerging areas, impart
-              quality education to produce ethical, motivated, and skilled
-              professionals to meet the ever-increasing technological & social
-              challenges.
-            </p>
-          </div>
+      <div class="vision">
+        <div class="vision text-4xl m-3 p-2">
+          <h2 id="vision-head" class="mb-2 font-bold mt-4">Vision of the Department</h2>
+          <p id="vision-text">
+            To evolve as a Center of Excellence in emerging areas, impart quality
+            education to produce ethical, motivated and skilled professionals to meet
+            the ever-increasing technological & social challenges.
+          </p>
         </div>
 
-        <div class="md:w-1/2 bg-white">
-          <div class="p-8">
-            <h2 id="mission-head" class="text-4xl mb-4 font-bold">
-              Missions of the Department
-            </h2>
-            <ul class="list-disc list-inside">
-              <li class="mb-4">
-                <strong>M1:</strong> To impart students with self-discipline,
-                hard work, all-round personality development, and creative
-                problem-solving approach.
-              </li>
-              <li class="mb-4">
-                <strong>M2:</strong> To provide quality education by using the
-                latest infrastructure and nurturing a collaborative culture.
-              </li>
-              <li class="mb-4">
-                <strong>M3:</strong> To provide students an opportunity to learn
-                both foundational and experimental components in emerging areas.
-              </li>
-              <li class="mb-4">
-                <strong>M4:</strong> To promote and nurture the spirit of
-                innovation and entrepreneurship in our students.
-              </li>
-              <li>
-                <strong>M5:</strong> To emerge as a Center of Excellence through
-                Research, Consultancy, and Development Activities.
-              </li>
-            </ul>
-          </div>
+        <div class="vision text-4xl m-3 p-2">
+          <h2 id="vision-head" class="mb-2 font-bold mt-3">Missions of the Department</h2>
         </div>
-      </div>
+        <div class="grid justify-items-center  pb-5">
+            <table class="table table-bordered" >
+              <tbody>
+                <tr>
+                  <td class="p-2">
+                    M1: To impart students with self-discipline, hard work, all-round
+                    personality development and creative problem-solving approach.
+                  </td>
+                </tr>
+                <tr>
+                  <td class="p-2">
+                    M2: To provide quality-education by using the latest
+                    infrastructure and nurturing collaborative culture.
+                  </td>
+                </tr>
+                <tr>
+                  <td class="p-2">
+                    M3: To provide students an opportunity to learn both foundational
+                    and experimental components in emerging areas.
+                  </td>
+                </tr>
+                <tr>
+                  <td class="p-2">
+                    M4: To promote and nurture the spirit of innovation and
+                    entrepreneurship in our students.
+                  </td>
+                </tr>
+                <tr>
+                  <td class="p-2">
+                    M5: To emerge as a Center of Excellence through Research,
+                    Consultancy and Development Activities.
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+        </div>
+    </div>
+
     </>
   );
 }
