@@ -9,6 +9,7 @@ import AIML from './components/Branches/aiml.jsx';
 import Infrastructure from './components/infrastructure/Infrastructure.jsx';
 import Contactus from './components/contact-us/Contactus.jsx';
 import Club from './components/Happenings/club.jsx';
+import DevelopmentTeam from './components/development-team/DevelopmentTeam.jsx';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
           <Route path='/infrastructure' element={<Infrastructure/>}/>
           <Route path='/contactus' element={<Contactus/>}/>
           <Route path="/club" element={<Club/>}/>  
+          <Route path="/development-team" element={<DevelopmentTeam/>}/>
         </Routes>
       </>
       
