@@ -411,81 +411,82 @@ export default function AIML() {
                     firstYear ? "transform rotate-180" : ""
                   }`}
                 />
-                <h1 className="text-xl font-semibold user-select-none">First Year</h1>
-              </div>
-
-              <div className={`${firstYear?"":"animation-fade-out"}`}>
-              {firstYear && (
-                <div className="mt-4 animate-fade-in ml-5">
-                  <div className="md:grid md:grid-cols-2 gap-8">
-                    {[1, 2].map((semester) => (
-                      <div key={semester} className="mb-8">
-                        <h1 className="text-xl font-semibold mb-2">
-                          Semester-{semester}
-                        </h1>
-                        <table className="w-full border-collapse border border-gray-300">
-                          <thead>
-                            <tr>
-                              <th className="py-2 px-4 bg-gray-200 border border-gray-300">
-                                Subject Code
-                              </th>
-                              <th className="py-2 px-4 bg-gray-200 border border-gray-300">
-                                Subject
-                              </th>
-                              <th className="py-2 px-4 bg-gray-200 border border-gray-300">
-                                Credits
-                              </th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            {courses1[semester - 1].map((course) => (
-                              <tr
-                                key={course.code}
-                                className="border border-gray-300"
-                              >
-                                <td className="py-2 px-4 border border-gray-300">
-                                  {course.code}
-                                </td>
-                                <td className="py-2 px-4 border border-gray-300">
-                                  {course.name}
-                                </td>
-                                <td className="py-2 px-4 border border-gray-300">
-                                  {course.credits}
-                                </td>
-                              </tr>
-                            ))}
-                            <tr>
-                              <td className="px-2 py-2 font-bold justify-center col-span-3 border border-gray-300">
-                                Practicals
-                              </td>
-                            </tr>
-                            {practicals1[semester - 1].map((course) => (
-                              <tr
-                                key={course.code}
-                                className="border border-gray-300"
-                              >
-                                <td className="py-2 px-4 border border-gray-300">
-                                  {course.code}
-                                </td>
-                                <td className="py-2 px-4 border border-gray-300">
-                                  {course.name}
-                                </td>
-                                <td className="py-2 px-4 border border-gray-300">
-                                  {course.credits}
-                                </td>
-                              </tr>
-                            ))}
-                          </tbody>
-                        </table>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              )}
+                <h1 className="text-xl font-semibold user-select-none">
+                  First Year
+                </h1>
               </div>
               <div className="bg-gray-300 w-full h-0.5"></div>
+              <div className={`${firstYear ? "" : "animation-fade-out"}`}>
+                {firstYear && (
+                  <div className="mt-4 animate-fade-in ml-5">
+                    <div className="md:grid md:grid-cols-2 gap-8">
+                      {[1, 2].map((semester) => (
+                        <div key={semester} className="mb-8">
+                          <h1 className="text-xl font-semibold mb-2">
+                            Semester-{semester}
+                          </h1>
+                          <table className="w-full border-collapse border border-gray-300">
+                            <thead>
+                              <tr>
+                                <th className="py-2 px-4 bg-gray-200 border border-gray-300">
+                                  Subject Code
+                                </th>
+                                <th className="py-2 px-4 bg-gray-200 border border-gray-300">
+                                  Subject
+                                </th>
+                                <th className="py-2 px-4 bg-gray-200 border border-gray-300">
+                                  Credits
+                                </th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              {courses1[semester - 1].map((course) => (
+                                <tr
+                                  key={course.code}
+                                  className="border border-gray-300"
+                                >
+                                  <td className="py-2 px-4 border border-gray-300">
+                                    {course.code}
+                                  </td>
+                                  <td className="py-2 px-4 border border-gray-300">
+                                    {course.name}
+                                  </td>
+                                  <td className="py-2 px-4 border border-gray-300">
+                                    {course.credits}
+                                  </td>
+                                </tr>
+                              ))}
+                              <tr>
+                                <td className="px-2 py-2 font-bold justify-center col-span-3 border border-gray-300">
+                                  Practicals
+                                </td>
+                              </tr>
+                              {practicals1[semester - 1].map((course) => (
+                                <tr
+                                  key={course.code}
+                                  className="border border-gray-300"
+                                >
+                                  <td className="py-2 px-4 border border-gray-300">
+                                    {course.code}
+                                  </td>
+                                  <td className="py-2 px-4 border border-gray-300">
+                                    {course.name}
+                                  </td>
+                                  <td className="py-2 px-4 border border-gray-300">
+                                    {course.credits}
+                                  </td>
+                                </tr>
+                              ))}
+                            </tbody>
+                          </table>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
               <div
-                className="flex items-center cursor-pointer"
+                className="flex items-center cursor-pointer m-2 "
                 onClick={handleSecondYearClick}
               >
                 <RiArrowDropDownLine
@@ -493,12 +494,82 @@ export default function AIML() {
                     firstYear ? "transform rotate-180" : ""
                   }`}
                 />
-                <h1 className="text-xl font-semibold user-select-none">Second Year</h1>
+                <h1 className="text-xl font-semibold user-select-none">
+                  Second Year
+                </h1>
               </div>
-              {secondYear && <>enter syllabus here</>}
               <div className="bg-gray-300 w-full h-0.5"></div>
+              <div className={`${secondYear ? "" : "animation-fade-out"}`}>
+                {secondYear && (
+                  <div className="mt-4 animate-fade-in ml-5">
+                    <div className="md:grid md:grid-cols-2 gap-8">
+                      {[1, 2].map((semester) => (
+                        <div key={semester} className="mb-8">
+                          <h1 className="text-xl font-semibold mb-2">
+                            Semester-{semester}
+                          </h1>
+                          <table className="w-full border-collapse border border-gray-300">
+                            <thead>
+                              <tr>
+                                <th className="py-2 px-4 bg-gray-200 border border-gray-300">
+                                  Subject Code
+                                </th>
+                                <th className="py-2 px-4 bg-gray-200 border border-gray-300">
+                                  Subject
+                                </th>
+                                <th className="py-2 px-4 bg-gray-200 border border-gray-300">
+                                  Credits
+                                </th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              {courses1[semester - 1].map((course) => (
+                                <tr
+                                  key={course.code}
+                                  className="border border-gray-300"
+                                >
+                                  <td className="py-2 px-4 border border-gray-300">
+                                    {course.code}
+                                  </td>
+                                  <td className="py-2 px-4 border border-gray-300">
+                                    {course.name}
+                                  </td>
+                                  <td className="py-2 px-4 border border-gray-300">
+                                    {course.credits}
+                                  </td>
+                                </tr>
+                              ))}
+                              <tr>
+                                <td className="px-2 py-2 font-bold justify-center col-span-3 border border-gray-300">
+                                  Practicals
+                                </td>
+                              </tr>
+                              {practicals1[semester - 1].map((course) => (
+                                <tr
+                                  key={course.code}
+                                  className="border border-gray-300"
+                                >
+                                  <td className="py-2 px-4 border border-gray-300">
+                                    {course.code}
+                                  </td>
+                                  <td className="py-2 px-4 border border-gray-300">
+                                    {course.name}
+                                  </td>
+                                  <td className="py-2 px-4 border border-gray-300">
+                                    {course.credits}
+                                  </td>
+                                </tr>
+                              ))}
+                            </tbody>
+                          </table>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
               <div
-                className="flex items-center cursor-pointer"
+                className="flex items-center cursor-pointer m-2 "
                 onClick={handleThirdYearClick}
               >
                 <RiArrowDropDownLine
@@ -506,12 +577,83 @@ export default function AIML() {
                     firstYear ? "transform rotate-180" : ""
                   }`}
                 />
-                <h1 className="text-xl font-semibold user-select-none">Third Year</h1>
+                <h1 className="text-xl font-semibold user-select-none">
+                  Third Year
+                </h1>
               </div>
-              {thirdYear && <>enter syllabus here</>}
               <div className="bg-gray-300 w-full h-0.5"></div>
+
+              <div className={`${thirdYear ? "" : "animation-fade-out"}`}>
+                {thirdYear && (
+                  <div className="mt-4 animate-fade-in ml-5">
+                    <div className="md:grid md:grid-cols-2 gap-8">
+                      {[1, 2].map((semester) => (
+                        <div key={semester} className="mb-8">
+                          <h1 className="text-xl font-semibold mb-2">
+                            Semester-{semester}
+                          </h1>
+                          <table className="w-full border-collapse border border-gray-300">
+                            <thead>
+                              <tr>
+                                <th className="py-2 px-4 bg-gray-200 border border-gray-300">
+                                  Subject Code
+                                </th>
+                                <th className="py-2 px-4 bg-gray-200 border border-gray-300">
+                                  Subject
+                                </th>
+                                <th className="py-2 px-4 bg-gray-200 border border-gray-300">
+                                  Credits
+                                </th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              {courses1[semester - 1].map((course) => (
+                                <tr
+                                  key={course.code}
+                                  className="border border-gray-300"
+                                >
+                                  <td className="py-2 px-4 border border-gray-300">
+                                    {course.code}
+                                  </td>
+                                  <td className="py-2 px-4 border border-gray-300">
+                                    {course.name}
+                                  </td>
+                                  <td className="py-2 px-4 border border-gray-300">
+                                    {course.credits}
+                                  </td>
+                                </tr>
+                              ))}
+                              <tr>
+                                <td className="px-2 py-2 font-bold justify-center col-span-3 border border-gray-300">
+                                  Practicals
+                                </td>
+                              </tr>
+                              {practicals1[semester - 1].map((course) => (
+                                <tr
+                                  key={course.code}
+                                  className="border border-gray-300"
+                                >
+                                  <td className="py-2 px-4 border border-gray-300">
+                                    {course.code}
+                                  </td>
+                                  <td className="py-2 px-4 border border-gray-300">
+                                    {course.name}
+                                  </td>
+                                  <td className="py-2 px-4 border border-gray-300">
+                                    {course.credits}
+                                  </td>
+                                </tr>
+                              ))}
+                            </tbody>
+                          </table>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
               <div
-                className="flex items-center cursor-pointer"
+                className="flex items-center cursor-pointer m-2 "
                 onClick={handleFourthYearClick}
               >
                 <RiArrowDropDownLine
@@ -519,9 +661,80 @@ export default function AIML() {
                     firstYear ? "transform rotate-180" : ""
                   }`}
                 />
-                <h1 className="text-xl font-semibold user-select-none">Fourth Year</h1>
+                <h1 className="text-xl font-semibold user-select-none">
+                  Fourth Year
+                </h1>
               </div>
-              {fourthYear && <>enter syllabus here</>}
+              <div className="bg-gray-300 w-full h-0.5"></div>
+              <div className={`${fourthYear ? "" : "animation-fade-out"}`}>
+                {fourthYear && (
+                  <div className="mt-4 animate-fade-in ml-5">
+                    <div className="md:grid md:grid-cols-2 gap-8">
+                      {[1, 2].map((semester) => (
+                        <div key={semester} className="mb-8">
+                          <h1 className="text-xl font-semibold mb-2">
+                            Semester-{semester}
+                          </h1>
+                          <table className="w-full border-collapse border border-gray-300">
+                            <thead>
+                              <tr>
+                                <th className="py-2 px-4 bg-gray-200 border border-gray-300">
+                                  Subject Code
+                                </th>
+                                <th className="py-2 px-4 bg-gray-200 border border-gray-300">
+                                  Subject
+                                </th>
+                                <th className="py-2 px-4 bg-gray-200 border border-gray-300">
+                                  Credits
+                                </th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              {courses1[semester - 1].map((course) => (
+                                <tr
+                                  key={course.code}
+                                  className="border border-gray-300"
+                                >
+                                  <td className="py-2 px-4 border border-gray-300">
+                                    {course.code}
+                                  </td>
+                                  <td className="py-2 px-4 border border-gray-300">
+                                    {course.name}
+                                  </td>
+                                  <td className="py-2 px-4 border border-gray-300">
+                                    {course.credits}
+                                  </td>
+                                </tr>
+                              ))}
+                              <tr>
+                                <td className="px-2 py-2 font-bold justify-center col-span-3 border border-gray-300">
+                                  Practicals
+                                </td>
+                              </tr>
+                              {practicals1[semester - 1].map((course) => (
+                                <tr
+                                  key={course.code}
+                                  className="border border-gray-300"
+                                >
+                                  <td className="py-2 px-4 border border-gray-300">
+                                    {course.code}
+                                  </td>
+                                  <td className="py-2 px-4 border border-gray-300">
+                                    {course.name}
+                                  </td>
+                                  <td className="py-2 px-4 border border-gray-300">
+                                    {course.credits}
+                                  </td>
+                                </tr>
+                              ))}
+                            </tbody>
+                          </table>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
             </div>
           </div>
         </div>

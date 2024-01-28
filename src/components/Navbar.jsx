@@ -156,15 +156,27 @@ export default function Navbar() {
                     </li>
                     <hr />
                     <li className="animate-color p-2">
-                      <div className="cursor-pointer">Cyber Security</div>
+                      <div className="cursor-pointer"
+                      onClick={() => {
+                        navigate("/cs");
+                        setMenuOpen(false);
+                      }}>Cyber Security</div>
                     </li>
                     <hr />
                     <li className="animate-color p-2">
-                      <div className="cursor-pointer">CSIT</div>
+                      <div className="cursor-pointer"
+                      onClick={() => {
+                        navigate("/csit");
+                        setMenuOpen(false);
+                      }}>CSIT</div>
                     </li>
                     <hr />
                     <li className="animate-color p-2">
-                      <div className="cursor-pointer">Data Science</div>
+                      <div className="cursor-pointer"
+                      onClick={() => {
+                        navigate("/ds");
+                        setMenuOpen(false);
+                      }}>Data Science</div>
                     </li>
                   </ul>
                 )}
