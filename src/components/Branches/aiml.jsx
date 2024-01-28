@@ -493,7 +493,7 @@ export default function AIML() {
                     firstYear ? "transform rotate-180" : ""
                   }`}
                 />
-                <h1 className="text-xl font-semibold">Second Year</h1>
+                <h1 className="text-xl font-semibold user-select-none">Second Year</h1>
               </div>
               {secondYear && <>enter syllabus here</>}
               <div className="bg-gray-300 w-full h-0.5"></div>
@@ -506,7 +506,7 @@ export default function AIML() {
                     firstYear ? "transform rotate-180" : ""
                   }`}
                 />
-                <h1 className="text-xl font-semibold">Third Year</h1>
+                <h1 className="text-xl font-semibold user-select-none">Third Year</h1>
               </div>
               {thirdYear && <>enter syllabus here</>}
               <div className="bg-gray-300 w-full h-0.5"></div>
@@ -519,7 +519,7 @@ export default function AIML() {
                     firstYear ? "transform rotate-180" : ""
                   }`}
                 />
-                <h1 className="text-xl font-semibold">Fourth Year</h1>
+                <h1 className="text-xl font-semibold user-select-none">Fourth Year</h1>
               </div>
               {fourthYear && <>enter syllabus here</>}
             </div>

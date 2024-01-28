@@ -8,14 +8,12 @@ import Login from './components/forum/Login.jsx';
 import AIML from './components/Branches/aiml.jsx';
 import Infrastructure from './components/infrastructure/Infrastructure.jsx';
 import Contactus from './components/contact-us/Contactus.jsx';
-
+import Club from './components/Happenings/club.jsx';
 
 function App() {
   return (
     <> 
      <Navbar />
-   
-     
         <Routes>
           <Route path="/home" element={<Home/>}/>       
           <Route path="/faculty" element={<Faculty/>}/>  
@@ -23,8 +21,8 @@ function App() {
           <Route path="/aiml" element={<AIML/>}/>
           <Route path='/infrastructure' element={<Infrastructure/>}/>
           <Route path='/contactus' element={<Contactus/>}/>
+          <Route path="/club" element={<Club/>}/>  
         </Routes>
-      
       </>
       
 

@@ -217,21 +217,29 @@ export default function Navbar() {
                     </li>
                     <hr />
                     <li className="animate-color p-2">
-                      <div className="cursor-pointer">Club</div>
+                      <div
+                        className="cursor-pointer"
+                        onClick={() => {
+                          navigate("/club");
+                          setMenuOpen(false);
+                        }}
+                      >
+                        Club
+                      </div>
                     </li>
                   </ul>
                 )}
               </div>
             </div>
           </li>
-          <li className="mr-8 m-2 cursor-pointer"
-          onClick={() => {
-            navigate("/login");
-            setMenuOpen(false);
-          }
-          }
+          <li
+            className="mr-8 m-2 cursor-pointer"
+            onClick={() => {
+              navigate("/login");
+              setMenuOpen(false);
+            }}
           >
-            <p >Forum</p>
+            <p>Forum</p>
           </li>
           <li
             className="mr-8 m-2 relative flex items-center"
@@ -242,7 +250,7 @@ export default function Navbar() {
               <div className="flex">
                 <a className="cursor-pointer">About Us</a>
                 <div className="ml-2">
-                <RiArrowDropUpLine
+                  <RiArrowDropUpLine
                     className={`text-3xl cursor-pointer  ${
                       !isHovered2 ? "transform rotate-180" : ""
                     }`}
@@ -265,11 +273,12 @@ export default function Navbar() {
               >
                 {isHovered2 && (
                   <ul className="">
-                    <li className="animate-color p-2"
-                    onClick={() => {
-                      navigate("/contactus");
-                      setMenuOpen(false);
-                    }}
+                    <li
+                      className="animate-color p-2"
+                      onClick={() => {
+                        navigate("/contactus");
+                        setMenuOpen(false);
+                      }}
                     >
                       <div className="cursor-pointer">Contact Us</div>
                     </li>
@@ -342,13 +351,14 @@ export default function Navbar() {
               </div>
             </li>
             <hr />
-            <li className="mr-8 m-2 relative"
-            onClick={() => {
-              navigate("/infrastructure");
-              setMenuOpen(false);
-            }}>
+            <li
+              className="mr-8 m-2 relative"
+              onClick={() => {
+                navigate("/infrastructure");
+                setMenuOpen(false);
+              }}
+            >
               <a>Infrastructure</a>
-
             </li>
             <hr />
             <li className="mr-8 m-2 relative">
