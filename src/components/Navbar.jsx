@@ -283,7 +283,12 @@ export default function Navbar() {
                       <div className="cursor-pointer">Contact Us</div>
                     </li>
                     <hr />
-                    <li className="animate-color p-2">
+                    <li className="animate-color p-2"
+                      onClick={() => {
+                        navigate("/development-team");
+                        setMenuOpen(false);
+                      }}
+                    >
                       <div className="cursor-pointer">Development Team</div>
                     </li>
                   </ul>
@@ -331,7 +336,12 @@ export default function Navbar() {
               <div>
                 {Academics && (
                   <ul className="animate-fade-in">
-                    <li className="m-2">
+                    <li className="m-2"
+                      onClick={() => {
+                        navigate("/aiml");
+                        setMenuOpen(false);
+                      }}
+                    >
                       <div className="cursor-pointer">AI/ML</div>
                     </li>
                     <hr />
@@ -382,7 +392,12 @@ export default function Navbar() {
                     <div className="cursor-pointer">Sports</div>
                   </li>
                   <hr />
-                  <li className="m-2">
+                  <li className="m-2"
+                    onClick={() => {
+                      navigate("/club");
+                      setMenuOpen(false);
+                    }}
+                  >
                     <div className="cursor-pointer">Club</div>
                   </li>
                 </ul>
@@ -410,7 +425,12 @@ export default function Navbar() {
                     <div className="cursor-pointer">Contact Us</div>
                   </li>
                   <hr />
-                  <li className="m-2">
+                  <li className="m-2"
+                    onClick={() => {
+                      navigate("/development-team");
+                      setMenuOpen(false);
+                    }}
+                  >
                     <div className="cursor-pointer">Development Team</div>
                   </li>
                 </ul>
