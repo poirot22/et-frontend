@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   VerticalTimeline,
   VerticalTimelineElement,
@@ -14,32 +14,95 @@ import event4 from "../../assets/event4.jpeg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 
+// ... (Your existing imports)
+
 const Club = () => {
   const [selectedEvent, setSelectedEvent] = useState(null);
 
-  const handleViewMore = (event) => {
-    setSelectedEvent(event);
+  const handleViewMore = (eventData) => {
+    setSelectedEvent(eventData);
   };
 
   const handleCarouselClose = () => {
     setSelectedEvent(null);
   };
 
-  const data = [
-    { caption: "", image: event1 },
-    { caption: "", image: event2 },
-  ];
-  const data1 = [
-    { caption: "", image: event2 },
-    { caption: "", image: event2 },
-  ];
-  const data2 = [
-    { caption: "", image: event3 },
-    { caption: "", image: event3 },
-  ];
-  const data3 = [
-    { caption: "", image: event4 },
-    { caption: "", image: event4 },
+  useEffect(() => {
+    const closeOnEscapeKeyDown = (e) => {
+      if ((e.charCode || e.keyCode) === 27) {
+        setSelectedEvent(null);
+      }
+    };
+    window.addEventListener("keydown", closeOnEscapeKeyDown);
+    return () => {
+      window.removeEventListener("keydown", closeOnEscapeKeyDown);
+    };
+  }, []);
+
+  const eventsData = [
+    {
+      date: "10th and 11th March 2023",
+      title: "Department Fest",
+      description: "Description 1",
+      images: [
+        { caption: "", image: event1 },
+        { caption: "", image: event2 },
+      ],
+    },
+    {
+      date: "28 March 2023",
+      title: "Code Frenzy with C",
+      description: "Description 2",
+      images: [
+        { caption: "", image: event2 },
+        { caption: "", image: event2 },
+      ],
+    },
+    {
+      date: "9th and 10th December 2022",
+      title: "Neural Networks and Deep Learning Models Workshop",
+      description: "Description 3",
+      images: [
+        { caption: "", image: event3 },
+        { caption: "", image: event3 },
+      ],
+    },
+    {
+      date: "2nd and 3rd December 2022",
+      title: "Big Data Analytics Workshop",
+      description: "Description 2",
+      images: [
+        { caption: "", image: event4 },
+        { caption: "", image: event4 },
+      ],
+    },
+    {
+      date: "25th November 2022",
+      title: "Cyber Security and Ethical Hacking Workshop",
+      description: "Description 1",
+      images: [
+        { caption: "", image: event1 },
+        { caption: "", image: event1 },
+      ],
+    },
+    {
+      date: "25th November 2022",
+      title: "Cyber Security and Ethical Hacking Workshop",
+      description: "Description 1",
+      images: [
+        { caption: "", image: event1 },
+        { caption: "", image: event1 },
+      ],
+    },
+    {
+      date: "25th November 2022",
+      title: "Cyber Security and Ethical Hacking Workshop",
+      description: "Description 1",
+      images: [
+        { caption: "", image: event1 },
+        { caption: "", image: event1 },
+      ],
+    },
   ];
 
   const captionStyle = {
@@ -62,7 +125,11 @@ const Club = () => {
         </div>
         <div className="flex flex-wrap justify-center p-8 mt-3">
           <div className="bg-white shadow-lg rounded-lg overflow-hidden">
-            <img src={facultyCoordinator} className="h-96 w-96" alt="Faculty" />
+            <img
+              src={facultyCoordinator}
+              className="h-96 w-96"
+              alt="Faculty"
+            />
           </div>
           <div className="bg-white shadow-lg rounded-lg overflow-hidden ml-4">
             <img src={core} className="h-96 w-96" alt="Core Committee" />
@@ -73,180 +140,47 @@ const Club = () => {
         </div>
         <div className="mt-5">
           <VerticalTimeline>
-            <VerticalTimelineElement
-              className="vertical-timeline-element--work"
-              contentStyle={{
-                background: "rgb(33, 150, 243)",
-                color: "white",
-                boxShadow: "0 0 10px rgba(0, 0, 0, 0.5)",
-                borderRadius: "8px",
-                padding: "20px",
-                display: "flex", // Use flex container
-                flexDirection: "column", // Stack children vertically
-                alignItems: "flex-start", // Align items to the start (left)
-                justifyContent: "space-between", // Space between children
-                height: "200px", // Adjust the height as needed
-              }}
-              contentArrowStyle={{
-                borderRight: "7px solid rgb(33, 150, 243)",
-              }}
-              date=""
-              iconStyle={{ background: "rgb(33, 150, 243)", color: "#fff" }}
-              onMouseOver={() => {
-                setSelectedEvent(data);
-              }}
-              onMouseLeave={() => {
-                setSelectedEvent(null);
-              }}
-            >
-              <div>
-                <h3 className="vertical-timeline-element-title">
-                  Department Fest
-                </h3>
-                <p>Description 1</p>
-              </div>
-              <div className="flex justify-end">
-                <button
-                  onClick={() => handleViewMore(data)}
-                  style={{
-                    background: "white",
-                    color: "rgb(33, 150, 243)",
-                    padding: "8px 16px",
-                    borderRadius: "4px",
-                    cursor: "pointer",
-                  }}
-                >
-                  View More
-                </button>
-              </div>
-            </VerticalTimelineElement>
-
-            <VerticalTimelineElement
-              className="vertical-timeline-element--work mb-5"
-              contentStyle={{ background: "rgb(33, 150, 243)", color: "black" }}
-              contentArrowStyle={{ borderLeft: "7px solid  rgb(33, 150, 243)" }}
-              date="28 March 2023"
-              iconStyle={{ background: "rgb(33, 150, 243)", color: "#fff" }}
-            >
-              <h3
-                className="vertical-timeline-element-title"
-                style={{ color: "#fff" }}
+            {eventsData.map((event, index) => (
+              <VerticalTimelineElement
+                key={index}
+                className="vertical-timeline-element--work hover:scale-105 transition duration-300 ease-in-out mb-5"
+                contentStyle={{
+                  background: "rgb(33, 150, 243)",
+                  boxShadow: "0 0 10px rgba(0, 0, 0, 0.5)",
+                  borderRadius: "8px",
+                  padding: "20px",
+                  justifyContent: "space-between",
+                  height: "20%",
+                  color:"white"
+                }}
+                contentArrowStyle={{
+                  borderRight: "7px solid rgb(33, 150, 243)",
+                }}
+                date={event.date}
+                iconStyle={{ background: "rgb(33, 150, 243)", color: "#fff" }}
               >
-                Code Frenzy with C
-              </h3>
-              <p style={{ color: "#fff" }}>Description 2</p>
-              <div className="flex justify-end">
-                <button
-                  onClick={() => handleViewMore(data)}
-                  style={{
-                    background: "white",
-                    color: "rgb(33, 150, 243)",
-                    padding: "8px 16px",
-                    borderRadius: "4px",
-                    cursor: "pointer",
-                  }}
-                >
-                  View More
-                </button>
-              </div>
-            </VerticalTimelineElement>
-
-            <VerticalTimelineElement
-              className="vertical-timeline-element--work"
-              contentStyle={{ background: "rgb(33, 150, 243)", color: "black" }}
-              contentArrowStyle={{
-                borderRight: "7px solid  rgb(33, 150, 243)",
-              }}
-              date="9th and 10th December 2022"
-              iconStyle={{ background: "rgb(33, 150, 243)", color: "#fff" }}
-            >
-              <h3
-                className="vertical-timeline-element-title"
-                style={{ color: "#fff" }}
-              >
-                Neural Networks and Deep Learning Models Workshop
-              </h3>
-              <p style={{ color: "#fff" }}>Description 3</p>
-              <div className="flex justify-end">
-                <button
-                  onClick={() => handleViewMore(data1)}
-                  style={{
-                    background: "white",
-                    color: "rgb(33, 150, 243)",
-                    padding: "8px 16px",
-                    borderRadius: "4px",
-                    cursor: "pointer",
-                  }}
-                >
-                  View More
-                </button>
-              </div>
-            </VerticalTimelineElement>
-
-            <VerticalTimelineElement
-              className="vertical-timeline-element--work mb-5"
-              contentStyle={{
-                background: "rgb(33, 150, 243)",
-                color: "black ",
-              }}
-              contentArrowStyle={{ borderLeft: "7px solid  rgb(33, 150, 243)" }}
-              date="2nd and 3rd December 2022"
-              iconStyle={{ background: "rgb(33, 150, 243)", color: "#fff" }}
-            >
-              <h3
-                className="vertical-timeline-element-title"
-                style={{ color: "#fff" }}
-              >
-                Big Data Analytics Workshop
-              </h3>
-              <p style={{ color: "#fff" }}>Description 2</p>
-              <div className="flex justify-end">
-                <button
-                  onClick={() => handleViewMore(data2)}
-                  style={{
-                    background: "white",
-                    color: "rgb(33, 150, 243)",
-                    padding: "8px 16px",
-                    borderRadius: "4px",
-                    cursor: "pointer",
-                  }}
-                >
-                  View More
-                </button>
-              </div>
-            </VerticalTimelineElement>
-
-            <VerticalTimelineElement
-              className="vertical-timeline-element--work"
-              contentStyle={{ background: "rgb(33, 150, 243)", color: "black" }}
-              contentArrowStyle={{
-                borderRight: "7px solid  rgb(33, 150, 243)",
-              }}
-              date="25th November 2022"
-              iconStyle={{ background: "rgb(33, 150, 243)", color: "#fff" }}
-            >
-              <h3
-                className="vertical-timeline-element-title"
-                style={{ color: "#fff" }}
-              >
-                Cyber Security and Ethical Hacking Workshop
-              </h3>
-              <p style={{ color: "#fff" }}>Description 1</p>
-              <div className="flex justify-end">
-                <button
-                  onClick={() => handleViewMore(data3)}
-                  style={{
-                    background: "white",
-                    color: "rgb(33, 150, 243)",
-                    padding: "8px 16px",
-                    borderRadius: "4px",
-                    cursor: "pointer",
-                  }}
-                >
-                  View More
-                </button>
-              </div>
-            </VerticalTimelineElement>
+                <div>
+                  <h3 className="vertical-timeline-element-title">
+                    {event.title}
+                  </h3>
+                  <p>{event.description}</p>
+                </div>
+                <div className="flex justify-end">
+                  <button
+                    onClick={() => handleViewMore(event.images)}
+                    style={{
+                      background: "white",
+                      color: "rgb(33, 150, 243)",
+                      padding: "8px 16px",
+                      borderRadius: "4px",
+                      cursor: "pointer",
+                    }}
+                  >
+                    View More
+                  </button>
+                </div>
+              </VerticalTimelineElement>
+            ))}
           </VerticalTimeline>
         </div>
       </div>
@@ -258,12 +192,12 @@ const Club = () => {
             <div className="flex justify-end">
               <FontAwesomeIcon
                 icon={faTimes}
-                class="transform transform-origin-center transition duration-300 ease-in-out hover:rotate-90 w-5 mt-1 mr-1"
+                className="transform transform-origin-center transition duration-300 ease-in-out hover:rotate-90 w-5 mt-1 mr-1 cursor-pointer"
                 onClick={handleCarouselClose}
               />
             </div>
             <Carousel
-              class="mt-0"
+              className="mt-0"
               data={selectedEvent}
               time={5000}
               width="300px"
