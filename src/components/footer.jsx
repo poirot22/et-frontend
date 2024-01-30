@@ -4,7 +4,7 @@ export default function Footer() {
   return (
     <>
       <div style={{ marginTop: "auto" }}>
-        <div class="bg-blue-500 text-white">
+        <div class=" text-white" style={{"background-color":"#33110E"}}>
           <div class="flex justify-evenly p-4 mr-36">
             <div class="p-4 text-center">
               <p>Department of Emerging Technologies</p>

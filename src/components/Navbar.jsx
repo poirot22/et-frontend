@@ -109,10 +109,10 @@ export default function Navbar() {
             className="mr-8 m-2 cursor-pointer"
             onClick={() => navigate("/faculty")}
           >
-            <a>Faculty</a>
+            <a>Faculty and Staff</a>
           </li>
           <li
-            className="mr-8 m-2 relative flex items-center"
+            className="mr-8 m-2 relative flex "
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
           >
@@ -193,7 +193,7 @@ export default function Navbar() {
             <a href="/">Research</a>
           </li>
           <li
-            className="mr-8 m-2 relative flex items-center"
+            className="mr-8 m-2 relative flex"
             onMouseEnter={handleMouseEnter1}
             onMouseLeave={handleMouseLeave1}
           >
@@ -251,10 +251,10 @@ export default function Navbar() {
               setMenuOpen(false);
             }}
           >
-            <p>Forum</p>
+            <a>Forum</a>
           </li>
           <li
-            className="mr-8 m-2 relative flex items-center"
+            className="mr-8 m-2 relative flex"
             onMouseEnter={handleMouseEnter2}
             onMouseLeave={handleMouseLeave2}
           >

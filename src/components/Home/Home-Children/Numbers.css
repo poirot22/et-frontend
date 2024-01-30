@@ -1,0 +1,104 @@
+.heading-top{
+    border-left: 5px solid #c00404;
+}
+
+.card__table {
+    display: table;
+    width: 100%;
+}
+
+.card__tablecell:first-child {
+    width: 92px;
+}
+
+.card__userdetails p {
+    font-size: 16px;
+    line-height: 19px;
+    margin: 0;
+}
+
+.card__userdetails h3{
+    color:#fff;   
+}
+
+
+.card__userdetails p {
+    margin: 0 35px 0 0;
+    color:#fff;
+}
+
+
+.card__userdetails p {
+    font-size: 18px;
+    line-height: 19px;
+    color: #fff;
+    margin: 0;
+}
+p {
+    font-size: 18px;
+    line-height: 25px;
+    letter-spacing: 0.5px;
+    margin: 0 0 10px;
+}
+p {
+    margin: 0 0 10px;
+}
+
+p {
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
+
+.card__userdetails p {
+    margin: 0 35px 0 0;
+}
+
+.card__tablecell {
+    display: table-cell;
+    vertical-align: middle;
+    padding-left: 20px;
+}
+
+.tabelcell{
+    width: 92px;
+}
+
+.sprite{
+    background: url(../../../assets/sprite.png) no-repeat;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.icon__ug {
+    background-position: -84px -204px;
+    width: 72px;
+    height: 72px;
+}
+
+
+.icon__staff {
+    background-position: -565px -204px;
+    width: 72px;
+    height: 72px;
+}
+
+.icon__faculty {
+    background-position: -444px -204px;
+    width: 72px;
+    height: 72px;
+}
+
+.icon__placements {
+    background-position: -684px -204px;
+    width: 72px;
+    height: 72px;
+}
+
+.icon__investment {
+    background-position: -924px -445px;
+    width: 72px;
+    height: 72px;
+}
