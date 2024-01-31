@@ -13,6 +13,7 @@ import lab11 from '../../assets/lab2.jpg';
 import "./infrastructure.css";
 
 
+
 const Infrastructure = () => {
   return (
     <div className="mt-5 ml-7 p-2 mr-7">
