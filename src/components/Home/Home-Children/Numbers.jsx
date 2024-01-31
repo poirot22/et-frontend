@@ -4,13 +4,175 @@ import sprite from '../../../assets/sprite.png';
 import { useState, useEffect, useRef } from "react";
 import './Numbers.css';
 
+import collegeoverview from '../../../assets/college-overview.jpg';
+
 export default function Numbers() {
+  const [isVisibleNumbers, setIsVisibleNumbers] = useState(false);
+
   const [faculty, setFaculty] = useState(0);
   const [staff, setStaff] = useState(0);
   const [students, setStudents] = useState(0);
   const [projects, setProjects] = useState(0);
   const [placements, setPlacements] = useState(0);
+
   const targetRef = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const intervalId = setInterval(() => {
+            setFaculty((prevCount) => {
+              const newCount = prevCount + 1;
+              if (newCount >= 12) {
+                clearInterval(intervalId);
+                return 12;
+              }
+              return newCount;
+            });
+          }, 50);
+          observer.disconnect();
+        }
+      });
+    });
+    if (targetRef.current) {
+      observer.observe(targetRef.current);
+    }
+    return () => {
+      observer.disconnect();
+    };
+  }, []); // Update effect when the target changes
+
+  useEffect(() => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const intervalId = setInterval(() => {
+            setStaff((prevCount) => {
+              const newCount = prevCount + 1;
+              if (newCount >= 8) {
+                clearInterval(intervalId);
+                return 8;
+              }
+              return newCount;
+            });
+          }, 50);
+          observer.disconnect();
+        }
+      });
+    });
+    if (targetRef.current) {
+      observer.observe(targetRef.current);
+    }
+    return () => {
+      observer.disconnect();
+    };
+  }, [8]);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const intervalId = setInterval(() => {
+            setStudents((prevCount) => {
+              const newCount = prevCount + 1;
+              if (newCount >= 59) {
+                clearInterval(intervalId);
+                return 59;
+              }
+              return newCount;
+            });
+          }, 20);
+          observer.disconnect();
+        }
+      });
+    });
+    if (targetRef.current) {
+      observer.observe(targetRef.current);
+    }
+    return () => {
+      observer.disconnect();
+    };
+  }, [59]);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const intervalId = setInterval(() => {
+            setProjects((prevCount) => {
+              const newCount = prevCount + 1;
+              if (newCount >= 22) {
+                clearInterval(intervalId);
+                return 22;
+              }
+              return newCount;
+            });
+          }, 15);
+          observer.disconnect();
+        }
+      });
+    });
+    if (targetRef.current) {
+      observer.observe(targetRef.current);
+    }
+    return () => {
+      observer.disconnect();
+    };
+  }, [22]);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const intervalId = setInterval(() => {
+            setPlacements((prevCount) => {
+              const newCount = prevCount + 1;
+              if (newCount >= 32) {
+                clearInterval(intervalId);
+                return 32;
+              }
+              return newCount;
+            });
+          }, 20);
+          observer.disconnect();
+        }
+      });
+    });
+    if (targetRef.current) {
+      observer.observe(targetRef.current);
+    }
+    return () => {
+      observer.disconnect();
+    };
+  }, [32]);
+
+  const divRef = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setIsVisibleNumbers(true);
+          } else {
+            setIsVisibleNumbers(false);
+          }
+        });
+      },
+      {
+        root: null,
+        rootMargin: "0px",
+        threshold: 0.5,
+      }
+    );
+
+    if (divRef.current) {
+      observer.observe(divRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, [divRef]);
   return (
     
 
@@ -18,11 +180,12 @@ export default function Numbers() {
           
           <div
             className="absolute inset-0 bg-cover bg-center"
-            style={{
-              backgroundImage: `url(${bynumbers})`
+           style={{
+              backgroundImage: `url(${collegeoverview})`,
+              filter: "blur(5px)",
             }}
           />
-              <h1 className="pl-6 text-3xl font-semibold heading-top">ET Department by the Numbers</h1>
+              
           <div
             className="absolute inset-0 flex justify-center items-center m-5"
           > 
