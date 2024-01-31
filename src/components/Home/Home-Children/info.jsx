@@ -35,11 +35,7 @@ export default function Info() {
               in 2022 and now also includes the UG programmes in AIML, Data
               Science and Cyber Security.
             </p>
-            {!show && (
-              <button class="md:hidden text-gray-500" onClick={() => setShow(true)}>
-                Read More...
-              </button>
-            )}
+           
           </div>
           <br />
           {show && (

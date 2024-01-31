@@ -1,7 +1,22 @@
+ @import url('https://fonts.googleapis.com/css2?family=Lato&family=Montserrat:wght@100&family=Open+Sans:wght@500&family=Roboto:wght@500&display=swap');
+
 .content{
     background-color: #F4F0EB;
 }
 
 .events{
     background-color: #F4F0EB;
+}
+
+
+*{
+    font-family: 'Lato', sans-serif;
+}
+
+.btn{
+    font-family: 'Lato', sans-serif;
+}
+
+.cells{
+    border: none;
 }

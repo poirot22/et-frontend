@@ -46,8 +46,8 @@ export default function Events() {
 
             </div>
             <div class="flex flex-wrap  justify-around mt-3 events mb-0" >
-                <div class="mt-8 ml-4">
-                    <Card sx={{ maxWidth: 345 }}>
+            <div class="mt-8 ml-4 border-none">
+                    <Card sx={{ maxWidth: 345 }} className="cells">
                         <CardMedia
                             component="img"
                             alt="green iguana"
@@ -56,21 +56,20 @@ export default function Events() {
                         />
                         <CardContent class="content p-5">
                             <Typography gutterBottom variant="h5" component="div">
-                            Lizard
+                            <h5 className="font-semibold">Neural Networks and Deep Learning Models</h5>
                             </Typography>
                             <Typography variant="body2">
-                            Lizards are a widespread group of squamate reptiles, with over 6,000
-                            species, ranging across all continents except Antarctica
+                            <p>Conducting 2 day workshop on 2nd Feb and 3rd Feb. Refer to the links below for more details</p>
                             </Typography>
-                        </CardContent>
-                        <CardActions class="content p-3">
-                            <Button size="small">Share</Button>
+                        </CardContent> 
+                        <CardActions class="content pl-3 pb-3">
+                            <Button size="small">Register</Button>
                             <Button size="small">Learn More</Button>
                         </CardActions>
                     </Card>
                 </div>
-                <div class="mt-8 ml-4">
-                    <Card sx={{ maxWidth: 345 }}>
+                <div class="mt-8 ml-4 border-none">
+                    <Card sx={{ maxWidth: 345 }} className="cells">
                         <CardMedia
                             component="img"
                             alt="green iguana"
@@ -79,21 +78,20 @@ export default function Events() {
                         />
                         <CardContent class="content p-5">
                             <Typography gutterBottom variant="h5" component="div">
-                            Lizard
+                            <h5 className="font-semibold">Big Data Analytics Workshop</h5>
                             </Typography>
                             <Typography variant="body2">
-                            Lizards are a widespread group of squamate reptiles, with over 6,000
-                            species, ranging across all continents except Antarctica
+                            <p>Conducting 2 day workshop on 2nd Feb and 3rd Feb. Refer to the links below for more details</p>
                             </Typography>
-                        </CardContent>
-                        <CardActions class="content p-3">
-                            <Button size="small">Share</Button>
+                        </CardContent> 
+                        <CardActions class="content pl-3 pb-3">
+                            <Button size="small">Register</Button>
                             <Button size="small">Learn More</Button>
                         </CardActions>
                     </Card>
                 </div>
-                <div class="mt-8 ml-4">
-                    <Card sx={{ maxWidth: 345 }}>
+                <div class="mt-8 ml-4 border-none">
+                    <Card sx={{ maxWidth: 345 }} className="cells">
                         <CardMedia
                             component="img"
                             alt="green iguana"
@@ -102,15 +100,14 @@ export default function Events() {
                         />
                         <CardContent class="content p-5">
                             <Typography gutterBottom variant="h5" component="div">
-                            Lizard
+                            <h5 className="font-semibold">Cyber Security and Ethical  Hacking Workshop</h5>
                             </Typography>
                             <Typography variant="body2">
-                            Lizards are a widespread group of squamate reptiles, with over 6,000
-                            species, ranging across all continents except Antarctica
+                            <p>Conducting 2 day workshop on 2nd Feb and 3rd Feb. Refer to the links below for more details</p>
                             </Typography>
-                        </CardContent>
-                        <CardActions class="content p-3">
-                            <Button size="small">Share</Button>
+                        </CardContent> 
+                        <CardActions class="content pl-3 pb-3">
+                            <Button size="small">Register</Button>
                             <Button size="small">Learn More</Button>
                         </CardActions>
                     </Card>
