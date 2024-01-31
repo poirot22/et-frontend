@@ -97,7 +97,7 @@ export default function Navbar() {
           onClick={() => setMenuOpen(false)}
         ></div>
       )}
-      <div className="relative navitems hidden lg:flex justify-evenly">
+      <div className="relative navitems hidden lg:flex justify-evenly nav">
         <ul className="flex justify-center">
           <li
             className="mr-8 m-2 cursor-pointer"
@@ -109,10 +109,10 @@ export default function Navbar() {
             className="mr-8 m-2 cursor-pointer"
             onClick={() => navigate("/faculty")}
           >
-            <a>Faculty</a>
+            <a>Faculty and Staff</a>
           </li>
           <li
-            className="mr-8 m-2 relative flex items-center"
+            className="mr-8 m-2 relative flex "
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
           >
@@ -156,15 +156,27 @@ export default function Navbar() {
                     </li>
                     <hr />
                     <li className="animate-color p-2">
-                      <div className="cursor-pointer">Cyber Security</div>
+                      <div className="cursor-pointer"
+                      onClick={() => {
+                        navigate("/cs");
+                        setMenuOpen(false);
+                      }}>Cyber Security</div>
                     </li>
                     <hr />
                     <li className="animate-color p-2">
-                      <div className="cursor-pointer">CSIT</div>
+                      <div className="cursor-pointer"
+                      onClick={() => {
+                        navigate("/csit");
+                        setMenuOpen(false);
+                      }}>CSIT</div>
                     </li>
                     <hr />
                     <li className="animate-color p-2">
-                      <div className="cursor-pointer">Data Science</div>
+                      <div className="cursor-pointer"
+                      onClick={() => {
+                        navigate("/ds");
+                        setMenuOpen(false);
+                      }}>Data Science</div>
                     </li>
                   </ul>
                 )}
@@ -181,7 +193,7 @@ export default function Navbar() {
             <a href="/">Research</a>
           </li>
           <li
-            className="mr-8 m-2 relative flex items-center"
+            className="mr-8 m-2 relative flex"
             onMouseEnter={handleMouseEnter1}
             onMouseLeave={handleMouseLeave1}
           >
@@ -239,10 +251,10 @@ export default function Navbar() {
               setMenuOpen(false);
             }}
           >
-            <p>Forum</p>
+            <a>Forum</a>
           </li>
           <li
-            className="mr-8 m-2 relative flex items-center"
+            className="mr-8 m-2 relative flex"
             onMouseEnter={handleMouseEnter2}
             onMouseLeave={handleMouseLeave2}
           >

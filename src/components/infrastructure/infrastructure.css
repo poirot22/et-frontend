@@ -1,4 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100&family=Open+Sans:wght@500&family=Roboto:wght@500&display=swap');
 .heading-top{
-    margin-left: 7px;
     border-left: 5px solid #c00404;
 }
+
+.pictures{
+    display: -ms-inline-grid;
+    grid-template-columns: auto auto;
+}
+
+.lab-details{
+    font-family: 'Open Sans', sans-serif;
+}
+
+.lab-heading{
+    font-weight: 600;
+    font-size:28px;
+}
+
+.carousel-item{
+	height:500px;
+}
+#infra-table{
+    margin: auto auto;
+}
+
+.lab9{
+    margin: auto auto;
+}
+

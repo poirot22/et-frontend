@@ -7,14 +7,14 @@ export default function Info() {
   const [show, setShow] = useState(false);
   return (
     <>
-      <div class="sm:mt-10 md:mt-20">
-        <h1 class="pl-4 text-3xl font-semibold heading-top">
-          Message from the HOD
-        </h1>
-      </div>
-      <div class="p-2">
+      <div class=" mt-10 ml-7 p-2 mr-7">
+        <div class="">
+          <h1 class="pl-4 text-3xl font-semibold heading-top">
+            Message from the HOD
+          </h1>
+        </div>
         <img class="hod-image mt-5 w-full md:w-2/3 p-2 mr-5" src={hod} alt="" />
-        <div class="text-justify p-2 mt-4 Message">
+        <div class="text-justify mt-4  ">
           <div>
             <p>
               True to its vision of “In pursuit of Excellence”, CVR College of
@@ -35,14 +35,7 @@ export default function Info() {
               in 2022 and now also includes the UG programmes in AIML, Data
               Science and Cyber Security.
             </p>
-            {!show && (
-              <button
-                class="md:hidden text-gray-500"
-                onClick={() => setShow(true)}
-              >
-                Read More...
-              </button>
-            )}
+            {!show && <button class="md:hidden text-gray-500" onClick={() => setShow(true)}>Read More</button>}
           </div>
           <br />
           {show && (
