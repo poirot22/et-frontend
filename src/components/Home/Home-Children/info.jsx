@@ -7,12 +7,12 @@ export default function Info() {
   const [show, setShow] = useState(false);
   return (
     <>
-      <div class=" mt-20 ml-7 p-2 mr-7">
-        <div class="">
-          <h1 class="pl-4 text-3xl font-semibold heading-top">
-            Message from the HOD
-          </h1>
-        </div>
+      <div class="sm:mt-10 md:mt-20">
+        <h1 class="pl-4 text-3xl font-semibold heading-top">
+          Message from the HOD
+        </h1>
+      </div>
+      <div class="p-2">
         <img class="hod-image mt-5 w-full md:w-2/3 p-2 mr-5" src={hod} alt="" />
         <div class="text-justify p-2 mt-4 Message">
           <div>
@@ -36,7 +36,10 @@ export default function Info() {
               Science and Cyber Security.
             </p>
             {!show && (
-              <button class="md:hidden text-gray-500" onClick={() => setShow(true)}>
+              <button
+                class="md:hidden text-gray-500"
+                onClick={() => setShow(true)}
+              >
                 Read More...
               </button>
             )}
@@ -57,39 +60,42 @@ export default function Info() {
               and many more.
             </p>
           )}
-         {show &&(
-             <p>
-             The Department has 8 laboratory units consisting of 258 systems,
-             catering to the B. Tech curriculum. The systems use standard
-             licensed software as a college policy including open source.
-           </p>
-         )}
-         {show &&(
-            <button class="md:hidden text-gray-500" onClick={() => setShow(false)}>Read Less</button>
-         )}
-         <p className="hidden md:flex">
-              The program is designed with an intent to educate the engineering
-              students on the emerging areas of Artificial Intelligence (AI),
-              Machine Learning (ML), Internet of Things (IoT) and Data Sciences
-              (DS) by introducing them as core courses. The program also
-              educates the students with the related courses like statistics, R
-              Programming, Big Data Analytics & Platforms, etc. Further, each
-              student can choose from various streams in their professional
-              electives that includes cutting edge technologies like Cyber
-              Security (CS), Blockchain technologies, NoSQL Databases, Social
-              Media Analytics, Neural Networks & Fuzzy Systems, Deep Learning
-              and many more.
+          {show && (
+            <p>
+              The Department has 8 laboratory units consisting of 258 systems,
+              catering to the B. Tech curriculum. The systems use standard
+              licensed software as a college policy including open source.
             </p>
-            <br />
-            <p className="hidden md:flex">
-             The Department has 8 laboratory units consisting of 258 systems,
-             catering to the B. Tech curriculum. The systems use standard
-             licensed software as a college policy including open source.
-           </p>
-            
+          )}
+          {show && (
+            <button
+              class="md:hidden text-gray-500"
+              onClick={() => setShow(false)}
+            >
+              Read Less
+            </button>
+          )}
+          <p className="hidden md:flex">
+            The program is designed with an intent to educate the engineering
+            students on the emerging areas of Artificial Intelligence (AI),
+            Machine Learning (ML), Internet of Things (IoT) and Data Sciences
+            (DS) by introducing them as core courses. The program also educates
+            the students with the related courses like statistics, R
+            Programming, Big Data Analytics & Platforms, etc. Further, each
+            student can choose from various streams in their professional
+            electives that includes cutting edge technologies like Cyber
+            Security (CS), Blockchain technologies, NoSQL Databases, Social
+            Media Analytics, Neural Networks & Fuzzy Systems, Deep Learning and
+            many more.
+          </p>
+          <br />
+          <p className="hidden md:flex">
+            The Department has 8 laboratory units consisting of 258 systems,
+            catering to the B. Tech curriculum. The systems use standard
+            licensed software as a college policy including open source.
+          </p>
         </div>
       </div>
     </>
   );
 }
-

@@ -315,11 +315,12 @@ export default function Navbar() {
             <li
               className="mr-8 m-2 relative"
               onClick={() => {
+                console.log("clicked");
                 navigate("/faculty");
                 setMenuOpen(false);
               }}
             >
-              <a>Faculty</a>
+              Faculty
             </li>
             <hr />
             <li className="mr-8 m-2 relative">
@@ -421,7 +422,12 @@ export default function Navbar() {
               </div>
               {About && (
                 <ul className="animate-fade-in">
-                  <li className="m-2">
+                  <li className="m-2"
+                    onClick={() => {
+                      navigate("/contactus");
+                      setMenuOpen(false);
+                    }}
+                  >
                     <div className="cursor-pointer">Contact Us</div>
                   </li>
                   <hr />
@@ -439,6 +445,6 @@ export default function Navbar() {
           </ul>
         </div>
       )}
-    </>
+    </> 
   );
 }

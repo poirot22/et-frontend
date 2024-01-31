@@ -26,7 +26,7 @@ export default function Events() {
     return (
         <>
         <div class="events">
-        <div class="mt-8 mr-7 ml-7 pt-6 pb-10">
+        <div class="mt-8 pt-6 pb-10">
             <div class="mt-5">
                 <h1 class=" pl-4 text-3xl font-semibold heading-top">Events</h1>
             </div>
