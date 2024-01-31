@@ -6,7 +6,7 @@ import { faTimes } from "@fortawesome/free-solid-svg-icons";
 const Modal = ({ selectedFaculty, onClose }) => {
   return (
     <div className="fixed top-0 left-0 w-full h-full  bg-black bg-opacity-50 flex items-center justify-center overflow-auto ">
-      <div className="bg-white rounded-lg w-3/4 shadow-lg">
+      <div className="bg-white rounded-lg shadow-lg w-3/4 h-auto mt-24 mb-2" id="modal1" >
         <div className="flex justify-end mt-4 mr-4">
           <FontAwesomeIcon
             icon={faTimes}

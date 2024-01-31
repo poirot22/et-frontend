@@ -14,7 +14,7 @@ export default function Numbers() {
   return (
     
 
-<div className="relative h-64 header mt-10">
+<div className="relative h-64 header mt-2">
           
           <div
             className="absolute inset-0 bg-cover bg-center"
