@@ -97,7 +97,7 @@ export default function Navbar() {
           onClick={() => setMenuOpen(false)}
         ></div>
       )}
-      <div className="relative navitems hidden lg:flex justify-evenly">
+      <div className="relative navitems hidden lg:flex justify-evenly nav">
         <ul className="flex justify-center">
           <li
             className="mr-8 m-2 cursor-pointer"
