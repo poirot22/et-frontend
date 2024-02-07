@@ -90,7 +90,7 @@ export default function Navbar() {
           </p>
         </div>
       </div>
-      <hr className="ml-6 mr-6" />
+      
       {menuOpen && (
         <div
           className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 z-40"
@@ -144,26 +144,6 @@ export default function Navbar() {
                 {isHovered && (
                   <ul>
                     <li className="animate-color p-2">
-                      <div
-                        className="cursor-pointer"
-                        onClick={() => {
-                          navigate("/aiml");
-                          setMenuOpen(false);
-                        }}
-                      >
-                        AI/ML
-                      </div>
-                    </li>
-                    <hr />
-                    <li className="animate-color p-2">
-                      <div className="cursor-pointer"
-                      onClick={() => {
-                        navigate("/cs");
-                        setMenuOpen(false);
-                      }}>Cyber Security</div>
-                    </li>
-                    <hr />
-                    <li className="animate-color p-2">
                       <div className="cursor-pointer"
                       onClick={() => {
                         navigate("/csit");
@@ -174,9 +154,30 @@ export default function Navbar() {
                     <li className="animate-color p-2">
                       <div className="cursor-pointer"
                       onClick={() => {
+                        navigate("/cs");
+                        setMenuOpen(false);
+                      }}>CSE (Cyber Security)</div>
+                    </li>
+                    <hr />
+                    <li className="animate-color p-2">
+                      <div
+                        className="cursor-pointer"
+                        onClick={() => {
+                          navigate("/aiml");
+                          setMenuOpen(false);
+                        }}
+                      >
+                        CSE (AI/ML)
+                      </div>
+                    </li>
+                    
+                    <hr />
+                    <li className="animate-color p-2">
+                      <div className="cursor-pointer"
+                      onClick={() => {
                         navigate("/ds");
                         setMenuOpen(false);
-                      }}>Data Science</div>
+                      }}>CSE (Data Science)</div>
                     </li>
                   </ul>
                 )}

@@ -1,13 +1,8 @@
 #aimlcover{
-    filter:blur(5px);
+  filter: brightness(80%);
 }
 
 
-#aiml-heading{
-
-    -webkit-text-stroke: 0.5px black; /* Width and color of the stroke */
-    text-stroke: 1px black; /* Width and color of the stroke */
-}
 /* animation for displaying from center */
 .header{
     animation: fadeInFromCenter 0.5s ease-in-out;

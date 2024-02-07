@@ -1,5 +1,6 @@
 import React from "react";
 import hod from "../../../assets/hod.png";
+import hodnew from "../../../assets/HODNEW.webp";
 import "./info.css";
 import { useState } from "react";
 
@@ -7,16 +8,16 @@ export default function Info() {
   const [show, setShow] = useState(false);
   return (
     <>
-      <div class=" mt-10 ml-7 p-2 mr-7">
+      <div class=" mt-12 ml-7 p-2 mr-7 ">
         <div class="">
           <h1 class="pl-4 text-3xl font-semibold heading-top">
             Message from the HOD
           </h1>
         </div>
-        <img class="hod-image mt-5 w-full md:w-2/3 p-2 mr-5" src={hod} alt="" />
-        <div class="text-justify mt-4  ">
+        <img class="hod-image mt-5 w-full md:w-2/3 p-2 mr-5" src={hodnew} alt="" />
+        <div class="text-justify p-2  Message">
           <div>
-            <p>
+            <p className="mb-0">
               True to its vision of “In pursuit of Excellence”, CVR College of
               Engineering was the first college in the State to introduce M.Tech
               programs in Artificial Intelligence and Data Sciences, well before
@@ -35,11 +36,11 @@ export default function Info() {
               in 2022 and now also includes the UG programmes in AIML, Data
               Science and Cyber Security.
             </p>
-            {!show && <button class="md:hidden text-gray-500" onClick={() => setShow(true)}>Read More</button>}
+           
           </div>
           <br />
           {show && (
-            <p>
+            <p className="mt-0 mb-0">
               The program is designed with an intent to educate the engineering
               students on the emerging areas of Artificial Intelligence (AI),
               Machine Learning (ML), Internet of Things (IoT) and Data Sciences
@@ -54,7 +55,7 @@ export default function Info() {
             </p>
           )}
          {show &&(
-             <p>
+             <p className="mt-0 mb-0">
              The Department has 8 laboratory units consisting of 258 systems,
              catering to the B. Tech curriculum. The systems use standard
              licensed software as a college policy including open source.
@@ -63,7 +64,7 @@ export default function Info() {
          {show &&(
             <button class="md:hidden text-gray-500" onClick={() => setShow(false)}>Read Less</button>
          )}
-         <p className="hidden md:flex">
+         <p className="hidden md:flex mt-0 mb-0">
               The program is designed with an intent to educate the engineering
               students on the emerging areas of Artificial Intelligence (AI),
               Machine Learning (ML), Internet of Things (IoT) and Data Sciences
@@ -77,11 +78,12 @@ export default function Info() {
               and many more.
             </p>
             <br />
-            <p className="hidden md:flex">
+            <p className="hidden md:flex mt-0">
              The Department has 8 laboratory units consisting of 258 systems,
              catering to the B. Tech curriculum. The systems use standard
              licensed software as a college policy including open source.
            </p>
+          <p className="name font-semibold">Dr. H. N. Lakshmi</p>
             
         </div>
       </div>

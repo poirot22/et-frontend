@@ -54,12 +54,12 @@ export default function Events() {
                             height="140"
                             image={event1}
                         />
-                        <CardContent class="content p-5">
+                        <CardContent class="content p-5 pb-1">
                             <Typography gutterBottom variant="h5" component="div">
                             <h5 className="font-semibold">Neural Networks and Deep Learning Models</h5>
                             </Typography>
                             <Typography variant="body2">
-                            <p>Conducting 2 day workshop on 2nd Feb and 3rd Feb. Refer to the links below for more details</p>
+                            <p className="body2">Conducting 2 day workshop on 2nd Feb and 3rd Feb. Refer to the links below for more details</p>
                             </Typography>
                         </CardContent> 
                         <CardActions class="content pl-3 pb-3">
@@ -76,17 +76,17 @@ export default function Events() {
                             height="140"
                             image={event1}
                         />
-                        <CardContent class="content p-5">
+                        <CardContent class="content p-5 pb-1">
                             <Typography gutterBottom variant="h5" component="div">
                             <h5 className="font-semibold">Big Data Analytics Workshop</h5>
                             </Typography>
                             <Typography variant="body2">
-                            <p>Conducting 2 day workshop on 2nd Feb and 3rd Feb. Refer to the links below for more details</p>
+                            <p className="body2">Conducting 2 day workshop on 2nd Feb and 3rd Feb. Refer to the links below for more details</p>
                             </Typography>
                         </CardContent> 
                         <CardActions class="content pl-3 pb-3">
-                            <Button size="small">Register</Button>
-                            <Button size="small">Learn More</Button>
+                            <Button size="small" >Register</Button>
+                            <Button size="small" >Learn More</Button>
                         </CardActions>
                     </Card>
                 </div>
@@ -98,12 +98,12 @@ export default function Events() {
                             height="140"
                             image={event1}
                         />
-                        <CardContent class="content p-5">
+                        <CardContent class="content p-5 pb-1">
                             <Typography gutterBottom variant="h5" component="div">
                             <h5 className="font-semibold">Cyber Security and Ethical  Hacking Workshop</h5>
                             </Typography>
                             <Typography variant="body2">
-                            <p>Conducting 2 day workshop on 2nd Feb and 3rd Feb. Refer to the links below for more details</p>
+                            <p className="body2">Conducting 2 day workshop on 2nd Feb and 3rd Feb. Refer to the links below for more details</p>
                             </Typography>
                         </CardContent> 
                         <CardActions class="content pl-3 pb-3">

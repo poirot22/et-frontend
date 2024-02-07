@@ -50,7 +50,7 @@ export default function Slide() {
       <BsArrowLeftCircleFill onClick={prevSlide} className="arrow arrow-left" />
       {data.map((item, idx) => {
         return (
-          <img
+          <img 
             src={item.src}
             alt={item.alt}
             key={idx}

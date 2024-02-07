@@ -5,7 +5,7 @@ export default function Mission() {
   return (
     <>
       <div class="vision">
-        <div class="vision text-4xl m-3 p-2">
+        <div class="vision text-4xl m-3 p-2 mt-0">
           <h2 id="vision-head" class="mb-2 font-bold mt-4">Vision of the Department</h2>
           <p id="vision-text">
             To evolve as a Center of Excellence in emerging areas, impart quality
