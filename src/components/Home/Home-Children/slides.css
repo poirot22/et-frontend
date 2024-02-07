@@ -56,3 +56,8 @@
   .indicator-inactive {
     background-color: grey;
   }
+
+
+.slide{
+  filter: brightness(80%);
+}
