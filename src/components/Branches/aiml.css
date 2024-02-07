@@ -3,9 +3,6 @@
 }
 
 
-#aiml-heading{
- /* Width and color of the stroke */
-}
 /* animation for displaying from center */
 .header{
     animation: fadeInFromCenter 0.5s ease-in-out;
@@ -53,3 +50,8 @@
     animation: fadeOut 1s ease-in-out; 
     overflow: hidden; 
   }
+
+  @import url('https://fonts.googleapis.com/css2?family=Lato&family=Montserrat:wght@100&family=Open+Sans:wght@500&family=Roboto:wght@500&display=swap');
+*{
+    font-family: 'Lato', sans-serif;
+}
