@@ -7,7 +7,7 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import event1 from '../../../assets/event1.jpg'
+import event1 from '../../../assets/event1.jpg';
 import './events.css';
 export default function Events() {
 
@@ -119,8 +119,3 @@ export default function Events() {
         </>
     )
 }
-
-
-
-
-

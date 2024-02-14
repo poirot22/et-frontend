@@ -1,6 +1,6 @@
 import React from "react";
 import hod from "../../../assets/hod.png";
-import hodnew from "../../../assets/HODNEW.webp";
+import hodnew from "../../../assets/HODNEW.jpg";
 import "./info.css";
 import { useState } from "react";
 
@@ -90,4 +90,3 @@ export default function Info() {
     </>
   );
 }
-

@@ -102,7 +102,7 @@ const Club = () => {
   };
 
   return (
-    <div className="pl-8 mt-10 flex">
+    <div className=" mt-10 flex">
       {/* Left side: Core Committee and Events Timeline */}
       <div className="flex-1">
         <div className="">
@@ -110,7 +110,7 @@ const Club = () => {
             Core Committee
           </h1>
         </div>
-        <div className="flex flex-wrap justify-center p-8 mt-3">
+        <div className="flex flex-wrap  justify-evenly p-8 mt-3">
           <div className="bg-white shadow-lg rounded-lg overflow-hidden">
             <img
               src={facultyCoordinator}
@@ -118,7 +118,7 @@ const Club = () => {
               alt="Faculty"
             />
           </div>
-          <div className="bg-white shadow-lg rounded-lg overflow-hidden ml-4">
+          <div className="bg-white shadow-lg rounded-lg overflow-hidden">
             <img src={core} className="h-96 w-96" alt="Core Committee" />
           </div>
         </div>
@@ -184,7 +184,7 @@ const Club = () => {
       {/* Right side: Selected Event Carousel */}
       {selectedEvent && (
         <div className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex items-center justify-center">
-          <div className="bg-white p-4 rounded-lg sm:w-3/4 md:w-1/3">
+          <div className="bg-white p-4 rounded-lg w-full md:w-1/3">
             <div className="flex justify-end">
               <FontAwesomeIcon
                 icon={faTimes}
