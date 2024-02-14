@@ -349,13 +349,13 @@ export default function CSIT() {
 
   return (
     <>
-      <div class=" ml-12 mr-12 relative mt-4">
-        <div className="relative h-64 header">
+      
+        <div className="relative h-80 header">
           <div
             className="absolute inset-0 bg-cover bg-center"
             style={{
               backgroundImage: `url(${csitcover})`,
-              filter: "blur(5px)",
+              filter: "brightness(40%)",
             }}
           />
           <div
@@ -363,11 +363,11 @@ export default function CSIT() {
             id="aiml-heading"
           >
             <h1 className="text-5xl text-white font-bold">
-              Department of CSIT
+              DEPARTMENT OF CSIT
             </h1>
           </div>
         </div>
-
+        <div class=" ml-12 mr-12 relative mt-4">
         <h1 class="pl-4 text-3xl font-semibold heading-top mt-10">
           About the Department
         </h1>
@@ -409,8 +409,8 @@ export default function CSIT() {
           <br />
         </div>
 
-        <div className=" mr-12 mt-4">
-          <h1 className="text-3xl font-semibold mb-4 heading-top pl-4">
+        <div className=" mr-12 mt-4 mb-5">
+          <h1 className="text-3xl font-semibold mb-5 heading-top pl-4">
             CSIT Course Structure
           </h1>
           <div className="shadow-lg p-3 ring-4 ring-gray-300 rounded-lg">
@@ -754,94 +754,7 @@ export default function CSIT() {
 
         
       </div>
-      <div className="relative h-64 header mt-10 mb-2">
-          
-          <div
-            className="absolute inset-0 bg-cover bg-center"
-           style={{
-              backgroundImage: `url(${collegeoverview})`,
-              filter: "blur(5px)",
-            }}
-          />
-              
-          <div
-            className="absolute inset-0 flex justify-center items-center m-5"
-          > 
-            <div className="w-full flex justify-evenly m-5">
-
-            
-              <div className="card__table">
-                <div className="card__tablecell">
-                  <span className="sprite icon__ug"></span>
-                </div>
-                <div className="card__tablecell">
-                  <div className='card__userdetails'>
-                    <h3 className="text-4xl font-bold">{students}</h3>
-                    <p className='text-xl'>Students</p>
-                  </div>
-
-                </div>
-              </div>
-              
-
-              <div className="card__table">
-                <div className="card__tablecell">
-                  <span className="sprite icon__faculty"></span>
-                </div>
-                <div className="card__tablecell">
-                  <div className='card__userdetails'>
-                    <h3 className="text-4xl font-bold">{faculty}</h3>
-                    <p >Faculty</p>
-                  </div>
-
-                </div>
-              </div>
-
-              <div className="card__table">
-                <div className="card__tablecell">
-                  <span className="sprite icon__staff"></span>
-                </div>
-                <div className="card__tablecell">
-                  <div className='card__userdetails'>
-                    <h3 className="text-4xl font-bold">{staff}</h3>
-                    <p >Staff</p>
-                  </div>
-
-                </div>
-              </div>
-
-
-              <div className="card__table">
-                <div className="card__tablecell">
-                  <span className="sprite icon__investment"></span>
-                </div>
-                <div className="card__tablecell">
-                  <div className='card__userdetails'>
-                    <h3 className="text-4xl font-bold">{projects}</h3>
-                    <p >Projects</p>
-                  </div>
-
-                </div>
-              </div>
-
-              <div className="card__table">
-                <div className="card__tablecell">
-                  <span className="sprite icon__placements"></span>
-                </div>
-                <div className="card__tablecell">
-                  <div className='card__userdetails'>
-                    <h3 className="text-4xl font-bold">{placements}</h3>
-                    <p >Placements</p>
-                  </div>
-
-                </div>
-              </div>
-              
-              
-
-            </div>
-          </div>
-        </div>
+      
     </>
   );
 }

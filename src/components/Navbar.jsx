@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faPlus, faTimes } from "@fortawesome/free-solid-svg-icons";
 import cvr from "../assets/cvr.png";
@@ -12,6 +12,21 @@ export default function Navbar() {
   const [isHovered1, setIsHovered1] = useState(false);
   const [isHovered2, setIsHovered2] = useState(false);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollTop = window.scrollY;
+      const navbarContainer = document.querySelector(".navbar-container");
+      if (scrollTop > navbarContainer.offsetTop) {
+        navbarContainer.classList.add("sticky");
+      } else {
+        navbarContainer.classList.remove("sticky");
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const handleMouseEnter = () => {
     setIsHovered(true);
@@ -90,14 +105,13 @@ export default function Navbar() {
           </p>
         </div>
       </div>
-      <hr className="ml-6 mr-6" />
       {menuOpen && (
         <div
           className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 z-40"
           onClick={() => setMenuOpen(false)}
         ></div>
       )}
-      <div className="relative navitems hidden lg:flex justify-evenly nav">
+      <div className=" navitems hidden lg:flex justify-evenly nav navbar-container transition-all duration-300">
         <ul className="flex justify-center">
           <li
             className="mr-8 m-2 cursor-pointer"

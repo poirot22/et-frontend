@@ -7,7 +7,7 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import event1 from '../../../assets/event1.jpg'
+import event1 from '../../../assets/event1.jpg';
 import './events.css';
 export default function Events() {
 
@@ -26,7 +26,7 @@ export default function Events() {
     return (
         <>
         <div class="events">
-        <div class="mt-8 pt-6 pb-10">
+        <div class="mt-8 mr-7 ml-7 pt-6 pb-10">
             <div class="mt-5">
                 <h1 class=" pl-4 text-3xl font-semibold heading-top">Events</h1>
             </div>
@@ -54,12 +54,12 @@ export default function Events() {
                             height="140"
                             image={event1}
                         />
-                        <CardContent class="content p-5">
+                        <CardContent class="content p-5 pb-1">
                             <Typography gutterBottom variant="h5" component="div">
                             <h5 className="font-semibold">Neural Networks and Deep Learning Models</h5>
                             </Typography>
                             <Typography variant="body2">
-                            <p>Conducting 2 day workshop on 2nd Feb and 3rd Feb. Refer to the links below for more details</p>
+                            <p className="body2">Conducting 2 day workshop on 2nd Feb and 3rd Feb. Refer to the links below for more details</p>
                             </Typography>
                         </CardContent> 
                         <CardActions class="content pl-3 pb-3">
@@ -76,17 +76,17 @@ export default function Events() {
                             height="140"
                             image={event1}
                         />
-                        <CardContent class="content p-5">
+                        <CardContent class="content p-5 pb-1">
                             <Typography gutterBottom variant="h5" component="div">
                             <h5 className="font-semibold">Big Data Analytics Workshop</h5>
                             </Typography>
                             <Typography variant="body2">
-                            <p>Conducting 2 day workshop on 2nd Feb and 3rd Feb. Refer to the links below for more details</p>
+                            <p className="body2">Conducting 2 day workshop on 2nd Feb and 3rd Feb. Refer to the links below for more details</p>
                             </Typography>
                         </CardContent> 
                         <CardActions class="content pl-3 pb-3">
-                            <Button size="small">Register</Button>
-                            <Button size="small">Learn More</Button>
+                            <Button size="small" >Register</Button>
+                            <Button size="small" >Learn More</Button>
                         </CardActions>
                     </Card>
                 </div>
@@ -98,12 +98,12 @@ export default function Events() {
                             height="140"
                             image={event1}
                         />
-                        <CardContent class="content p-5">
+                        <CardContent class="content p-5 pb-1">
                             <Typography gutterBottom variant="h5" component="div">
                             <h5 className="font-semibold">Cyber Security and Ethical  Hacking Workshop</h5>
                             </Typography>
                             <Typography variant="body2">
-                            <p>Conducting 2 day workshop on 2nd Feb and 3rd Feb. Refer to the links below for more details</p>
+                            <p className="body2">Conducting 2 day workshop on 2nd Feb and 3rd Feb. Refer to the links below for more details</p>
                             </Typography>
                         </CardContent> 
                         <CardActions class="content pl-3 pb-3">
@@ -119,8 +119,3 @@ export default function Events() {
         </>
     )
 }
-
-
-
-
-
