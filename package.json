@@ -20,6 +20,8 @@
     "axios": "^1.6.5",
     "emailjs-com": "^3.2.0",
     "framer-motion": "^10.17.9",
+    "jquery": "^3.7.1",
+    "popper.js": "^1.16.1",
     "react": "^18.2.0",
     "react-carousel-minimal": "^1.4.1",
     "react-dom": "^18.2.0",
