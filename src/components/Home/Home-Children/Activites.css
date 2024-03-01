@@ -1,0 +1,35 @@
+.table-container {
+    margin: 20px;
+  }
+
+.heading-top{
+    border-left: 5px solid #c00404;
+}
+  
+  table {
+    width: 90%;
+  }
+
+  table {
+    border: 1.5px solid #DEE2E6;
+    border-collapse: collapse;
+  }
+
+  th{
+    font-weight: 200;
+  }
+
+  .table-container li{
+    list-style-type: disc;
+  }
+  
+  th, td {
+    padding: 10px;
+    font-size:16px;
+    border: 1px solid #DEE2E6;
+  }
+  
+  th {
+    background-color: #212529;
+    color: white;
+  }

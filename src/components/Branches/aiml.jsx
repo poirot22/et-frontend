@@ -4,12 +4,11 @@ import "./aiml.css";
 import collegeoverview from "../../assets/college-overview.jpg";
 import { useState, useEffect, useRef } from "react";
 import { RiArrowDropDownLine } from "react-icons/ri";
-import Numbers from '../Home/Home-Children/Numbers';
-import bynumbers from '../../assets/bynumbers.jpg';
-import sprite from '../../assets/sprite.png';
+import Numbers from "../Home/Home-Children/Numbers";
+import bynumbers from "../../assets/bynumbers.jpg";
+import sprite from "../../assets/sprite.png";
 
-
-import '../Home/Home-Children/Numbers.css';
+import "../Home/Home-Children/Numbers.css";
 
 export default function AIML() {
   const [isVisibleNumbers, setIsVisibleNumbers] = useState(false);
@@ -355,30 +354,29 @@ export default function AIML() {
 
   return (
     <>
-      
-        <div className="relative h-80 header">
-          <div
-            className="absolute inset-0 bg-cover bg-center"
-            style={{
-              backgroundImage: `url(${aimlcover})`,
-              filter: "brightness(50%)",
-            }}
-          />
-          <div
-            className="absolute inset-0 flex justify-center items-center"
-            id="aiml-heading"
-          >
-            <h1 className="text-4xl text-white font-bold">
-              DEPARTMENT OF CSE (AI/ML)
-            </h1>
-          </div>
+      <div className="relative h-80 header">
+        <div
+          className="absolute inset-0 bg-cover bg-center"
+          style={{
+            backgroundImage: `url(${aimlcover})`,
+            filter: "brightness(50%)",
+          }}
+        />
+        <div
+          className="absolute inset-0 flex justify-center items-center"
+          id="aiml-heading"
+        >
+          <h1 className="text-center text-4xl text-white font-bold">
+            DEPARTMENT OF CSE (AI/ML)
+          </h1>
         </div>
-        <div class=" ml-12 mr-12 relative mt-4">
+      </div>
+      <div class="ml-5 md:ml-12 mr-5 md:mr-12 relative mt-4">
         <h1 class="pl-4 text-3xl font-semibold heading-top mt-10">
           About the Department
         </h1>
         <div>
-          <div class="mt-5 text-justify">
+          <div class="mt-5 text-justify font-thin">
             The AI/ML Department at CVR College of Engineering is a dynamic hub
             within the institution's academic landscape, specializing in
             Artificial Intelligence and Machine Learning. Committed to shaping
@@ -402,7 +400,7 @@ export default function AIML() {
           <br />
         </div>
 
-        <div className=" mr-12 mt-4 mb-5">
+        <div className=" mt-4 mb-5">
           <h1 className="text-3xl font-semibold heading-top pl-4 mb-5">
             CSE (AI/ML) Course Structure
           </h1>
@@ -744,10 +742,7 @@ export default function AIML() {
             </div>
           </div>
         </div>
-
-        
       </div>
-      
     </>
   );
 }

@@ -4,9 +4,6 @@ import Carousel from "./Home-Children/carousel/carousel.jsx";
 import Info from "./Home-Children/info.jsx";
 import Events from "./Home-Children/events.jsx";
 import Mission from "./Home-Children/mission.jsx";
-import Numbers from './Home-Children/Numbers.jsx';
-import Carousel from './Home-Children/carousel/carousel.jsx';
-
 export default function Home() {
   return (
     <>
@@ -14,7 +11,7 @@ export default function Home() {
       <Info />
       <Events />
       <Mission />
-      
+
     </>
   );
 }

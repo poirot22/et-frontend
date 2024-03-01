@@ -13,21 +13,21 @@ export default function Events() {
 
     const [events,setEvents]=useState([]);
 
-    React.useState(()=>{
-        axios.get("http://localhost:9000/getAllEvents")
-        .then((res)=>{
-            setEvents(res.data.events);
-        })
-        .catch((err)=>{
-            console.log(err);
-        })
-    },[])
+    // React.useState(()=>{
+    //     axios.get("http://localhost:9000/getAllEvents")
+    //     .then((res)=>{
+    //         setEvents(res.data.events);
+    //     })
+    //     .catch((err)=>{
+    //         console.log(err);
+    //     })
+    // },[])
 
     return (
         <>
         <div class="events">
-        <div class="mt-8 mr-7 ml-7 pt-6 pb-10">
-            <div class="mt-5">
+        <div class="mt-8 mr-3 p-2">
+            <div class="mt-5 ml-2">
                 <h1 class=" pl-4 text-3xl font-semibold heading-top">Events</h1>
             </div>
             <div>
