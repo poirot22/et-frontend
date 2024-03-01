@@ -8,7 +8,7 @@ export default function Info() {
   const [show, setShow] = useState(false);
   return (
     <>
-      <div class=" mt-12 ml-7 p-2 mr-7 ">
+      <div class=" mt-12 ml-1 md:ml-7 p-2 mr-1 md:mr-7 ">
         <div class="">
           <h1 class="pl-4 text-3xl font-semibold heading-top">
             Message from the HOD

@@ -3,10 +3,7 @@
 }
 
 
-#aiml-heading{
- /* Width and color of the stroke */
-}
-/* animation for displaying from center */
+
 .header{
     animation: fadeInFromCenter 0.5s ease-in-out;
     animation-fill-mode: forwards;

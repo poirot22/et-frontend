@@ -93,12 +93,18 @@ export default function Navbar() {
         >
           {/* menu icon  */}
           {!menuOpen ? (
-            <FontAwesomeIcon icon={faBars} className="h-6 w-6" />
+            <FontAwesomeIcon
+              icon={faBars}
+              className="h-6 w-6 bg-gray-300 p-2 m-1 rounded-md"
+            />
           ) : (
-            <FontAwesomeIcon icon={faTimes} className="h-6 w-6" />
+            <FontAwesomeIcon
+              icon={faTimes}
+              className="h-6 w-6 bg-gray-300 p-2 m-1 rounded-md"
+            />
           )}
         </div>
-        <img src={cvr} alt="Logo" className="h-16 w-16" />
+        <img src={cvr} alt="Logo" className="h-16 w-16 hidden md:block" />
         <div className="flex justify-center">
           <p className="lg:text-4xl m-auto font-bold heading text-center text-2xl">
             Department of Emerging Technologies
@@ -162,7 +168,6 @@ export default function Navbar() {
                         className="cursor-pointer"
                         onClick={() => {
                           navigate("/aiml");
-                          setMenuOpen(false);
                         }}
                       >
                         AI/ML
@@ -170,27 +175,36 @@ export default function Navbar() {
                     </li>
                     <hr />
                     <li className="animate-color p-2">
-                      <div className="cursor-pointer"
-                      onClick={() => {
-                        navigate("/cs");
-                        setMenuOpen(false);
-                      }}>Cyber Security</div>
+                      <div
+                        className="cursor-pointer"
+                        onClick={() => {
+                          navigate("/cs");
+                        }}
+                      >
+                        Cyber Security
+                      </div>
                     </li>
                     <hr />
                     <li className="animate-color p-2">
-                      <div className="cursor-pointer"
-                      onClick={() => {
-                        navigate("/csit");
-                        setMenuOpen(false);
-                      }}>CSIT</div>
+                      <div
+                        className="cursor-pointer"
+                        onClick={() => {
+                          navigate("/csit");
+                        }}
+                      >
+                        CSIT
+                      </div>
                     </li>
                     <hr />
                     <li className="animate-color p-2">
-                      <div className="cursor-pointer"
-                      onClick={() => {
-                        navigate("/ds");
-                        setMenuOpen(false);
-                      }}>Data Science</div>
+                      <div
+                        className="cursor-pointer"
+                        onClick={() => {
+                          navigate("/ds");
+                        }}
+                      >
+                        Data Science
+                      </div>
                     </li>
                   </ul>
                 )}
@@ -247,7 +261,6 @@ export default function Navbar() {
                         className="cursor-pointer"
                         onClick={() => {
                           navigate("/club");
-                          setMenuOpen(false);
                         }}
                       >
                         Club
@@ -261,8 +274,7 @@ export default function Navbar() {
           <li
             className="mr-8 m-2 cursor-pointer"
             onClick={() => {
-              navigate("/login");
-              setMenuOpen(false);
+              navigate("/forum");
             }}
           >
             <a>Forum</a>
@@ -303,19 +315,27 @@ export default function Navbar() {
                       className="animate-color p-2"
                       onClick={() => {
                         navigate("/contactus");
-                        setMenuOpen(false);
                       }}
                     >
                       <div className="cursor-pointer">Contact Us</div>
                     </li>
                     <hr />
-                    <li className="animate-color p-2"
+                    <li
+                      className="animate-color p-2"
                       onClick={() => {
                         navigate("/development-team");
-                        setMenuOpen(false);
                       }}
                     >
                       <div className="cursor-pointer">Development Team</div>
+                    </li>
+                    <hr />
+                    <li
+                      className="animate-color p-2"
+                      onClick={() => {
+                        navigate("/bugreport");
+                      }}
+                    >
+                      <div className="cursor-pointer">Report a bug</div>
                     </li>
                   </ul>
                 )}
@@ -363,7 +383,8 @@ export default function Navbar() {
               <div>
                 {Academics && (
                   <ul className="animate-fade-in">
-                    <li className="m-2"
+                    <li
+                      className="m-2"
                       onClick={() => {
                         navigate("/aiml");
                         setMenuOpen(false);
@@ -372,15 +393,31 @@ export default function Navbar() {
                       <div className="cursor-pointer">AI/ML</div>
                     </li>
                     <hr />
-                    <li className="m-2">
+                    <li
+                      className="m-2"
+                      onClick={() => {
+                        navigate("/cs");
+                        setMenuOpen(false);
+                      }}
+                    >
                       <div className="cursor-pointer">Cyber Security</div>
                     </li>
                     <hr />
-                    <li className="m-2">
+                    <li className="m-2"
+                      onClick={() => {
+                        navigate("/csit");
+                        setMenuOpen(false);
+                      } }
+                    >
                       <div className="cursor-pointer">CSIT</div>
                     </li>
                     <hr />
-                    <li className="m-2">
+                    <li className="m-2"
+                      onClick={() => {
+                        navigate("/ds");
+                        setMenuOpen(false);
+                      } }
+                    >
                       <div className="cursor-pointer">Data Science</div>
                     </li>
                   </ul>
@@ -419,7 +456,8 @@ export default function Navbar() {
                     <div className="cursor-pointer">Sports</div>
                   </li>
                   <hr />
-                  <li className="m-2"
+                  <li
+                    className="m-2"
                     onClick={() => {
                       navigate("/club");
                       setMenuOpen(false);
@@ -431,8 +469,14 @@ export default function Navbar() {
               )}
             </li>
             <hr />
-            <li className="mr-8 m-2 relative">
-              <a href="/">Forum</a>
+            <li
+              className="mr-8 m-2 relative"
+              onClick={() => {
+                navigate("/forum");
+                setMenuOpen(false);
+              }}
+            >
+              Forum
             </li>
             <hr />
             <li className="mr-8 m-2 relative">
@@ -448,7 +492,8 @@ export default function Navbar() {
               </div>
               {About && (
                 <ul className="animate-fade-in">
-                  <li className="m-2"
+                  <li
+                    className="m-2"
                     onClick={() => {
                       navigate("/contactus");
                       setMenuOpen(false);
@@ -457,7 +502,8 @@ export default function Navbar() {
                     <div className="cursor-pointer">Contact Us</div>
                   </li>
                   <hr />
-                  <li className="m-2"
+                  <li
+                    className="m-2"
                     onClick={() => {
                       navigate("/development-team");
                       setMenuOpen(false);
@@ -465,12 +511,22 @@ export default function Navbar() {
                   >
                     <div className="cursor-pointer">Development Team</div>
                   </li>
+                  <hr />
+                  <li
+                    className="m-2"
+                    onClick={() => {
+                      navigate("/bugreport");
+                      setMenuOpen(false);
+                    }}
+                  >
+                    <div className="cursor-pointer">Report a Bug</div>
+                  </li>
                 </ul>
               )}
             </li>
           </ul>
         </div>
       )}
-    </> 
+    </>
   );
 }

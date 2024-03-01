@@ -1,0 +1,21 @@
+@keyframes shake-x {
+    0% { transform: translateX(0); }
+    20% { transform: translateX(-10px); }
+    40% { transform: translateX(10px); }
+    60% { transform: translateX(-10px); }
+    80% { transform: translateX(10px); }
+    100% { transform: translateX(0); }
+  }
+  .scrollbar::-webkit-scrollbar {
+    width: 12px;
+  }
+
+  .scrollbar::-webkit-scrollbar-thumb {
+    background-color: #8e8c8c; /* Change color to match your design */
+    border-radius: 12px;
+  }
+
+  .scrollbar::-webkit-scrollbar-track {
+    background-color: #f1f1f1; /* Change color to match your design */
+    border-radius: 12px;
+  }

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./LoginPage.css"; // Import CSS file for custom styles
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { toast } from "react-toastify";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -9,6 +10,8 @@ const Login = () => {
     email: "",
     password: "", // Added password field
   });
+
+  const [token, setToken] = useState("");
   const [otp, setOtp] = useState(""); // State for OTP
   const [errors, setErrors] = useState({});
   const [isLoggedIn, setIsLoggedIn] = useState(false); // State to track login status
@@ -34,11 +37,14 @@ const Login = () => {
     if (formData.otp === otp) {
       // OTP verification successful
       // Proceed with desired action (e.g., grant access to admin interface)
+      toast.success("OTP verified successfully");
+      localStorage.setItem("admin", JSON.stringify({ token }));
+      setIsLoggedIn(true); // Set isLoggedIn to true after OTP verification
       navigate("/adminPortal?isAccessedByAdmin=true");
     } else {
       // Incorrect OTP entered
       // Display error message or handle accordingly
-      console.log("Incorrect OTP entered.");
+      toast.error("Incorrect OTP entered.");
     }
   };
 
@@ -63,10 +69,11 @@ const Login = () => {
           .then((response) => {
             console.log(response.data);
             if (response.data.status === 200) {
+              setToken(response.data.token);
               generateOTP();
               setIsLoggedIn(true);
             } else {
-              // window.alert("Invalid credentials");  
+              // window.alert("Invalid credentials");
               // window.location.reload();
             }
           });
