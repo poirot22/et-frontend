@@ -17,8 +17,8 @@ const Modal = ({ selectedFaculty, onClose }) => {
   const [projects, setProjects] = useState(false);
 
   return (
-    <div className="fixed top-0 left-0 w-full h-full bg-gray-900 bg-opacity-50 flex items-center justify-center">
-      <div className="bg-white rounded-lg shadow-lg w-11/12 md:w-3/4 max-h-[80vh] md:m-10 mb-2 overflow-auto scrollbar">
+    <div className="fixed top-0 left-0 w-full h-full bg-gray-900 bg-opacity-50 flex items-center justify-center overflow-auto">
+      <div className="details rounded-lg shadow-lg w-4/5 md:w-4/5 max-h-[90vh] md:m-10 mb-2 overflow-auto scrollbar">
         <div className="flex justify-end mt-4 mr-4 relative">
           <FontAwesomeIcon
             icon={faTimes}
@@ -26,14 +26,14 @@ const Modal = ({ selectedFaculty, onClose }) => {
             onClick={onClose}
           />
         </div>
-        <div className="p-5">
+        <div className="p-5 details">
           <div className="flex flex-col md:flex-row items-center h-1/2">
             <img
-              className="faculty-image w-1/2 md:w-1/4 mb-2 rounded-md"
+              className="faculty-image w-1/3 md:w-1/4 mb-2 rounded-md"
               alt=""
               src={selectedFaculty.picture}
             />
-            <ul className="w-full text-sm font-medium text-gray-800 bg-white border rounded-md">
+            <ul className="w-full ml-10 mr-5 font-medium text-gray-800 bg-white border rounded-md">
               <li className="w-full px-4 py-3 border-b border-gray-300">
                 <b>Name: </b>
                 {selectedFaculty.lastName} {selectedFaculty.firstName}
@@ -64,58 +64,58 @@ const Modal = ({ selectedFaculty, onClose }) => {
               </li>
             </ul>
           </div>
-          <ul className="w-full text-sm font-medium text-gray-800 bg-white border rounded-md">
+          <ul className="w-full pt-5 text-xl  text-blue-600 rounded-md">
             <li
-              className="flex items-center justify-between w-full px-4 py-3 border-b border-gray-300 bg-gray-200 cursor-pointer"
+              className="flex items-center justify-between w-full px-4 py-3 border-b border-gray-300 bg-white cursor-pointer rounded-md"
               onClick={() => setSpecs(!specs)}
             >
               <span>Specialization</span>
               <FontAwesomeIcon
                 icon={specs ? faChevronUp : faChevronDown}
-                className="cursor-pointer text-gray-700"
+                className="cursor-pointer text-blue-700"
               />
             </li>
             {specs && (
-              <li className="w-full px-4 py-3 border-b border-gray-300 text-gray-700">
+              <li className="w-full px-4 py-3 border-b border-gray-300 bg-white  text-black text-base rounded-md">
                 {selectedFaculty.specialization}
               </li>
             )}
           </ul>
-          <ul className="w-full text-sm font-medium text-gray-800 bg-white border rounded-md">
+          <ul className="w-full text-xl  text-blue-600 bg-white border rounded-md">
             <li
-              className="flex items-center justify-between w-full px-4 py-3 border-b border-gray-300 bg-gray-200 cursor-pointer"
+              className="flex items-center justify-between w-full px-4 py-3 border-b border-gray-300  cursor-pointer rounded-md"
               onClick={() => setPublications(!publications)}
             >
               <span>Publications</span>
               <FontAwesomeIcon
                 icon={publications ? faChevronUp : faChevronDown}
-                className="cursor-pointer text-gray-700"
+                className="cursor-pointer"
               />
             </li>
             {publications && (
-              <li className="w-full px-4 py-3 border-b border-gray-300 text-gray-700">
+              <li className="w-full px-4 py-3 border-b border-gray-300 text-black text-base rounded-md">
                 {selectedFaculty.publications.map((item, index) => (
-                  <p className="pl-2 pt-3" key={index}>
+                  <p className="pl-2 pt-3 text-base" key={index}>
                     [{index}] {item}
                   </p>
                 ))}
               </li>
             )}
           </ul>
-          <ul className="w-full text-sm font-medium text-gray-800 bg-white border rounded-md">
+          <ul className="w-full text-xl  text-blue-600 bg-white border rounded-md">
             <li
-              className="flex items-center justify-between w-full px-4 py-3 border-b border-gray-300 bg-gray-200 cursor-pointer"
+              className="flex items-center justify-between w-full px-4 py-3 border-b border-gray-300  cursor-pointer rounded-md"
               onClick={() => setProjects(!projects)}
             >
               <span>Projects Guided</span>
               <FontAwesomeIcon
                 icon={projects ? faChevronUp : faChevronDown}
-                className="cursor-pointer text-gray-700"
+                className="cursor-pointer text-blue-600"
               />
             </li>
             {projects && (
-              <li className="w-full px-4 py-3 border-b border-gray-300 text-gray-700">
-                <b>Projects Guided: </b>
+              <li className="w-full px-4 py-3 border-b text-black border-gray-300 rounded-md text-base">
+                <b>Total Projects Guided: </b>
                 {selectedFaculty.projects_guided}
               </li>
             )}
@@ -285,14 +285,16 @@ const Faculty = () => {
           onChange={handleSearch}
         />
         <select
-          className="border border-gray-300 rounded-md px-4 py-2 w-full md:w-fit mr-0 md:mr-4"
+          className="border border-gray-300 rounded-md px-4 py-2 w-full md:w-fit mr-2 md:mr-4"
           value={filterDesignation}
           onChange={handleFilterDesignation}
         >
           <option value="">Filter by Designation</option>
           <option value="Professor">Professor</option>
-          <option value="Assistant Professor">Assistant Professor</option>
           <option value="Associate Professor">Associate Professor</option>
+          <option value="Senior Assistant Professor">Senior Assistant Professor</option>
+          <option value="Assistant Professor">Assistant Professor</option>
+          
         </select>
         <select
           className="border border-gray-300 rounded-md px-4 py-2 w-full md:w-48"
@@ -300,10 +302,10 @@ const Faculty = () => {
           onChange={handleFilterBranch}
         >
           <option value="">Filter by Branch</option>
-          <option value="Computer Science">Computer Science</option>
-          <option value="Electrical Engineering">Electrical Engineering</option>
-          <option value="Mechanical Engineering">Mechanical Engineering</option>
-          <option value="Civil Engineering">Civil Engineering</option>
+          <option value="CSIT">CSIT</option>
+          <option value="CSE(AI & ML)">CSE(AI & ML)</option>
+          <option value="CSE(Cyber Security)">CSE(Cyber Security)</option>
+          <option value="CSE(Data Science)">CSE(Data Science)</option>
         </select>
         {isLoggedIn && userData && (
           <div className="flex space-x-3 items-center">
@@ -358,6 +360,9 @@ const Faculty = () => {
                   <option value="Assistant Professor">
                     Assistant Professor
                   </option>
+                  <option value="Senior Assistant Professor">
+                    Senior Assistant Professor
+                  </option>
                   <option value="Associate Professor">
                     Associate Professor
                   </option>
@@ -378,14 +383,14 @@ const Faculty = () => {
                   onChange={handleInputChange}
                   name="branch"
                 >
-                  <option value="Computer Science">Computer Science</option>
-                  <option value="Electrical Engineering">
-                    Electrical Engineering
+                  <option value="CSIT">CSIT</option>
+                  <option value="CSE(AI & ML)">
+                    CSE(AI & ML)
                   </option>
-                  <option value="Mechanical Engineering">
-                    Mechanical Engineering
+                  <option value="CSE(Cyber Security)">
+                  CSE(Cyber Security)
                   </option>
-                  <option value="Civil Engineering">Civil Engineering</option>
+                  <option value="CSE(Data Science)">CSE(Data Science)</option>
                 </select>
 
                 <input
@@ -500,32 +505,919 @@ const Faculty = () => {
           </div>
         )}
       </div>
+      <div>
+      <div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 p-4 pl-10 pr-10">
-        {filteredFaculty.map((item) => (
-          <div key={item.id} className="p-2">
-            <div
-              className="rounded-lg overflow-hidden shadow-md bg-white cursor-pointer hover:shadow-lg hover:scale-105 transition duration-300 ease-in-out"
-              onClick={() => handleFacultyClick(item)}
-            >
-              <div>
-                <img
-                  className="w-full aspect-w-2 aspect-h-2 rounded-t-lg m-auto"
-                  src={item.picture}
-                  alt=""
-                />
+      {/*Filter By Search*/}
+      {searchInput && (
+        <div>
+          <div className="mt-10 ml-10 mb-5"><h1 className="pl-4 text-3xl font-semibold heading-top">Search Results</h1></div>
+          <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 gap-4 p-4 pl-10 pr-10">
+            {filteredFaculty.map((item) => (
+              <div
+                key={item.id}
+                className="p-4"
+              >
+                <div
+                  className="rounded-lg overflow-hidden shadow-md bg-white cursor-pointer hover:shadow-lg hover:scale-105 transition duration-300 ease-in-out"
+                  onClick={() => handleFacultyClick(item)}
+                >
+                  <div className="">
+                    <img
+                      className="rounded-t-lg m-auto"
+                      src={item.picture}
+                      alt=""
+                    />
+                  </div>
+                  <div className="pt-4 pl-4 pr-4 text-center">
+                    <h1 className="text-xl font-semibold mb-2">
+                      {item.firstName} {item.lastName}
+                    </h1>
+                    <h2 className="text-base text-gray-600">
+                      {item.designation}
+                    </h2>
+                    <p className="text-xl font-thin education">{item.education}</p>
+                  </div>
+                </div>
               </div>
-              <div className="p-2 text-center">
-                <h1 className="text-lg font-semibold mb-1">
-                  {item.firstName} {item.lastName}
-                </h1>
-                <h2 className="text-sm text-gray-600">{item.designation}</h2>
-                <p className="text-xs font-thin education">{item.education}</p>
-              </div>
-            </div>
+
+              
+            ))}
           </div>
-        ))}
+          </div>
+      )}
+      {/*filter by designation*/}
+      {filterDesignation==='Professor' && (
+        <div>
+          <div className="mt-10 ml-10 mb-5"><h1 className="pl-4 text-3xl font-semibold heading-top">Professors</h1></div>
+          <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 gap-4 p-4 pl-10 pr-10">
+            {filteredFaculty.map((item) => (
+              item.designation==='Professor' && (<div
+                key={item.id}
+                className="p-4"
+              >
+                <div
+                  className="rounded-lg overflow-hidden shadow-md bg-white cursor-pointer hover:shadow-lg hover:scale-105 transition duration-300 ease-in-out"
+                  onClick={() => handleFacultyClick(item)}
+                >
+                  <div className="">
+                    <img
+                      className="rounded-t-lg m-auto"
+                      src={item.picture}
+                      alt=""
+                    />
+                  </div>
+                  <div className="pt-4 pl-4 pr-4 text-center">
+                    <h1 className="text-xl font-semibold mb-2">
+                      {item.firstName} {item.lastName}
+                    </h1>
+                    <h2 className="text-base text-gray-600">
+                      {item.designation}
+                    </h2>
+                    <p className="text-xl font-thin education">{item.education}</p>
+                  </div>
+                </div>
+              </div>)
+
+              
+            ))}
+          </div>
+          </div>
+      )}
+      {filterDesignation==='Associate Professor' && (
+        <div>
+          <div className="mt-10 ml-10 mb-5"><h1 className="pl-4 text-3xl font-semibold heading-top">Associate Professors</h1></div>
+          <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 gap-4 p-4 pl-10 pr-10">
+            {filteredFaculty.map((item) => (
+              item.designation==='Associate Professor' && (<div
+                key={item.id}
+                className="p-4"
+              >
+                <div
+                  className="rounded-lg overflow-hidden shadow-md bg-white cursor-pointer hover:shadow-lg hover:scale-105 transition duration-300 ease-in-out"
+                  onClick={() => handleFacultyClick(item)}
+                >
+                  <div className="">
+                    <img
+                      className="rounded-t-lg m-auto"
+                      src={item.picture}
+                      alt=""
+                    />
+                  </div>
+                  <div className="pt-4 pl-4 pr-4 text-center">
+                    <h1 className="text-xl font-semibold mb-2">
+                      {item.firstName} {item.lastName}
+                    </h1>
+                    <h2 className="text-base text-gray-600">
+                      {item.designation}
+                    </h2>
+                    <p className="text-xl font-thin education">{item.education}</p>
+                  </div>
+                </div>
+              </div>)
+
+              
+            ))}
+          </div>
+          </div>
+      )}
+      
+      {filterDesignation==='Senior Assistant Professor' && (
+        <div>
+          <div className="mt-10 ml-10 mb-5"><h1 className="pl-4 text-3xl font-semibold heading-top">Senior Assistant Professors</h1></div>
+          <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 gap-4 p-4 pl-10 pr-10">
+            {filteredFaculty.map((item) => (
+              item.designation==='Senior Assistant Professor' && (<div
+                key={item.id}
+                className="p-4"
+              >
+                <div
+                  className="rounded-lg overflow-hidden shadow-md bg-white cursor-pointer hover:shadow-lg hover:scale-105 transition duration-300 ease-in-out"
+                  onClick={() => handleFacultyClick(item)}
+                >
+                  <div className="">
+                    <img
+                      className="rounded-t-lg m-auto"
+                      src={item.picture}
+                      alt=""
+                    />
+                  </div>
+                  <div className="pt-4 pl-4 pr-4 text-center">
+                    <h1 className="text-xl font-semibold mb-2">
+                      {item.firstName} {item.lastName}
+                    </h1>
+                    <h2 className="text-base text-gray-600">
+                      {item.designation}
+                    </h2>
+                    <p className="text-xl font-thin education">{item.education}</p>
+                  </div>
+                </div>
+              </div>)
+
+              
+            ))}
+          </div>
+          </div>
+      )}
+      {filterDesignation==='Assistant Professor' && (
+        <div>
+          <div className="mt-10 ml-10 mb-5"><h1 className="pl-4 text-3xl font-semibold heading-top">Assistant Professors</h1></div>
+          <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 gap-4 p-4 pl-10 pr-10">
+            {filteredFaculty.map((item) => (
+              item.designation==='Assistant Professor' && (<div
+                key={item.id}
+                className="p-4"
+              >
+                <div
+                  className="rounded-lg overflow-hidden shadow-md bg-white cursor-pointer hover:shadow-lg hover:scale-105 transition duration-300 ease-in-out"
+                  onClick={() => handleFacultyClick(item)}
+                >
+                  <div className="">
+                    <img
+                      className="rounded-t-lg m-auto"
+                      src={item.picture}
+                      alt=""
+                    />
+                  </div>
+                  <div className="pt-4 pl-4 pr-4 text-center">
+                    <h1 className="text-xl font-semibold mb-2">
+                      {item.firstName} {item.lastName}
+                    </h1>
+                    <h2 className="text-base text-gray-600">
+                      {item.designation}
+                    </h2>
+                    <p className="text-xl font-thin education">{item.education}</p>
+                  </div>
+                </div>
+              </div>)
+
+              
+            ))}
+          </div>
+          </div>
+      )}
+
+      {/*filter by Branch*/}
+      {filterBranch==='CSIT' && !filterDesignation && !searchInput && (
+      <div> {/*Faculty Show*/} 
+
+          {/*Professors*/ }
+        <div className="mt-10 ml-10 mb-5"><h1 className="pl-4 text-3xl font-semibold heading-top">Professors</h1></div>
+        <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 gap-4 p-4 pl-10 pr-10">
+          {filteredFaculty.map((item) => (
+            item.branch==='CSIT' && item.designation==='Professor' && (<div
+              key={item.id}
+              className="p-4"
+            >
+              <div
+                className="rounded-lg overflow-hidden shadow-md bg-white cursor-pointer hover:shadow-lg hover:scale-105 transition duration-300 ease-in-out"
+                onClick={() => handleFacultyClick(item)}
+              >
+                <div className="">
+                  <img
+                    className="rounded-t-lg m-auto"
+                    src={item.picture}
+                    alt=""
+                  />
+                </div>
+                <div className="pt-4 pl-4 pr-4 text-center">
+                  <h1 className="text-xl font-semibold mb-2">
+                    {item.firstName} {item.lastName}
+                  </h1>
+                  <h2 className="text-base text-gray-600">
+                    {item.designation}
+                  </h2>
+                  <p className="text-xl font-thin education">{item.education}</p>
+                </div>
+              </div>
+            </div>)
+
+            
+          ))}
+        </div>
+
+        {/*Associate Professors*/ }
+
+        <div className="mt-10 ml-10 mb-5"><h1 className="pl-4 text-3xl font-semibold heading-top">Associate Professors</h1></div>
+        <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 gap-4 p-4 pl-10 pr-10">
+              
+          {filteredFaculty.map((item) => (
+            item.branch==='CSIT' && item.designation==='Associate Professor' && (<div
+              key={item.id}
+              className="p-4"
+            >
+              <div
+                className="rounded-lg overflow-hidden shadow-md bg-white cursor-pointer hover:shadow-lg hover:scale-105 transition duration-300 ease-in-out"
+                onClick={() => handleFacultyClick(item)}
+              >
+                <div className="">
+                  <img
+                    className="rounded-t-lg m-auto"
+                    src={item.picture}
+                    alt=""
+                  />
+                </div>
+                <div className="pt-4 pl-4 pr-4 text-center">
+                  <h1 className="text-xl font-semibold mb-2">
+                    {item.firstName} {item.lastName}
+                  </h1>
+                  <h2 className="text-base text-gray-600">
+                    {item.designation}
+                  </h2>
+                  <p className="text-xl font-thin education">{item.education}</p>
+                </div>
+              </div>
+            </div>)
+          ))}
+        </div>
+
+        {/*Senior Professors*/ }
+        <div className="mt-10 ml-10 mb-5"><h1 className="pl-4 text-3xl font-semibold heading-top">Senior Assistant Professors</h1></div>
+        <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 gap-4 p-4 pl-10 pr-10">
+              
+          {filteredFaculty.map((item) => (
+            item.branch==='CSIT' &&  item.designation==='Senior Assistant Professor' && (<div
+              key={item.id}
+              className="p-4"
+            >
+              <div
+                className="rounded-lg overflow-hidden shadow-md bg-white cursor-pointer hover:shadow-lg hover:scale-105 transition duration-300 ease-in-out"
+                onClick={() => handleFacultyClick(item)}
+              >
+                <div className="">
+                  <img
+                    className="rounded-t-lg m-auto"
+                    src={item.picture}
+                    alt=""
+                  />
+                </div>
+                <div className="pt-4 pl-4 pr-4 text-center">
+                  <h1 className="text-xl font-semibold mb-2">
+                    {item.firstName} {item.lastName}
+                  </h1>
+                  <h2 className="text-base text-gray-600">
+                    {item.designation}
+                  </h2>
+                  <p className="text-xl font-thin education">{item.education}</p>
+                </div>
+              </div>
+            </div>)
+          ))}
+        </div>
+
+        <div className="mt-10 ml-10 mb-5"><h1 className="pl-4 text-3xl font-semibold heading-top">Assistant Professors</h1></div>
+        <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 gap-4 p-4 pl-10 pr-10">
+              
+          {filteredFaculty.map((item) => (
+            item.branch==='CSIT' && item.designation==='Assistant Professor' && (<div
+              key={item.id}
+              className="p-4"
+            >
+              <div
+                className="rounded-lg overflow-hidden shadow-md bg-white cursor-pointer hover:shadow-lg hover:scale-105 transition duration-300 ease-in-out"
+                onClick={() => handleFacultyClick(item)}
+              >
+                <div className="">
+                  <img
+                    className="rounded-t-lg m-auto"
+                    src={item.picture}
+                    alt=""
+                  />
+                </div>
+                <div className="pt-4 pl-4 pr-4 text-center">
+                  <h1 className="text-xl font-semibold mb-2">
+                    {item.firstName} {item.lastName}
+                  </h1>
+                  <h2 className="text-base text-gray-600">
+                    {item.designation}
+                  </h2>
+                  <p className="text-xl font-thin education">{item.education}</p>
+                </div>
+              </div>
+            </div>)
+          ))}
+          
+        </div>
+      </div>)}
+      
+      {filterBranch==='CSE(AI & ML)' && !filterDesignation && !searchInput && (
+      <div> {/*Faculty Show*/} 
+
+          {/*Professors*/ }
+        <div className="mt-10 ml-10 mb-5"><h1 className="pl-4 text-3xl font-semibold heading-top">Professors</h1></div>
+        <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 gap-4 p-4 pl-10 pr-10">
+          {filteredFaculty.map((item) => (
+            item.branch==='CSE(AI & ML)' && item.designation==='Professor' && (<div
+              key={item.id}
+              className="p-4"
+            >
+              <div
+                className="rounded-lg overflow-hidden shadow-md bg-white cursor-pointer hover:shadow-lg hover:scale-105 transition duration-300 ease-in-out"
+                onClick={() => handleFacultyClick(item)}
+              >
+                <div className="">
+                  <img
+                    className="rounded-t-lg m-auto"
+                    src={item.picture}
+                    alt=""
+                  />
+                </div>
+                <div className="pt-4 pl-4 pr-4 text-center">
+                  <h1 className="text-xl font-semibold mb-2">
+                    {item.firstName} {item.lastName}
+                  </h1>
+                  <h2 className="text-base text-gray-600">
+                    {item.designation}
+                  </h2>
+                  <p className="text-xl font-thin education">{item.education}</p>
+                </div>
+              </div>
+            </div>)
+
+            
+          ))}
+        </div>
+
+        {/*Associate Professors*/ }
+
+        <div className="mt-10 ml-10 mb-5"><h1 className="pl-4 text-3xl font-semibold heading-top">Associate Professors</h1></div>
+        <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 gap-4 p-4 pl-10 pr-10">
+              
+          {filteredFaculty.map((item) => (
+            item.branch==='CSE(AI & ML)' && item.designation==='Associate Professor' && (<div
+              key={item.id}
+              className="p-4"
+            >
+              <div
+                className="rounded-lg overflow-hidden shadow-md bg-white cursor-pointer hover:shadow-lg hover:scale-105 transition duration-300 ease-in-out"
+                onClick={() => handleFacultyClick(item)}
+              >
+                <div className="">
+                  <img
+                    className="rounded-t-lg m-auto"
+                    src={item.picture}
+                    alt=""
+                  />
+                </div>
+                <div className="pt-4 pl-4 pr-4 text-center">
+                  <h1 className="text-xl font-semibold mb-2">
+                    {item.firstName} {item.lastName}
+                  </h1>
+                  <h2 className="text-base text-gray-600">
+                    {item.designation}
+                  </h2>
+                  <p className="text-xl font-thin education">{item.education}</p>
+                </div>
+              </div>
+            </div>)
+          ))}
+        </div>
+
+        {/*Senior Professors*/ }
+        <div className="mt-10 ml-10 mb-5"><h1 className="pl-4 text-3xl font-semibold heading-top">Senior Assistant Professors</h1></div>
+        <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 gap-4 p-4 pl-10 pr-10">
+              
+          {filteredFaculty.map((item) => (
+            item.branch==='CSE(AI & ML)' &&  item.designation==='Senior Assistant Professor' && (<div
+              key={item.id}
+              className="p-4"
+            >
+              <div
+                className="rounded-lg overflow-hidden shadow-md bg-white cursor-pointer hover:shadow-lg hover:scale-105 transition duration-300 ease-in-out"
+                onClick={() => handleFacultyClick(item)}
+              >
+                <div className="">
+                  <img
+                    className="rounded-t-lg m-auto"
+                    src={item.picture}
+                    alt=""
+                  />
+                </div>
+                <div className="pt-4 pl-4 pr-4 text-center">
+                  <h1 className="text-xl font-semibold mb-2">
+                    {item.firstName} {item.lastName}
+                  </h1>
+                  <h2 className="text-base text-gray-600">
+                    {item.designation}
+                  </h2>
+                  <p className="text-xl font-thin education">{item.education}</p>
+                </div>
+              </div>
+            </div>)
+          ))}
+        </div>
+
+        <div className="mt-10 ml-10 mb-5"><h1 className="pl-4 text-3xl font-semibold heading-top">Assistant Professors</h1></div>
+        <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 gap-4 p-4 pl-10 pr-10">
+              
+          {filteredFaculty.map((item) => (
+            item.branch==='CSE(AI & ML)' && item.designation==='Assistant Professor' && (<div
+              key={item.id}
+              className="p-4"
+            >
+              <div
+                className="rounded-lg overflow-hidden shadow-md bg-white cursor-pointer hover:shadow-lg hover:scale-105 transition duration-300 ease-in-out"
+                onClick={() => handleFacultyClick(item)}
+              >
+                <div className="">
+                  <img
+                    className="rounded-t-lg m-auto"
+                    src={item.picture}
+                    alt=""
+                  />
+                </div>
+                <div className="pt-4 pl-4 pr-4 text-center">
+                  <h1 className="text-xl font-semibold mb-2">
+                    {item.firstName} {item.lastName}
+                  </h1>
+                  <h2 className="text-base text-gray-600">
+                    {item.designation}
+                  </h2>
+                  <p className="text-xl font-thin education">{item.education}</p>
+                </div>
+              </div>
+            </div>)
+          ))}
+          
+        </div>
+      </div>)}
+
+      {filterBranch==='CSE(Cyber Security)' && !filterDesignation && !searchInput && (
+      <div> {/*Faculty Show*/} 
+
+          {/*Professors*/ }
+        <div className="mt-10 ml-10 mb-5"><h1 className="pl-4 text-3xl font-semibold heading-top">Professors</h1></div>
+        <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 gap-4 p-4 pl-10 pr-10">
+          {filteredFaculty.map((item) => (
+            item.branch==='CSE(Cyber Security)' && item.designation==='Professor' && (<div
+              key={item.id}
+              className="p-4"
+            >
+              <div
+                className="rounded-lg overflow-hidden shadow-md bg-white cursor-pointer hover:shadow-lg hover:scale-105 transition duration-300 ease-in-out"
+                onClick={() => handleFacultyClick(item)}
+              >
+                <div className="">
+                  <img
+                    className="rounded-t-lg m-auto"
+                    src={item.picture}
+                    alt=""
+                  />
+                </div>
+                <div className="pt-4 pl-4 pr-4 text-center">
+                  <h1 className="text-xl font-semibold mb-2">
+                    {item.firstName} {item.lastName}
+                  </h1>
+                  <h2 className="text-base text-gray-600">
+                    {item.designation}
+                  </h2>
+                  <p className="text-xl font-thin education">{item.education}</p>
+                </div>
+              </div>
+            </div>)
+
+            
+          ))}
+        </div>
+
+        {/*Associate Professors*/ }
+
+        <div className="mt-10 ml-10 mb-5"><h1 className="pl-4 text-3xl font-semibold heading-top">Associate Professors</h1></div>
+        <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 gap-4 p-4 pl-10 pr-10">
+              
+          {filteredFaculty.map((item) => (
+            item.branch==='CSE(Cyber Security)' && item.designation==='Associate Professor' && (<div
+              key={item.id}
+              className="p-4"
+            >
+              <div
+                className="rounded-lg overflow-hidden shadow-md bg-white cursor-pointer hover:shadow-lg hover:scale-105 transition duration-300 ease-in-out"
+                onClick={() => handleFacultyClick(item)}
+              >
+                <div className="">
+                  <img
+                    className="rounded-t-lg m-auto"
+                    src={item.picture}
+                    alt=""
+                  />
+                </div>
+                <div className="pt-4 pl-4 pr-4 text-center">
+                  <h1 className="text-xl font-semibold mb-2">
+                    {item.firstName} {item.lastName}
+                  </h1>
+                  <h2 className="text-base text-gray-600">
+                    {item.designation}
+                  </h2>
+                  <p className="text-xl font-thin education">{item.education}</p>
+                </div>
+              </div>
+            </div>)
+          ))}
+        </div>
+
+        {/*Senior Professors*/ }
+        <div className="mt-10 ml-10 mb-5"><h1 className="pl-4 text-3xl font-semibold heading-top">Senior Assistant Professors</h1></div>
+        <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 gap-4 p-4 pl-10 pr-10">
+              
+          {filteredFaculty.map((item) => (
+            item.branch==='CSE(Cyber Security)' &&  item.designation==='Senior Assistant Professor' && (<div
+              key={item.id}
+              className="p-4"
+            >
+              <div
+                className="rounded-lg overflow-hidden shadow-md bg-white cursor-pointer hover:shadow-lg hover:scale-105 transition duration-300 ease-in-out"
+                onClick={() => handleFacultyClick(item)}
+              >
+                <div className="">
+                  <img
+                    className="rounded-t-lg m-auto"
+                    src={item.picture}
+                    alt=""
+                  />
+                </div>
+                <div className="pt-4 pl-4 pr-4 text-center">
+                  <h1 className="text-xl font-semibold mb-2">
+                    {item.firstName} {item.lastName}
+                  </h1>
+                  <h2 className="text-base text-gray-600">
+                    {item.designation}
+                  </h2>
+                  <p className="text-xl font-thin education">{item.education}</p>
+                </div>
+              </div>
+            </div>)
+          ))}
+        </div>
+
+        <div className="mt-10 ml-10 mb-5"><h1 className="pl-4 text-3xl font-semibold heading-top">Assistant Professors</h1></div>
+        <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 gap-4 p-4 pl-10 pr-10">
+              
+          {filteredFaculty.map((item) => (
+            item.branch==='CSE(Cyber Security)' && item.designation==='Assistant Professor' && (<div
+              key={item.id}
+              className="p-4"
+            >
+              <div
+                className="rounded-lg overflow-hidden shadow-md bg-white cursor-pointer hover:shadow-lg hover:scale-105 transition duration-300 ease-in-out"
+                onClick={() => handleFacultyClick(item)}
+              >
+                <div className="">
+                  <img
+                    className="rounded-t-lg m-auto"
+                    src={item.picture}
+                    alt=""
+                  />
+                </div>
+                <div className="pt-4 pl-4 pr-4 text-center">
+                  <h1 className="text-xl font-semibold mb-2">
+                    {item.firstName} {item.lastName}
+                  </h1>
+                  <h2 className="text-base text-gray-600">
+                    {item.designation}
+                  </h2>
+                  <p className="text-xl font-thin education">{item.education}</p>
+                </div>
+              </div>
+            </div>)
+          ))}
+          
+        </div>
+      </div>)}
+
+
+      {filterBranch==='CSE(Data Science)' && !filterDesignation && !searchInput && (
+      <div> {/*Faculty Show*/} 
+
+          {/*Professors*/ }
+        <div className="mt-10 ml-10 mb-5"><h1 className="pl-4 text-3xl font-semibold heading-top">Professors</h1></div>
+        <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 gap-4 p-4 pl-10 pr-10">
+          {filteredFaculty.map((item) => (
+            item.branch==='CSE(Data Science)' && item.designation==='Professor' && (<div
+              key={item.id}
+              className="p-4"
+            >
+              <div
+                className="rounded-lg overflow-hidden shadow-md bg-white cursor-pointer hover:shadow-lg hover:scale-105 transition duration-300 ease-in-out"
+                onClick={() => handleFacultyClick(item)}
+              >
+                <div className="">
+                  <img
+                    className="rounded-t-lg m-auto"
+                    src={item.picture}
+                    alt=""
+                  />
+                </div>
+                <div className="pt-4 pl-4 pr-4 text-center">
+                  <h1 className="text-xl font-semibold mb-2">
+                    {item.firstName} {item.lastName}
+                  </h1>
+                  <h2 className="text-base text-gray-600">
+                    {item.designation}
+                  </h2>
+                  <p className="text-xl font-thin education">{item.education}</p>
+                </div>
+              </div>
+            </div>)
+
+            
+          ))}
+        </div>
+
+        {/*Associate Professors*/ }
+
+        <div className="mt-10 ml-10 mb-5"><h1 className="pl-4 text-3xl font-semibold heading-top">Associate Professors</h1></div>
+        <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 gap-4 p-4 pl-10 pr-10">
+              
+          {filteredFaculty.map((item) => (
+            item.branch==='CSE(Data Science)' && item.designation==='Associate Professor' && (<div
+              key={item.id}
+              className="p-4"
+            >
+              <div
+                className="rounded-lg overflow-hidden shadow-md bg-white cursor-pointer hover:shadow-lg hover:scale-105 transition duration-300 ease-in-out"
+                onClick={() => handleFacultyClick(item)}
+              >
+                <div className="">
+                  <img
+                    className="rounded-t-lg m-auto"
+                    src={item.picture}
+                    alt=""
+                  />
+                </div>
+                <div className="pt-4 pl-4 pr-4 text-center">
+                  <h1 className="text-xl font-semibold mb-2">
+                    {item.firstName} {item.lastName}
+                  </h1>
+                  <h2 className="text-base text-gray-600">
+                    {item.designation}
+                  </h2>
+                  <p className="text-xl font-thin education">{item.education}</p>
+                </div>
+              </div>
+            </div>)
+          ))}
+        </div>
+
+        {/*Senior Professors*/ }
+        <div className="mt-10 ml-10 mb-5"><h1 className="pl-4 text-3xl font-semibold heading-top">Senior Assistant Professors</h1></div>
+        <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 gap-4 p-4 pl-10 pr-10">
+              
+          {filteredFaculty.map((item) => (
+            item.branch==='CSE(Data Science)' &&  item.designation==='Senior Assistant Professor' && (<div
+              key={item.id}
+              className="p-4"
+            >
+              <div
+                className="rounded-lg overflow-hidden shadow-md bg-white cursor-pointer hover:shadow-lg hover:scale-105 transition duration-300 ease-in-out"
+                onClick={() => handleFacultyClick(item)}
+              >
+                <div className="">
+                  <img
+                    className="rounded-t-lg m-auto"
+                    src={item.picture}
+                    alt=""
+                  />
+                </div>
+                <div className="pt-4 pl-4 pr-4 text-center">
+                  <h1 className="text-xl font-semibold mb-2">
+                    {item.firstName} {item.lastName}
+                  </h1>
+                  <h2 className="text-base text-gray-600">
+                    {item.designation}
+                  </h2>
+                  <p className="text-xl font-thin education">{item.education}</p>
+                </div>
+              </div>
+            </div>)
+          ))}
+        </div>
+
+        <div className="mt-10 ml-10 mb-5"><h1 className="pl-4 text-3xl font-semibold heading-top">Assistant Professors</h1></div>
+        <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 gap-4 p-4 pl-10 pr-10">
+              
+          {filteredFaculty.map((item) => (
+            item.branch==='CSE(Data Science)' && item.designation==='Assistant Professor' && (<div
+              key={item.id}
+              className="p-4"
+            >
+              <div
+                className="rounded-lg overflow-hidden shadow-md bg-white cursor-pointer hover:shadow-lg hover:scale-105 transition duration-300 ease-in-out"
+                onClick={() => handleFacultyClick(item)}
+              >
+                <div className="">
+                  <img
+                    className="rounded-t-lg m-auto"
+                    src={item.picture}
+                    alt=""
+                  />
+                </div>
+                <div className="pt-4 pl-4 pr-4 text-center">
+                  <h1 className="text-xl font-semibold mb-2">
+                    {item.firstName} {item.lastName}
+                  </h1>
+                  <h2 className="text-base text-gray-600">
+                    {item.designation}
+                  </h2>
+                  <p className="text-xl font-thin education">{item.education}</p>
+                </div>
+              </div>
+            </div>)
+          ))}
+          
+        </div>
+      </div>)}
+
+
+
+
+      
+      
+
+      
+
+      {!filterDesignation && !filterBranch && !searchInput &&(
+      <div> {/*Faculty Show*/} 
+
+          {/*Professors*/ }
+        <div className="mt-10 ml-10 mb-5"><h1 className="pl-4 text-3xl font-semibold heading-top">Professors</h1></div>
+        <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 gap-4 p-4 pl-10 pr-10">
+          {filteredFaculty.map((item) => (
+            item.designation==='Professor' && (<div
+              key={item.id}
+              className="p-4"
+            >
+              <div
+                className="rounded-lg overflow-hidden shadow-md bg-white cursor-pointer hover:shadow-lg hover:scale-105 transition duration-300 ease-in-out"
+                onClick={() => handleFacultyClick(item)}
+              >
+                <div className="">
+                  <img
+                    className="rounded-t-lg m-auto"
+                    src={item.picture}
+                    alt=""
+                  />
+                </div>
+                <div className="pt-4 pl-4 pr-4 text-center">
+                  <h1 className="text-xl font-semibold mb-2">
+                    {item.firstName} {item.lastName}
+                  </h1>
+                  <h2 className="text-base text-gray-600">
+                    {item.designation}
+                  </h2>
+                  <p className="text-xl font-thin education">{item.education}</p>
+                </div>
+              </div>
+            </div>)
+
+            
+          ))}
+        </div>
+
+        {/*Associate Professors*/ }
+
+        <div className="mt-10 ml-10 mb-5"><h1 className="pl-4 text-3xl font-semibold heading-top">Associate Professors</h1></div>
+        <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 gap-4 p-4 pl-10 pr-10">
+              
+          {filteredFaculty.map((item) => (
+            item.designation==='Associate Professor' && (<div
+              key={item.id}
+              className="p-4"
+            >
+              <div
+                className="rounded-lg overflow-hidden shadow-md bg-white cursor-pointer hover:shadow-lg hover:scale-105 transition duration-300 ease-in-out"
+                onClick={() => handleFacultyClick(item)}
+              >
+                <div className="">
+                  <img
+                    className="rounded-t-lg m-auto"
+                    src={item.picture}
+                    alt=""
+                  />
+                </div>
+                <div className="pt-4 pl-4 pr-4 text-center">
+                  <h1 className="text-xl font-semibold mb-2">
+                    {item.firstName} {item.lastName}
+                  </h1>
+                  <h2 className="text-base text-gray-600">
+                    {item.designation}
+                  </h2>
+                  <p className="text-xl font-thin education">{item.education}</p>
+                </div>
+              </div>
+            </div>)
+          ))}
+        </div>
+
+        {/*Senior Professors*/ }
+        <div className="mt-10 ml-10 mb-5"><h1 className="pl-4 text-3xl font-semibold heading-top">Senior Assistant Professors</h1></div>
+        <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 gap-4 p-4 pl-10 pr-10">
+              
+          {filteredFaculty.map((item) => (
+            item.designation==='Senior Assistant Professor' && (<div
+              key={item.id}
+              className="p-4"
+            >
+              <div
+                className="rounded-lg overflow-hidden shadow-md bg-white cursor-pointer hover:shadow-lg hover:scale-105 transition duration-300 ease-in-out"
+                onClick={() => handleFacultyClick(item)}
+              >
+                <div className="">
+                  <img
+                    className="rounded-t-lg m-auto"
+                    src={item.picture}
+                    alt=""
+                  />
+                </div>
+                <div className="pt-4 pl-4 pr-4 text-center">
+                  <h1 className="text-xl font-semibold mb-2">
+                    {item.firstName} {item.lastName}
+                  </h1>
+                  <h2 className="text-base text-gray-600">
+                    {item.designation}
+                  </h2>
+                  <p className="text-xl font-thin education">{item.education}</p>
+                </div>
+              </div>
+            </div>)
+          ))}
+        </div>
+
+        <div className="mt-10 ml-10 mb-5"><h1 className="pl-4 text-3xl font-semibold heading-top">Assistant Professors</h1></div>
+        <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 gap-4 p-4 pl-10 pr-10">
+              
+          {filteredFaculty.map((item) => (
+            item.designation==='Assistant Professor' && (<div
+              key={item.id}
+              className="p-4"
+            >
+              <div
+                className="rounded-lg overflow-hidden shadow-md bg-white cursor-pointer hover:shadow-lg hover:scale-105 transition duration-300 ease-in-out"
+                onClick={() => handleFacultyClick(item)}
+              >
+                <div className="">
+                  <img
+                    className="rounded-t-lg m-auto"
+                    src={item.picture}
+                    alt=""
+                  />
+                </div>
+                <div className="pt-4 pl-4 pr-4 text-center">
+                  <h1 className="text-xl font-semibold mb-2">
+                    {item.firstName} {item.lastName}
+                  </h1>
+                  <h2 className="text-base text-gray-600">
+                    {item.designation}
+                  </h2>
+                  <p className="text-xl font-thin education">{item.education}</p>
+                </div>
+              </div>
+            </div>)
+          ))}
+          
+        </div>
+      </div>)}
       </div>
+    </div>
       {openModal && selectedFaculty && (
         <Modal selectedFaculty={selectedFaculty} onClose={handleCloseModal} />
       )}

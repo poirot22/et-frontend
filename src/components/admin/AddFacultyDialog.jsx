@@ -128,8 +128,10 @@ const AddFacultyDialog = ({ isOpen, onClose, onAddFaculty }) => {
                   >
                     <option value="">Select Designation</option>
                     <option value="Professor">Professor</option>
-                    <option value="Assistant Professor">Assistant Professor</option>
                     <option value="Associate Professor">Associate Professor</option>
+                    <option value="Senior Assistant Professor">Senior Assistant Professor</option>
+                    <option value="Assistant Professor">Assistant Professor</option>
+                    
                   </select>
                 </div>
                 <div>
@@ -145,10 +147,10 @@ const AddFacultyDialog = ({ isOpen, onClose, onAddFaculty }) => {
                     required
                   >
                     <option value="">Select Branch</option>
-                    <option value="Computer Science">Computer Science</option>
-                    <option value="Electrical Engineering">Electrical Engineering</option>
-                    <option value="Mechanical Engineering">Mechanical Engineering</option>
-                    <option value="Civil Engineering">Civil Engineering</option>
+                    <option value="CSIT">CSIT</option>
+                    <option value="CSE(AI & ML)">CSE(AI & ML)</option>
+                    <option value="CSE(Cyber Security)">CSE(Cyber Security)</option>
+                    <option value="CSE(Data Science)">CSE(Data Science)</option>
                   </select>
                 </div>
                 <div>

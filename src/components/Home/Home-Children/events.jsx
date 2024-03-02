@@ -13,21 +13,21 @@ export default function Events() {
 
     const [events,setEvents]=useState([]);
 
-    // React.useState(()=>{
-    //     axios.get("http://localhost:9000/getAllEvents")
-    //     .then((res)=>{
-    //         setEvents(res.data.events);
-    //     })
-    //     .catch((err)=>{
-    //         console.log(err);
-    //     })
-    // },[])
+    React.useState(()=>{
+        axios.get("http://localhost:9000/getAllEvents")
+        .then((res)=>{
+            setEvents(res.data.events);
+        })
+        .catch((err)=>{
+            console.log(err);
+        })
+    },[])
 
     return (
         <>
         <div class="events">
-        <div class="mt-8 mr-3 p-2">
-            <div class="mt-5 ml-2">
+        <div class="mt-8 mr-7 ml-7 pt-6 pb-10">
+            <div class="mt-5">
                 <h1 class=" pl-4 text-3xl font-semibold heading-top">Events</h1>
             </div>
             <div>
@@ -58,9 +58,7 @@ export default function Events() {
                             <Typography gutterBottom variant="h5" component="div">
                             <h5 className="font-semibold">Neural Networks and Deep Learning Models</h5>
                             </Typography>
-                            <Typography variant="body2">
-                            <p className="body2">Conducting 2 day workshop on 2nd Feb and 3rd Feb. Refer to the links below for more details</p>
-                            </Typography>
+                            
                         </CardContent> 
                         <CardActions class="content pl-3 pb-3">
                             <Button size="small">Register</Button>
@@ -80,9 +78,7 @@ export default function Events() {
                             <Typography gutterBottom variant="h5" component="div">
                             <h5 className="font-semibold">Big Data Analytics Workshop</h5>
                             </Typography>
-                            <Typography variant="body2">
-                            <p className="body2">Conducting 2 day workshop on 2nd Feb and 3rd Feb. Refer to the links below for more details</p>
-                            </Typography>
+                            
                         </CardContent> 
                         <CardActions class="content pl-3 pb-3">
                             <Button size="small" >Register</Button>
@@ -102,9 +98,7 @@ export default function Events() {
                             <Typography gutterBottom variant="h5" component="div">
                             <h5 className="font-semibold">Cyber Security and Ethical  Hacking Workshop</h5>
                             </Typography>
-                            <Typography variant="body2">
-                            <p className="body2">Conducting 2 day workshop on 2nd Feb and 3rd Feb. Refer to the links below for more details</p>
-                            </Typography>
+                            
                         </CardContent> 
                         <CardActions class="content pl-3 pb-3">
                             <Button size="small">Register</Button>

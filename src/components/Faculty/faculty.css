@@ -7,12 +7,17 @@
     float: left;
 }
 
+.heading-top{
+  border-left: 5px solid #c00404;
+}
+
+
 .details{
     background-color: #F8F9FA;
 }
 
 .scrollbar::-webkit-scrollbar {
-    width: 20px;
+    width: 5px;
   }
 
   .scrollbar::-webkit-scrollbar-thumb {
@@ -24,3 +29,7 @@
     background-color: #f1f1f1; /* Change color to match your design */
     border-radius: 12px;
   }
+
+li{
+  cursor:pointer;
+}

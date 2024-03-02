@@ -135,7 +135,7 @@ const Adminportal = ({ isAccessedByAdmin }) => {
     <div>
       {isSecure ? (
         <>
-          <div className="flex flex-col lg:flex-row lg:justify-between h-screen overflow-hidden">
+          <div className="flex flex-col lg:flex-row lg:justify-between">
             <div className="w-full lg:w-1/5 bg-gray-100">
               <div className="flex justify-between items-center p-4 lg:hidden">
                 <div>
@@ -284,16 +284,16 @@ const Adminportal = ({ isAccessedByAdmin }) => {
                     <table className="min-w-full">
                       <thead>
                         <tr>
-                          <th className="px-6 py-3 border-b-2 border-gray-300 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                          <th className="px-6 py-3 border-b-2 border-gray-300 text-left text-xs leading-4 font-medium  uppercase tracking-wider">
                             Name
                           </th>
-                          <th className="px-6 py-3 border-b-2 border-gray-300 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                          <th className="px-6 py-3 border-b-2 border-gray-300 text-left text-xs leading-4 font-medium  uppercase tracking-wider">
                             Designation
                           </th>
-                          <th className="px-6 py-3 border-b-2 border-gray-300 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                          <th className="px-6 py-3 border-b-2 border-gray-300 text-left text-xs leading-4 font-medium uppercase tracking-wider">
                             Branch
                           </th>
-                          <th className="px-6 py-3 border-b-2 border-gray-300 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                          <th className="px-6 py-3 border-b-2 border-gray-300 text-left text-xs leading-4 font-medium uppercase tracking-wider">
                             Actions
                           </th>
                         </tr>

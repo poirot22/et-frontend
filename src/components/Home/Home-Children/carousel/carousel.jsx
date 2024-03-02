@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useEffect } from "react";
 import img1 from "../../../../assets/Faculty.jpg";
 import img4 from "../../../../assets/FestFinal.JPG";
+import cover2 from "../../../../assets/Cover4.JPG";
 import cover from "../../../../assets/cover2.jpg";
 import "./carousel.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -9,6 +10,7 @@ import {
   faChevronLeft,
   faChevronRight,
 } from "@fortawesome/free-solid-svg-icons";
+import { useNavigate } from 'react-router-dom';
 
 export default function Carousel() {
   const items = [
@@ -17,12 +19,16 @@ export default function Carousel() {
       title: "SlideOne",
     },
     {
-      src: img4,
-      title: "Elite Techies the student Technical club",
+      src:img4,
+      title:"DEPARTMENT OBJECTIVES"
+    },
+    {
+      src: cover2,
+      title: "ELITE TECHIES THE STUDENT TECHNICAL CLUB",
     },
     {
       src: cover,
-      title: "Department Activites",
+      title: "DEPARTMENT ACTIVITIES",
     },
   ];
   const [activeIndex, setActiveIndex] = useState(0);
@@ -45,17 +51,32 @@ export default function Carousel() {
       prevIndex === items.length - 1 ? 0 : prevIndex + 1
     );
   };
+
+  const navigate=useNavigate();
+  const handleClick=()=>{
+    if(activeIndex===1) navigate("/Outcomes");
+      if(activeIndex===2) navigate('/club');
+      if(activeIndex===3) navigate('/Activities');
+    
+  };
   const CarouselItem = ({ src, title, description }) => (
     <div className="relative w-full grid1">
       <img src={src} alt={title} className="w-full h-full object-cover" />
       {title !== "SlideOne" && (
-        <div className="absolute inset-0 bg-gray-900 bg-opacity-40 flex flex-col justify-end items-center text-white p-10 pb-28">
-          <p className="Heading">{title}</p>
-          <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-            Learn More
-          </button>
+        <div className="absolute inset-0  bg-black bg-opacity-50 flex flex-col justify-end items-center text-white p-10 pb-28">
+            <h1 className="Title mb-10">{title}</h1>
+            <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onClick={handleClick}>
+              Learn More
+            </button>
         </div>
       )}
+      {
+        title==="SlideOne" && (
+          <div className="absolute inset-0 bg-black bg-opacity-20 flex flex-col justify-end items-center text-white p-10 pb-28">
+         
+        </div>
+        )
+      }
     </div>
   );
   return (
