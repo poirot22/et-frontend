@@ -8,11 +8,14 @@ import {
   FaTimes,
   FaEye,
 } from "react-icons/fa";
+import { faUserCheck, faUserPlus } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
 import AddFacultyDialog from "./AddFacultyDialog";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import AttendanceComponent from "./Attandance";
+import Adduser from "./Adduser";
 
 const Adminportal = ({ isAccessedByAdmin }) => {
   const [isSecure, setIsSecure] = useState(false);
@@ -27,6 +30,8 @@ const Adminportal = ({ isAccessedByAdmin }) => {
   const [isDialogOpen, setDialogOpen] = useState(false);
   const [selectedFaculty, setSelectedFaculty] = useState(null);
   const [isSaveEnabled, setSaveEnabled] = useState(false);
+  const [attandance, setAttandance] = useState(false);
+  const [users, setUsers] = useState(false);
 
   useEffect(() => {
     axios.get("http://localhost:9000/getFaculty").then((res) => {
@@ -81,7 +86,7 @@ const Adminportal = ({ isAccessedByAdmin }) => {
 
   const handleAddFaculty = (formData) => {
     axios.post("http://localhost:9000/addFaculty", formData).then((res) => {
-      toast.success('Faculty added successfully');
+      toast.success("Faculty added successfully");
       console.log(res);
       setFaculties((prevFaculties) => [...prevFaculties, formData]);
     });
@@ -126,16 +131,17 @@ const Adminportal = ({ isAccessedByAdmin }) => {
 
   const handleLogout = () => {
     // Remove token from local storage and redirect to login page
-    toast.success('Logged out successfully');
+    toast.success("Logged out successfully");
     localStorage.removeItem("admin");
     window.location.href = "/admin";
   };
+  
 
   return (
     <div>
       {isSecure ? (
         <>
-          <div className="flex flex-col lg:flex-row lg:justify-between h-screen overflow-hidden">
+          <div className="flex flex-col lg:flex-row lg:justify-between min-h-screen overflow-hidden">
             <div className="w-full lg:w-1/5 bg-gray-100">
               <div className="flex justify-between items-center p-4 lg:hidden">
                 <div>
@@ -181,6 +187,8 @@ const Adminportal = ({ isAccessedByAdmin }) => {
                     setFaculty(true);
                     setEvents(false);
                     setFilteredFaculties(faculties);
+                    setAttandance(false);
+                    setUsers(false);
                   }}
                 >
                   <FaUser className="mr-2" />
@@ -193,10 +201,41 @@ const Adminportal = ({ isAccessedByAdmin }) => {
                   onClick={() => {
                     setEvents(true);
                     setFaculty(false);
+                    setAttandance(false);
+                    setUsers(false);
                   }}
                 >
                   <FaCalendarAlt className="mr-2" />
                   <span>Events</span>
+                </div>
+
+                <div
+                  className={`flex items-center cursor-pointer ${
+                    attandance ? "text-blue-500 font-semibold" : ""
+                  }`}
+                  onClick={() => {
+                    setAttandance(true);
+                    setFaculty(false);
+                    setEvents(false);
+                    setUsers(false);
+                  }}
+                >
+                  <FontAwesomeIcon icon={faUserCheck} className="mr-2" />
+                  <span>Attandance</span>
+                </div>
+                <div
+                  className={`flex items-center cursor-pointer ${
+                    users ? "text-blue-500 font-semibold" : ""
+                  }`}
+                  onClick={() => {
+                    setUsers(true);
+                    setFaculty(false);
+                    setEvents(false);
+                    setAttandance(false);
+                  }}
+                >
+                  <FontAwesomeIcon icon={faUserPlus} className="mr-2" />
+                  <span>Users</span>
                 </div>
               </div>
             </div>
@@ -348,6 +387,16 @@ const Adminportal = ({ isAccessedByAdmin }) => {
                     {/* Events content */}
                     Events Content
                   </div>
+                )}
+                {attandance && (
+                  <>
+                    <AttendanceComponent />
+                  </>
+                )}
+                {users && (
+                  <>
+                    <Adduser />
+                  </>
                 )}
               </div>
             </div>
