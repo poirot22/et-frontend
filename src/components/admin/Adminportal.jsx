@@ -396,6 +396,19 @@ const Adminportal = ({ isAccessedByAdmin }) => {
                             />
                           </div>
                           <div className="flex flex-col">
+                            <label htmlFor="email" className="text-gray-600">
+                              Email
+                            </label>
+                            <input
+                              type="email"
+                              id="email"
+                              name="email"
+                              value={selectedFaculty.email}
+                              onChange={handleInputChange}
+                              className="border rounded-md p-1 mt-1"
+                            />
+                          </div>
+                          <div className="flex flex-col">
                             <label className="text-gray-600">
                               Designation:
                             </label>
@@ -417,6 +430,59 @@ const Adminportal = ({ isAccessedByAdmin }) => {
                               className="border rounded-md p-1 mt-1"
                             />
                           </div>
+                          <div className="flex flex-col">
+                            <label htmlFor="education" className="text-gray-600">
+                              Joining Date
+                            </label>
+                            <input
+                              type="text"
+                              id="education"
+                              name="education"
+                              value={selectedFaculty.education}
+                              onChange={handleInputChange}
+                              className="border rounded-md p-1 mt-1"
+                            />
+                          </div>
+                          <div className="flex flex-col">
+                            <label htmlFor="specialization" className="text-gray-600">
+                              Specialization
+                            </label>
+                            <input
+                              type="text"
+                              id="specialization"
+                              name="specialization"
+                              value={selectedFaculty.specialization}
+                              onChange={handleInputChange}
+                              className="border rounded-md p-1 mt-1"
+                            />
+                          </div>
+                          <div className="flex flex-col">
+                            <label htmlFor="joining_date" className="text-gray-600">
+                              Joining Date
+                            </label>
+                            <input
+                              type="date"
+                              id="joining_date"
+                              name="joining_date"
+                              value={selectedFaculty.joining_date.slice(0,10)}
+                              onChange={handleInputChange}
+                              className="border rounded-md p-1 mt-1"
+                            />
+                          </div>
+                          <div className="flex flex-col">
+                            <label htmlFor="projects_guided" className="text-gray-600">
+                            Projects guided
+                            </label>
+                            <input
+                              type="number"
+                              id="projects_guided"
+                              name="projects_guided"
+                              value={selectedFaculty.projects_guided}
+                              onChange={handleInputChange}
+                              className="border rounded-md p-1 mt-1"
+                            />
+                          </div>
+                          
                         </div>
                       </div>
                     </div>
