@@ -173,13 +173,14 @@ const Adminportal = ({ isAccessedByAdmin }) => {
                   isOptionsVisible ? "" : "hidden lg:block"
                 }`}
               >
+              <div className="h-screen">
                 <div className=" justify-center items-center hidden  lg:block">
                   <img src={cvr} alt="cvr logo" className="w-14 h-14" />
                   <div className="text-xl font-semibold">ET-Department</div>
                 </div>
 
                 <div
-                  className={`flex items-center cursor-pointer ${
+                  className={`flex mt-10 pb-5 items-center cursor-pointer ${
                     faculty ? "text-blue-500 font-semibold" : ""
                   }`}
                   onClick={() => {
@@ -242,7 +243,7 @@ const Adminportal = ({ isAccessedByAdmin }) => {
             <div className="w-full lg:w-4/5 flex flex-col">
               <div className="flex justify-center items-center">
                 <div className="text-center flex flex-col items-center">
-                  <h1 className="text-3xl font-bold mb-4">Admin Portal</h1>
+                  <h1 className="text-3xl font-bold mb-4 mt-5">Admin Portal</h1>
                   <button
                     onClick={handleLogout}
                     className="bg-red-500 text-white px-3 py-1 rounded-md shadow-md hover:bg-red-600 hidden lg:block"
@@ -273,12 +274,16 @@ const Adminportal = ({ isAccessedByAdmin }) => {
                         >
                           <option value="">Select Designation</option>
                           <option value="Professor">Professor</option>
-                          <option value="Assistant Professor">
-                            Assistant Professor
-                          </option>
                           <option value="Associate Professor">
                             Associate Professor
                           </option>
+                          <option value="Senior Assistant Professor">
+                            Senior Assistant Professor
+                          </option>
+                          <option value="Assistant Professor">
+                            Assistant Professor
+                          </option>
+                          
                         </select>
                         <select
                           value={branchFilter}
@@ -286,11 +291,12 @@ const Adminportal = ({ isAccessedByAdmin }) => {
                           className="border border-gray-300 rounded-md p-2 mr-3 h-full lg:mr-3"
                         >
                           <option value="">Select Branch</option>
-                          <option value="Computer Science">
-                            Computer Science
+                          <option value="CSIT">
+                            CSIT
                           </option>
-                          <option value="Electronics">Electronics</option>
-                          <option value="Mechanical">Mechanical</option>
+                          <option value="CSE(AI & ML)">CSE(AI & ML)</option>
+                          <option value="CSE(Cyber Security)">CSE(Cyber Security)</option>
+                          <option value="CSE(Data Science)">CSE(Data Science)</option>
                         </select>
                         <button
                           onClick={() => setDialogOpen(true)}
@@ -323,16 +329,16 @@ const Adminportal = ({ isAccessedByAdmin }) => {
                     <table className="min-w-full">
                       <thead>
                         <tr>
-                          <th className="px-6 py-3 border-b-2 border-gray-300 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                          <th className="px-6 py-3 border-b-2 border-gray-300 text-left text-xs leading-4 font-medium  uppercase tracking-wider">
                             Name
                           </th>
-                          <th className="px-6 py-3 border-b-2 border-gray-300 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                          <th className="px-6 py-3 border-b-2 border-gray-300 text-left text-xs leading-4 font-medium  uppercase tracking-wider">
                             Designation
                           </th>
-                          <th className="px-6 py-3 border-b-2 border-gray-300 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                          <th className="px-6 py-3 border-b-2 border-gray-300 text-left text-xs leading-4 font-medium uppercase tracking-wider">
                             Branch
                           </th>
-                          <th className="px-6 py-3 border-b-2 border-gray-300 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                          <th className="px-6 py-3 border-b-2 border-gray-300 text-left text-xs leading-4 font-medium uppercase tracking-wider">
                             Actions
                           </th>
                         </tr>
@@ -438,6 +444,19 @@ const Adminportal = ({ isAccessedByAdmin }) => {
                             />
                           </div>
                           <div className="flex flex-col">
+                            <label htmlFor="email" className="text-gray-600">
+                              Email
+                            </label>
+                            <input
+                              type="email"
+                              id="email"
+                              name="email"
+                              value={selectedFaculty.email}
+                              onChange={handleInputChange}
+                              className="border rounded-md p-1 mt-1"
+                            />
+                          </div>
+                          <div className="flex flex-col">
                             <label className="text-gray-600">
                               Designation:
                             </label>
@@ -459,6 +478,59 @@ const Adminportal = ({ isAccessedByAdmin }) => {
                               className="border rounded-md p-1 mt-1"
                             />
                           </div>
+                          <div className="flex flex-col">
+                            <label htmlFor="education" className="text-gray-600">
+                              Joining Date
+                            </label>
+                            <input
+                              type="text"
+                              id="education"
+                              name="education"
+                              value={selectedFaculty.education}
+                              onChange={handleInputChange}
+                              className="border rounded-md p-1 mt-1"
+                            />
+                          </div>
+                          <div className="flex flex-col">
+                            <label htmlFor="specialization" className="text-gray-600">
+                              Specialization
+                            </label>
+                            <input
+                              type="text"
+                              id="specialization"
+                              name="specialization"
+                              value={selectedFaculty.specialization}
+                              onChange={handleInputChange}
+                              className="border rounded-md p-1 mt-1"
+                            />
+                          </div>
+                          <div className="flex flex-col">
+                            <label htmlFor="joining_date" className="text-gray-600">
+                              Joining Date
+                            </label>
+                            <input
+                              type="date"
+                              id="joining_date"
+                              name="joining_date"
+                              value={selectedFaculty.joining_date.slice(0,10)}
+                              onChange={handleInputChange}
+                              className="border rounded-md p-1 mt-1"
+                            />
+                          </div>
+                          <div className="flex flex-col">
+                            <label htmlFor="projects_guided" className="text-gray-600">
+                            Projects guided
+                            </label>
+                            <input
+                              type="number"
+                              id="projects_guided"
+                              name="projects_guided"
+                              value={selectedFaculty.projects_guided}
+                              onChange={handleInputChange}
+                              className="border rounded-md p-1 mt-1"
+                            />
+                          </div>
+                          
                         </div>
                       </div>
                     </div>

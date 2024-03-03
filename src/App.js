@@ -20,6 +20,8 @@ import Comment from './components/forum/Comment.jsx';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Bugreport from './components/Bugreport.jsx';
+import Activites from './components/Home/Home-Children/Activites.jsx';
+import Outcomes from './components/Home/Home-Children/Outcomes.jsx';
 
 function App() {
   const location = useLocation();
@@ -100,6 +102,8 @@ function App() {
         <Route path="/development-team" element={<DevelopmentTeam />} />
         <Route path="/admin" element={<Login />} />
         <Route path="/forum" element={<Forum />} />
+        <Route path="/Activities" element={<Activites/>}/>
+        <Route path="/Outcomes" element={<Outcomes/>}/>
         <Route
           path="/adminPortal"
           element={<Adminportal isAccessedByAdmin={true} />}
