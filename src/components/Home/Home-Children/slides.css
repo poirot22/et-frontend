@@ -1,63 +1,59 @@
 .carousel {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: auto;
-    height: 650px;
-  }
-  
-  .slide {
-
-    width: 100%;
-    height: 100%;
-  }
-  
-  .slide-hidden {
-    display: none;
-  }
-  
-  .arrow {
-    position: absolute;
-    width: 2rem;
-    height: 2rem;
-    color: white;
-  }
-  
-  .arrow:hover {
-    cursor: pointer;
-  }
-  
-  .arrow-left {
-    left: 1rem;
-  }
-  
-  .arrow-right {
-    right: 1rem;
-  }
-  
-  .indicators {
-    display: flex;
-    position: absolute;
-    bottom: 1rem;
-  }
-  
-  .indicator {
-    background-color: white;
-    height: 0.5rem;
-    width: 0.5rem;
-    border-radius: 100%;
-    border: none;
-    outline: none;
-    margin: 0 0.2rem;
-    cursor: pointer;
-  }
-  
-  .indicator-inactive {
-    background-color: grey;
-  }
-
-
-.slide{
-  filter: brightness(80%);
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: auto;
+  height: 650px;
 }
+
+.slide {
+  width: 2/5;
+  height: 30rem;
+}
+
+.slide-hidden {
+  display: none;
+}
+
+.arrow {
+  position: absolute;
+  width: 2rem;
+  height: 2rem;
+  color: black;
+}
+
+.arrow:hover {
+  cursor: pointer;
+}
+
+.arrow-left {
+  left: 1rem;
+}
+
+.arrow-right {
+  right: 1rem;
+}
+
+.indicators {
+  display: flex;
+  position: absolute;
+  bottom: 1rem;
+}
+
+.indicator {
+  background-color: white;
+  height: 0.5rem;
+  width: 0.5rem;
+  border-radius: 100%;
+  border: none;
+  outline: none;
+  margin: 0 0.2rem;
+  cursor: pointer;
+}
+
+.indicator-inactive {
+  background-color: grey;
+}
+
+
