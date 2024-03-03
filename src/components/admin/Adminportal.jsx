@@ -167,13 +167,14 @@ const Adminportal = ({ isAccessedByAdmin }) => {
                   isOptionsVisible ? "" : "hidden lg:block"
                 }`}
               >
+              <div className="h-screen">
                 <div className=" justify-center items-center hidden  lg:block">
                   <img src={cvr} alt="cvr logo" className="w-14 h-14" />
                   <div className="text-xl font-semibold">ET-Department</div>
                 </div>
 
                 <div
-                  className={`flex items-center cursor-pointer ${
+                  className={`flex mt-10 pb-5 items-center cursor-pointer ${
                     faculty ? "text-blue-500 font-semibold" : ""
                   }`}
                   onClick={() => {
@@ -200,10 +201,11 @@ const Adminportal = ({ isAccessedByAdmin }) => {
                 </div>
               </div>
             </div>
+            </div>
             <div className="w-full lg:w-4/5 flex flex-col">
               <div className="flex justify-center items-center">
                 <div className="text-center flex flex-col items-center">
-                  <h1 className="text-3xl font-bold mb-4">Admin Portal</h1>
+                  <h1 className="text-3xl font-bold mb-4 mt-5">Admin Portal</h1>
                   <button
                     onClick={handleLogout}
                     className="bg-red-500 text-white px-3 py-1 rounded-md shadow-md hover:bg-red-600 hidden lg:block"
@@ -234,12 +236,16 @@ const Adminportal = ({ isAccessedByAdmin }) => {
                         >
                           <option value="">Select Designation</option>
                           <option value="Professor">Professor</option>
-                          <option value="Assistant Professor">
-                            Assistant Professor
-                          </option>
                           <option value="Associate Professor">
                             Associate Professor
                           </option>
+                          <option value="Senior Assistant Professor">
+                            Senior Assistant Professor
+                          </option>
+                          <option value="Assistant Professor">
+                            Assistant Professor
+                          </option>
+                          
                         </select>
                         <select
                           value={branchFilter}
@@ -247,11 +253,12 @@ const Adminportal = ({ isAccessedByAdmin }) => {
                           className="border border-gray-300 rounded-md p-2 mr-3 h-full lg:mr-3"
                         >
                           <option value="">Select Branch</option>
-                          <option value="Computer Science">
-                            Computer Science
+                          <option value="CSIT">
+                            CSIT
                           </option>
-                          <option value="Electronics">Electronics</option>
-                          <option value="Mechanical">Mechanical</option>
+                          <option value="CSE(AI & ML)">CSE(AI & ML)</option>
+                          <option value="CSE(Cyber Security)">CSE(Cyber Security)</option>
+                          <option value="CSE(Data Science)">CSE(Data Science)</option>
                         </select>
                         <button
                           onClick={() => setDialogOpen(true)}

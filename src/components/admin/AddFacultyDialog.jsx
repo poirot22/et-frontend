@@ -8,9 +8,16 @@ const AddFacultyDialog = ({ isOpen, onClose, onAddFaculty }) => {
     firstName: "",
     lastName: "",
     designation: "",
+    branch: "",
+    education:"",
+    publications_number:"",
+    publications:"",
+    email:"",
+    specialization:"",
+    projects_guided:"",
+    joining_date:"",
     password: "",
     reEnterPassword: "",
-    branch: "",
   });
 
   const [passwordError, setPasswordError] = useState("");
@@ -46,9 +53,14 @@ const AddFacultyDialog = ({ isOpen, onClose, onAddFaculty }) => {
       firstName: "",
       lastName: "",
       designation: "",
-      password: "",
-      reEnterPassword: "",
       branch: "",
+      qualification:"",
+      email:"",
+      specialization:"",
+      projectsGuided:"",
+      password: "",
+      joining_date:"",
+      reEnterPassword: "",
     });
 
     // Close the dialog box
@@ -115,6 +127,20 @@ const AddFacultyDialog = ({ isOpen, onClose, onAddFaculty }) => {
                   />
                 </div>
                 <div>
+                  <label htmlFor="email" className="block mb-1">
+                    Email
+                  </label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    className="border border-gray-400 p-2 rounded-md w-full"
+                    required
+                  />
+                </div>
+                <div>
                   <label htmlFor="designation" className="block mb-1">
                     Designation
                   </label>
@@ -152,6 +178,62 @@ const AddFacultyDialog = ({ isOpen, onClose, onAddFaculty }) => {
                     <option value="CSE(Cyber Security)">CSE(Cyber Security)</option>
                     <option value="CSE(Data Science)">CSE(Data Science)</option>
                   </select>
+                </div>
+                <div>
+                  <label htmlFor="joining_date" className="block mb-1">
+                    Joining Date
+                  </label>
+                  <input
+                    type="date"
+                    id="joining_date"
+                    name="joining_date"
+                    value={formData.joining_date}
+                    onChange={handleChange}
+                    className="border border-gray-400 p-2 rounded-md w-full"
+                    required
+                  />
+                </div>
+                <div>
+                  <label htmlFor="education" className="block mb-1">
+                  Qualification
+                  </label>
+                  <input
+                    type="text"
+                    id="education"
+                    name="education"
+                    value={formData.education}
+                    onChange={handleChange}
+                    className="border border-gray-400 p-2 rounded-md w-full"
+                    required
+                  />
+                </div>
+                <div>
+                  <label htmlFor="specialization" className="block mb-1">
+                  Specialization
+                  </label>
+                  <input
+                    type="text"
+                    id="specialization"
+                    name="specialization"
+                    value={formData.specialization}
+                    onChange={handleChange}
+                    className="border border-gray-400 p-2 rounded-md w-full"
+                    required
+                  />
+                </div>
+                <div>
+                  <label htmlFor="projects_guided" className="block mb-1">
+                  Projects Guided
+                  </label>
+                  <input
+                    type="number"
+                    id="projects_guided"
+                    name="projects_guided"
+                    value={formData.projectsGuided}
+                    onChange={handleChange}
+                    className="border border-gray-400 p-2 rounded-md w-full"
+                    required
+                  />
                 </div>
                 <div>
                   <label htmlFor="password" className="block mb-1">

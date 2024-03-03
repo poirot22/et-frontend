@@ -1,76 +1,102 @@
-import React  , { useState } from "react";
-import { Carousel } from "react-carousel-minimal";
-import img1 from "../../../assets/Faculty.jpg";
-import img4 from "../../../assets/FestFinal.JPG";
-import img5 from "../../../assets/img5.jpg";
-import { BsArrowLeftCircleFill, BsArrowRightCircleFill } from "react-icons/bs";
-import './slides.css';
-export default function Slide() {
-  var data = [
-    { caption: "", image: img1 },
-    { caption: "", image: img4 },
-    { caption: "", image: img4 },
-    { caption: "", image: img5 },
+import React  , { useState , useEffect} from "react";
+import so1 from "../../../assets/so1.jpg";
+import so2 from "../../../assets/so2.jpg";
+import so3 from "../../../assets/so3.JPG";
+import so4 from "../../../assets/so4.jpg";
+import so5 from "../../../assets/so5.JPG";
+import so6 from "../../../assets/so6.JPG";
+import "./Slides1.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faChevronLeft,
+  faChevronRight,
+} from "@fortawesome/free-solid-svg-icons";
+
+export default function Slides1() {
+  const items = [
+    {
+      src: so1,
+      title: "SlideOne",
+    },
+    {
+      src: so2,
+      title: "Elite Techies the student Technical club",
+    },
+    {
+      src: so3,
+      title: "Department Activites",
+    },
+    {
+      src:so4,
+    },
+    {
+      src:so5
+    },
+    {
+      src:so6
+    }
   ];
-  const captionStyle = {
-    fontSize: "2em",
-    fontWeight: "bold",
-  };
-  const slideNumberStyle = {
-    fontSize: "20px",
-    fontWeight: "bold",
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveIndex((current) => (current + 1) % items.length);
+    }, 15000);
+    return () => clearInterval(interval);
+  }, [items.length]);
+
+  const goToPrevious = () => {
+    setActiveIndex((prevIndex) =>
+      prevIndex === 0 ? items.length - 1 : prevIndex - 1
+    );
   };
 
-  const [slide, setSlide] = useState(0);
-
-  const nextSlide = () => {
-    setSlide(slide === data.length - 1 ? 0 : slide + 1);
+  const goToNext = () => {
+    setActiveIndex((prevIndex) =>
+      prevIndex === items.length - 1 ? 0 : prevIndex + 1
+    );
   };
-
-  const prevSlide = () => {
-    setSlide(slide === 0 ? data.length - 1 : slide - 1);
-  };
-    data=[
-      {
-        "src": img1,
-        "alt": "Image 1 for carousel"
-      },
-      {
-        "src": img4,
-        "alt": "Image 2 for carousel"
-      },
-      {
-        "src": img4,
-        "alt": "Image 3 for carousel"
-      }
-    ]
-  
-  return (
+  const CarouselItem = ({ src, title, description }) => (
     <div className="carousel">
-      <BsArrowLeftCircleFill onClick={prevSlide} className="arrow arrow-left" />
-      {data.map((item, idx) => {
-        return (
-          <img 
-            src={item.src}
-            alt={item.alt}
-            key={idx}
-            className={slide === idx ? "slide" : "slide slide-hidden"}
-          />
-        );
-      })}
-      <BsArrowRightCircleFill
-        onClick={nextSlide}
-        className="arrow arrow-right"
+      <img src={src} alt={title} className=" slide object-cover" />
+    </div>
+  );
+  return (
+    <div className="relative carousel">
+      <div className="overflow-hidden carousel">
+        <div
+          className="whitespace-nowrap transition-transform duration-500"
+          style={{ transform: `translateX(-${activeIndex * 100}%)` }}
+        >
+          {items.map((item, index) => (
+            <div key={index} className="inline-block w-full slide">
+              <CarouselItem {...item} />
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <FontAwesomeIcon
+        icon={faChevronLeft}
+        className="absolute top-1/2 left-2 transform -translate-y-1/2 p-2 text-black text-4xl opacity-80 "
+        onClick={goToPrevious}
       />
-      <span className="indicators">
-        {data.map((_, idx) => {
+      <FontAwesomeIcon
+        icon={faChevronRight}
+        className="absolute top-1/2 right-2 transform -translate-y-1/2 p-2 text-black text-4xl opacity-80 "
+        onClick={goToNext}
+      />
+      <span className=" absolute right-1/2 indicators">
+        {items.map((_, idx) => {
           return (
             <button
               key={idx}
               className={
-                slide === idx ? "indicator" : "indicator indicator-inactive"
+                activeIndex === idx
+                  ? "indicator"
+                  : "indicator indicator-inactive"
               }
-              onClick={() => setSlide(idx)}
+              onClick={() => setActiveIndex(idx)}
             ></button>
           );
         })}
