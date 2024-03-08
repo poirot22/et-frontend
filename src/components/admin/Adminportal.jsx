@@ -115,6 +115,7 @@ const Adminportal = ({ isAccessedByAdmin }) => {
         console.log(res);
       });
 
+
     console.log("Saving changes for faculty:", selectedFaculty);
 
     setSaveEnabled(false);
@@ -409,30 +410,48 @@ const Adminportal = ({ isAccessedByAdmin }) => {
                             />
                           </div>
                           <div className="flex flex-col">
-                            <label className="text-gray-600">
-                              Designation:
+                            <label htmlFor="designation" className="text-gray-600">
+                              Designation
                             </label>
-                            <input
-                              type="text"
-                              name="designation"
+                            <select
+                              className="border rounded-md p-1 mt-1"
                               value={selectedFaculty.designation}
                               onChange={handleInputChange}
-                              className="border rounded-md p-1 mt-1"
-                            />
+                              name="designation"
+                            >
+                              <option value="Professor">Professor</option>
+                              <option value="Assistant Professor">
+                                Assistant Professor
+                              </option>
+                              <option value="Senior Assistant Professor">
+                                Senior Assistant Professor
+                              </option>
+                              <option value="Associate Professor">
+                                Associate Professor
+                              </option>
+                            </select>
                           </div>
                           <div className="flex flex-col">
                             <label className="text-gray-600">Branch:</label>
-                            <input
-                              type="text"
-                              name="branch"
+                            <select
+                              className="border rounded-md p-1 mt-1"
                               value={selectedFaculty.branch}
                               onChange={handleInputChange}
-                              className="border rounded-md p-1 mt-1"
-                            />
+                              name="branch"
+                            >
+                              <option value="CSIT">CSIT</option>
+                              <option value="CSE(AI & ML)">
+                                CSE(AI & ML)
+                              </option>
+                              <option value="CSE(Cyber Security)">
+                              CSE(Cyber Security)
+                              </option>
+                              <option value="CSE(Data Science)">CSE(Data Science)</option>
+                            </select>
                           </div>
                           <div className="flex flex-col">
                             <label htmlFor="education" className="text-gray-600">
-                              Joining Date
+                              
                             </label>
                             <input
                               type="text"
@@ -529,4 +548,4 @@ const Adminportal = ({ isAccessedByAdmin }) => {
   );
 };
 
-export default Adminportal;
+export default Adminportal;

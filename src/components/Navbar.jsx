@@ -217,8 +217,9 @@ export default function Navbar() {
           >
             <a>Infrastructure</a>
           </li>
-          <li className="mr-8 m-2">
-            <a href="/">Research</a>
+          <li className="mr-8 m-2"
+           onClick={() => navigate("/Research")}>
+            <a >Research</a>
           </li>
           <li
             className="mr-8 m-2 relative flex"
@@ -253,19 +254,22 @@ export default function Navbar() {
                 {isHovered1 && (
                   <ul className="">
                     <li className="animate-color p-2">
-                      <div className="cursor-pointer">Sports</div>
+                        <div
+                          className="cursor-pointer"
+                          onClick={() => {
+                            navigate("/club");
+                          }}
+                        >
+                          Club
+                        </div>
+                      </li>
+                    <li className="animate-color p-2">
+                      <div className="cursor-pointer"
+                      onClick={() => {
+                          navigate("/Activities");
+                        }}>Activities</div>
                     </li>
                     <hr />
-                    <li className="animate-color p-2">
-                      <div
-                        className="cursor-pointer"
-                        onClick={() => {
-                          navigate("/club");
-                        }}
-                      >
-                        Club
-                      </div>
-                    </li>
                   </ul>
                 )}
               </div>

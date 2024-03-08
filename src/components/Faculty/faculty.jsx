@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import AddFacultyDialog from "../admin/AddFacultyDialog.jsx";
 import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
@@ -14,7 +15,9 @@ import "react-toastify/dist/ReactToastify.css";
 const Modal = ({ selectedFaculty, onClose }) => {
   const [specs, setSpecs] = useState(false);
   const [publications, setPublications] = useState(false);
+  const [workshops, setWorkshops] = useState(false);
   const [projects, setProjects] = useState(false);
+  
 
   return (
     <div className="fixed top-0 left-0 w-full h-full bg-gray-900 bg-opacity-50 flex items-center justify-center overflow-auto">
@@ -105,6 +108,27 @@ const Modal = ({ selectedFaculty, onClose }) => {
           <ul className="w-full text-xl  text-blue-600 bg-white border rounded-md">
             <li
               className="flex items-center justify-between w-full px-4 py-3 border-b border-gray-300  cursor-pointer rounded-md"
+              onClick={() => setWorkshops(!workshops)}
+            >
+              <span>Workshops</span>
+              <FontAwesomeIcon
+                icon={workshops ? faChevronUp : faChevronDown}
+                className="cursor-pointer"
+              />
+            </li>
+            {workshops && (
+              <li className="w-full px-4 py-3 border-b border-gray-300 text-black text-base rounded-md">
+                {selectedFaculty.workshops.map((item, index) => (
+                  <p className="pl-2 pt-3 text-base" key={index}>
+                    [{index}] {item}
+                  </p>
+                ))}
+              </li>
+            )}
+          </ul>
+          <ul className="w-full text-xl  text-blue-600 bg-white border rounded-md">
+            <li
+              className="flex items-center justify-between w-full px-4 py-3 border-b border-gray-300  cursor-pointer rounded-md"
               onClick={() => setProjects(!projects)}
             >
               <span>Projects Guided</span>
@@ -139,6 +163,55 @@ const Faculty = () => {
   const [openEditModal, setOpenEditModal] = useState(false);
   const [editedData, setEditedData] = useState({});
   const [isFaculty, setIsFaculty] = useState(false);
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
+
+  
+
+  const [formData, setFormData] = useState({
+    faculty_id: "",
+    faculyName:"",
+    title: "",
+    issn: "",
+    journal: "",
+    year_of_publication: "",
+    citation:"",
+    
+  });
+
+  const [formData1, setFormData1] = useState({
+    faculty_id: "",
+    facultyName:"",
+    title: "",
+    startDate:"",
+    endDate:"",
+    organizedBy: "",
+    scope:"",
+    type:"",
+    
+  });
+
+
+
+
+  const handlePublicationsChange = (e) => {
+    // Update the corresponding field in the formData state
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value // Use the 'name' attribute of the input field as the key
+    });
+  };
+
+  const handleWorkshopsChange = (e) => {
+    // Update the corresponding field in the formData state
+    setFormData1({
+      ...formData1,
+      [e.target.name]: e.target.value // Use the 'name' attribute of the input field as the key
+    });
+  };
+
+
+
+
 
   useEffect(() => {
     const userToken = localStorage.getItem("usertoken");
@@ -155,12 +228,20 @@ const Faculty = () => {
           // Set the student ID from the response
           console.log(response.data.UserID + " user id");
           setStudentId(response.data.UserID);
+          formData.faculty_id=response.data.UserID;
+
+         
+
+          formData1.faculty_id=response.data.UserID;
           axios
             .get(
               "http://localhost:9000/getFacultyByRollNo/" + response.data.UserID
             )
             .then((res) => {
               console.log(res.data);
+              formData.facultyName=res.data.FacultyData[0].firstName+" "+res.data.FacultyData[0].lastName;
+              formData1.facultyName=res.data.FacultyData[0].firstName+" "+res.data.FacultyData[0].lastName;
+              console.log(formData1.facultyName);
               setUserData(res.data.FacultyData[0]);
             });
         })
@@ -171,6 +252,72 @@ const Faculty = () => {
     }
   }, []);
 
+
+  const addPublications=(formData)=>{
+    console.log(formData.journal);
+    console.log(userData.publications);
+    userData.publications.push(formData.title);
+    axios.post("http://localhost:9000/addPublication", formData).then((res)=>{
+      toast.success("Publication Added successfully");
+      console.log(res);
+    });
+};
+
+
+
+const handleSubmit = (e) => {
+  e.preventDefault();
+
+  
+
+  // Call the onAddFaculty function with the form data
+  addPublications(formData);
+
+  // Clear form data after submission
+  setFormData({
+    faculty_id: "",
+    facultyName:"",
+    title: "",
+    issn: "",
+    journal: "",
+    year_of_publication: "",
+    citation:"",
+  });
+};
+
+const addWorkshops=(formData)=>{
+  
+  userData.workshops.push(formData.title);
+  console.log(formData.title);
+  axios.post("http://localhost:9000/addWorkshop", formData).then((res)=>{
+    toast.success("Workshop Added successfully");
+    console.log(res);
+  });
+};
+
+
+const handleSubmit1= (e) => {
+  e.preventDefault();
+
+  
+
+  // Call the onAddFaculty function with the form data
+  addWorkshops(formData1);
+
+  // Clear form data after submission
+  setFormData1({
+    faculty_id: "",
+    facultyName:"",
+    title: "",
+    startDate:"",
+    endDate:"",
+    organizedBy: "",
+    scope:"",
+    type:"",
+    
+  });
+
+};
   useEffect(() => {
     axios
       .get("http://localhost:9000/getFaculty")
@@ -274,6 +421,7 @@ const Faculty = () => {
     });
   };
 
+  
   return (
     <>
       <div className="flex flex-wrap justify-center items-center m-2 ">
@@ -316,7 +464,9 @@ const Faculty = () => {
             </div>
             <button
               className="px-4 py-2 bg-blue-500 text-white rounded-md focus:outline-none h-14"
-              onClick={() => setOpenEditModal(true)}
+              onClick={() => {
+                formData.faculty_id=userData.id
+                setOpenEditModal(true)}}
             >
               <FontAwesomeIcon icon={faEdit} className="mr-2" />
               Edit
@@ -333,7 +483,9 @@ const Faculty = () => {
                   onClick={onClose}
                 />
               </div>
+              
               <div className="p-5">
+              
                 <input
                   type="text"
                   name="firstName"
@@ -443,6 +595,7 @@ const Faculty = () => {
                   className="px-4 py-2 bg-green-500 text-white rounded-md focus:outline-none"
                   onClick={() => {
                     const newPublications = userData.publications;
+                    setIsDialogOpen(true);
                     newPublications.push("");
                     setEditedData({
                       ...editedData,
@@ -452,39 +605,182 @@ const Faculty = () => {
                 >
                   Add Publication
                 </button>
-                {userData.publications.map((item, index) => (
-                  <div key={index} className="flex items-center mb-2">
+                
+                  <form onSubmit={handleSubmit}>
+                  <div>
+                    <label htmlFor="title">Title</label>
                     <input
-                      type="text"
-                      name="publications"
-                      className="border border-gray-300 rounded-md px-4 py-2 w-full mb-2"
-                      placeholder="Publications"
-                      value={item}
-                      onChange={(e) => {
-                        const newPublications = userData.publications;
-                        newPublications[index] = e.target.value;
-                        setEditedData({
-                          ...editedData,
-                          publications: newPublications,
-                        });
-                      }}
-                      required
+                        type="text"
+                        name="title"
+                        className="border border-gray-300 rounded-md px-4 py-2 w-full mb-2"
+                        placeholder="Title"
+                        value={formData.title}
+                        onChange={handlePublicationsChange}
+                        required
                     />
-                    <button
-                      className="px-4 py-2 bg-red-500 text-white rounded-md ml-2 focus:outline-none"
-                      onClick={() => {
-                        const newPublications = userData.publications;
-                        newPublications.splice(index, 1);
-                        setEditedData({
-                          ...editedData,
-                          publications: newPublications,
-                        });
-                      }}
-                    >
-                      Delete
-                    </button>
+                    <label htmlFor="issn">ISSN Number</label>
+                    <input
+                        type="text"
+                        name="issn"
+                        className="border border-gray-300 rounded-md px-4 py-2 w-full mb-2"
+                        placeholder="ISSN "
+                        value={formData.issn}
+                        onChange={handlePublicationsChange}
+                        required
+                    />
+                    <label htmlFor="journal">Journal</label>
+                    <select
+                        type="text"
+                        name="journal"
+                        className="border border-gray-300 rounded-md px-4 py-2 w-full mb-2"
+                        
+                        value={formData.journal}
+                        onChange={handlePublicationsChange}
+                        required
+                      >
+                        <option value="">Select Type</option>
+                        <option value="SCI">SCI</option>
+                        <option value="SCIE">SCIE</option>
+                        <option value="Scopus">Scopus</option>
+                        <option value="IEEE Explore">IEEE Explore</option>
+                    </select>
+                    
+                    <label htmlFor="indexing">Indexing</label>
+                    <input
+                        type="text"
+                        name="indexing"
+                        className="border border-gray-300 rounded-md px-4 py-2 w-full mb-2"
+                        placeholder="Indexing"
+                        value={formData.indexing}
+                        onChange={handlePublicationsChange}
+                        required
+                      />
+                    <label htmlFor="year_of_publication">Year of Publication</label>
+                    <input
+                        type="date"
+                        name="year_of_publication"
+                        className="border border-gray-300 rounded-md px-4 py-2 w-full mb-2"
+                        placeholder="Year of Publication"
+                        value={formData.year_of_publication}
+                        onChange={handlePublicationsChange}
+                        required
+                      />
+                    <label htmlFor="year">Citation</label>
+                    <input
+                        type="text"
+                        name="citation"
+                        className="border border-gray-300 rounded-md px-4 py-2 w-full mb-2"
+                        placeholder="Citation"
+                        value={formData.citation}
+                        onChange={handlePublicationsChange}
+                        required
+                      />
+                      <div class="flex flex-row items-center">
+                        <button
+                        className="px-4 py-2 bg-green-500 text-white rounded-md ml-2 focus:outline-none" type="submit">
+                        Add
+                        </button>
+                        <button
+                          className="px-4 py-2 bg-red-500 text-white rounded-md ml-2 focus:outline-none"
+                        >
+                          Delete
+                        </button>
+                      
+                    
+                    </div>
+                    
                   </div>
-                ))}
+                </form>
+
+                <form onSubmit={handleSubmit1}>
+                  <div>
+                    <label htmlFor="title">Title</label>
+                    <input
+                        type="text"
+                        name="title"
+                        className="border border-gray-300 rounded-md px-4 py-2 w-full mb-2"
+                        placeholder="Title"
+                        value={formData1.title}
+                        onChange={handleWorkshopsChange}
+                        required
+                    />
+                    <label htmlFor="startDate">Start Date</label>
+                    <input
+                        type="date"
+                        name="startDate"
+                        className="border border-gray-300 rounded-md px-4 py-2 w-full mb-2"
+                        placeholder="Start Date"
+                        value={formData1.startDate}
+                        onChange={handleWorkshopsChange}
+                        required
+                    />
+                    <label htmlFor="endDate">End Date</label>
+                    <input
+                        type="date"
+                        name="endDate"
+                        className="border border-gray-300 rounded-md px-4 py-2 w-full mb-2"
+                        placeholder="End Date"
+                        value={formData1.endDate}
+                        onChange={handleWorkshopsChange}
+                        required
+                    />
+                    <label htmlFor="organizedBy">Organized By</label>
+                      <input
+                        type="text"
+                        name="organizedBy"
+                        className="border border-gray-300 rounded-md px-4 py-2 w-full mb-2"
+                        placeholder="Organized by"
+                        value={formData1.organizedBy}
+                        onChange={handleWorkshopsChange}
+                      />
+                    
+                    <label htmlFor="scope">Scope</label>
+                    <select
+                        
+                        name="scope"
+                        className="border border-gray-300 rounded-md px-4 py-2 w-full mb-2"
+                        value={formData1.scope}
+                        onChange={handleWorkshopsChange}
+                        required
+                      >
+                        <option value="">Select Scope</option>
+                        <option value="National">National</option>
+                        <option value="International">International</option>
+                    </select>
+
+                    <label htmlFor="type">Type</label>
+                    <select
+                        type="text"
+                        name="type"
+                        className="border border-gray-300 rounded-md px-4 py-2 w-full mb-2"
+                        
+                        value={formData1.type}
+                        onChange={handleWorkshopsChange}
+                        required
+                      >
+                        <option value="">Select Type</option>
+                        <option value="FDP">FDP</option>
+                        <option value="Conference">Conference</option>
+                        <option value="SDP">SDP</option>
+                        <option value="Webinar">Webinar</option>
+                    </select>
+                    
+                      <div class="flex flex-row items-center">
+                        <button
+                        className="px-4 py-2 bg-green-500 text-white rounded-md ml-2 focus:outline-none" type="submit">
+                        Add
+                        </button>
+                        <button
+                          className="px-4 py-2 bg-red-500 text-white rounded-md ml-2 focus:outline-none"
+                        >
+                          Delete
+                        </button>
+                      
+                    
+                    </div>
+                    
+                  </div>
+                </form>
 
                 <div className="flex justify-center mt-4">
                   <button
