@@ -72,7 +72,7 @@ const LoginForm = ({ onClose }) => {
   return (
     <>
       
-      <div className="fixed inset-0 flex justify-center items-center bg-black bg-opacity-50 h-screen">
+      <div className="fixed inset-0 flex justify-center items-center bg-black bg-opacity-50 h-full">
         <div className="w-72 p-6 bg-white rounded-lg shadow-md login-form">
           <button
             onClick={onClose}

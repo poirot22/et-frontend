@@ -7,12 +7,18 @@ import {
   FaBars,
   FaTimes,
   FaEye,
+  FaBug,
 } from "react-icons/fa";
+import { faUserCheck, faUserPlus } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
 import AddFacultyDialog from "./AddFacultyDialog";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import AttendanceComponent from "./Attandance";
+import Adduser from "./Adduser";
+import Events from "./Events";
+import Bugs from "./Bugs";
 
 const Adminportal = ({ isAccessedByAdmin }) => {
   const [isSecure, setIsSecure] = useState(false);
@@ -27,6 +33,9 @@ const Adminportal = ({ isAccessedByAdmin }) => {
   const [isDialogOpen, setDialogOpen] = useState(false);
   const [selectedFaculty, setSelectedFaculty] = useState(null);
   const [isSaveEnabled, setSaveEnabled] = useState(false);
+  const [attandance, setAttandance] = useState(false);
+  const [users, setUsers] = useState(false);
+  const [openbugs, setOpenbugs] = useState(false);
 
   useEffect(() => {
     axios.get("http://localhost:9000/getFaculty").then((res) => {
@@ -81,7 +90,7 @@ const Adminportal = ({ isAccessedByAdmin }) => {
 
   const handleAddFaculty = (formData) => {
     axios.post("http://localhost:9000/addFaculty", formData).then((res) => {
-      toast.success('Faculty added successfully');
+      toast.success("Faculty added successfully");
       console.log(res);
       setFaculties((prevFaculties) => [...prevFaculties, formData]);
     });
@@ -126,7 +135,7 @@ const Adminportal = ({ isAccessedByAdmin }) => {
 
   const handleLogout = () => {
     // Remove token from local storage and redirect to login page
-    toast.success('Logged out successfully');
+    toast.success("Logged out successfully");
     localStorage.removeItem("admin");
     window.location.href = "/admin";
   };
@@ -135,7 +144,7 @@ const Adminportal = ({ isAccessedByAdmin }) => {
     <div>
       {isSecure ? (
         <>
-          <div className="flex flex-col lg:flex-row lg:justify-between">
+          <div className="flex flex-col lg:flex-row lg:justify-between min-h-screen overflow-hidden">
             <div className="w-full lg:w-1/5 bg-gray-100">
               <div className="flex justify-between items-center p-4 lg:hidden">
                 <div>
@@ -167,40 +176,94 @@ const Adminportal = ({ isAccessedByAdmin }) => {
                   isOptionsVisible ? "" : "hidden lg:block"
                 }`}
               >
-              <div className="h-screen">
-                <div className=" justify-center items-center hidden  lg:block">
-                  <img src={cvr} alt="cvr logo" className="w-14 h-14" />
-                  <div className="text-xl font-semibold">ET-Department</div>
-                </div>
+                <div className="h-screen space-y-4">
+                  <div className=" justify-center items-center hidden  lg:block">
+                    <div className="flex justify-center">
+                      <img src={cvr} alt="cvr logo" className="w-14 h-14" />
+                    </div>
+                    <div className="text-xl font-semibold">ET-Department</div>
+                  </div>
 
-                <div
-                  className={`flex mt-10 pb-5 items-center cursor-pointer ${
-                    faculty ? "text-blue-500 font-semibold" : ""
-                  }`}
-                  onClick={() => {
-                    setSearchQuery("");
-                    setFaculty(true);
-                    setEvents(false);
-                    setFilteredFaculties(faculties);
-                  }}
-                >
-                  <FaUser className="mr-2" />
-                  <span>Faculty</span>
-                </div>
-                <div
-                  className={`flex items-center cursor-pointer ${
-                    events ? "text-blue-500 font-semibold" : ""
-                  }`}
-                  onClick={() => {
-                    setEvents(true);
-                    setFaculty(false);
-                  }}
-                >
-                  <FaCalendarAlt className="mr-2" />
-                  <span>Events</span>
+                  <div
+                    className={`flex mt-10  items-center cursor-pointer ${
+                      faculty ? "text-blue-500 font-semibold" : ""
+                    }`}
+                    onClick={() => {
+                      setSearchQuery("");
+                      setFaculty(true);
+                      setEvents(false);
+                      setFilteredFaculties(faculties);
+                      setAttandance(false);
+                      setUsers(false);
+                      setOpenbugs(false);
+                    }}
+                  >
+                    <FaUser className="mr-2" />
+                    <span>Faculty</span>
+                  </div>
+                  <div
+                    className={`flex items-center cursor-pointer ${
+                      events ? "text-blue-500 font-semibold" : ""
+                    }`}
+                    onClick={() => {
+                      setEvents(true);
+                      setFaculty(false);
+                      setAttandance(false);
+                      setUsers(false);
+                      setOpenbugs(false);
+                    }}
+                  >
+                    <FaCalendarAlt className="mr-2" />
+                    <span>Events</span>
+                  </div>
+
+                  <div
+                    className={`flex items-center cursor-pointer ${
+                      attandance ? "text-blue-500 font-semibold" : ""
+                    }`}
+                    onClick={() => {
+                      setAttandance(true);
+                      setFaculty(false);
+                      setEvents(false);
+                      setUsers(false);
+                      setOpenbugs(false);
+                    }}
+                  >
+                    <FontAwesomeIcon icon={faUserCheck} className="mr-2" />
+                    <span>Attendance</span>
+                  </div>
+                  <div
+                    className={`flex items-center cursor-pointer ${
+                      users ? "text-blue-500 font-semibold" : ""
+                    }`}
+                    onClick={() => {
+                      setUsers(true);
+                      setFaculty(false);
+                      setEvents(false);
+                      setAttandance(false);
+                      setOpenbugs(false);
+                    }}
+                  >
+                    <FontAwesomeIcon icon={faUserPlus} className="mr-2" />
+                    <span>Users</span>
+                  </div>
+                  <div
+                    className={`flex items-center cursor-pointer ${
+                      openbugs ? "text-blue-500 font-semibold" : ""
+                    }`}
+                    onClick={() => {
+                      setOpenbugs(true);
+                      setFaculty(false);
+                      setEvents(false);
+                      setAttandance(false);
+                      setUsers(false);
+                    }}
+                  >
+                    <FaBug className="mr-2" />
+                    <span>Bugs</span>
+                  </div>
                 </div>
               </div>
-            </div>
             </div>
             <div className="w-full lg:w-4/5 flex flex-col">
               <div className="flex justify-center items-center">
@@ -245,7 +308,6 @@ const Adminportal = ({ isAccessedByAdmin }) => {
                           <option value="Assistant Professor">
                             Assistant Professor
                           </option>
-                          
                         </select>
                         <select
                           value={branchFilter}
@@ -253,12 +315,14 @@ const Adminportal = ({ isAccessedByAdmin }) => {
                           className="border border-gray-300 rounded-md p-2 mr-3 h-full lg:mr-3"
                         >
                           <option value="">Select Branch</option>
-                          <option value="CSIT">
-                            CSIT
-                          </option>
+                          <option value="CSIT">CSIT</option>
                           <option value="CSE(AI & ML)">CSE(AI & ML)</option>
-                          <option value="CSE(Cyber Security)">CSE(Cyber Security)</option>
-                          <option value="CSE(Data Science)">CSE(Data Science)</option>
+                          <option value="CSE(Cyber Security)">
+                            CSE(Cyber Security)
+                          </option>
+                          <option value="CSE(Data Science)">
+                            CSE(Data Science)
+                          </option>
                         </select>
                         <button
                           onClick={() => setDialogOpen(true)}
@@ -352,9 +416,23 @@ const Adminportal = ({ isAccessedByAdmin }) => {
                 )}
                 {events && (
                   <div>
-                    {/* Events content */}
-                    Events Content
+                    <Events />
                   </div>
+                )}
+                {attandance && (
+                  <>
+                    <AttendanceComponent />
+                  </>
+                )}
+                {users && (
+                  <>
+                    <Adduser />
+                  </>
+                )}
+                {openbugs && (
+                  <>
+                    <Bugs />
+                  </>
                 )}
               </div>
             </div>
@@ -431,99 +509,93 @@ const Adminportal = ({ isAccessedByAdmin }) => {
                             />
                           </div>
                           <div className="flex flex-col">
-                            <label htmlFor="education" className="text-gray-600">
-                              Joining Date
+                            <label className="text-gray-600">Gender:</label>
+                            <input
+                              type="text"
+                              name="gender"
+                              value={selectedFaculty.gender}
+                              onChange={handleInputChange}
+                              className="border rounded-md p-1 mt-1"
+                            />
+                          </div>
+                          <div className="flex flex-col">
+                            <label className="text-gray-600">
+                              Date of Birth:
                             </label>
                             <input
                               type="text"
-                              id="education"
-                              name="education"
-                              value={selectedFaculty.education}
+                              name="dob"
+                              value={selectedFaculty.dob}
                               onChange={handleInputChange}
                               className="border rounded-md p-1 mt-1"
                             />
                           </div>
                           <div className="flex flex-col">
-                            <label htmlFor="specialization" className="text-gray-600">
-                              Specialization
-                            </label>
+                            <label className="text-gray-600">Phone:</label>
                             <input
                               type="text"
-                              id="specialization"
-                              name="specialization"
-                              value={selectedFaculty.specialization}
+                              name="phone"
+                              value={selectedFaculty.phone}
                               onChange={handleInputChange}
                               className="border rounded-md p-1 mt-1"
                             />
                           </div>
                           <div className="flex flex-col">
-                            <label htmlFor="joining_date" className="text-gray-600">
-                              Joining Date
-                            </label>
-                            <input
-                              type="date"
-                              id="joining_date"
-                              name="joining_date"
-                              value={selectedFaculty.joining_date.slice(0,10)}
+                            <label className="text-gray-600">Address:</label>
+                            <textarea
+                              name="address"
+                              value={selectedFaculty.address}
                               onChange={handleInputChange}
                               className="border rounded-md p-1 mt-1"
-                            />
+                            ></textarea>
                           </div>
-                          <div className="flex flex-col">
-                            <label htmlFor="projects_guided" className="text-gray-600">
-                            Projects guided
-                            </label>
-                            <input
-                              type="number"
-                              id="projects_guided"
-                              name="projects_guided"
-                              value={selectedFaculty.projects_guided}
-                              onChange={handleInputChange}
-                              className="border rounded-md p-1 mt-1"
-                            />
-                          </div>
-                          
                         </div>
                       </div>
                     </div>
                   </div>
                   <div className="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
-                    <button
-                      onClick={handleSaveChanges}
-                      disabled={!isSaveEnabled}
-                      className={`w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-blue-500 text-base font-medium text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 sm:ml-3 sm:w-auto sm:text-sm ${
-                        isSaveEnabled ? "" : "opacity-50 cursor-not-allowed"
-                      }`}
-                    >
-                      Save Changes
-                    </button>
-                    <button
-                      onClick={() => {
-                        setDialogOpen(false);
-                        setSelectedFaculty(null);
-                        setSaveEnabled(false); // Reset save button state
-                      }}
-                      className="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm"
-                    >
-                      Cancel
-                    </button>
+                    <span className="flex w-full rounded-md shadow-sm sm:ml-3 sm:w-auto">
+                      <button
+                        onClick={handleSaveChanges}
+                        type="button"
+                        className={`inline-flex justify-center w-full rounded-md border border-transparent px-4 py-2 bg-blue-600 text-base leading-6 font-medium text-white shadow-sm hover:bg-blue-500 focus:outline-none focus:border-blue-700 focus:shadow-outline-blue transition ease-in-out duration-150 sm:text-sm sm:leading-5 ${
+                          isSaveEnabled ? "" : "opacity-50 cursor-not-allowed"
+                        }`}
+                        disabled={!isSaveEnabled}
+                      >
+                        Save
+                      </button>
+                    </span>
+                    <span className="mt-3 flex w-full rounded-md shadow-sm sm:mt-0 sm:w-auto">
+                      <button
+                        onClick={() => setDialogOpen(false)}
+                        type="button"
+                        className="inline-flex justify-center w-full rounded-md border border-gray-300 px-4 py-2 bg-white text-base leading-6 font-medium text-gray-700 shadow-sm hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue transition ease-in-out duration-150 sm:text-sm sm:leading-5"
+                      >
+                        Cancel
+                      </button>
+                    </span>
                   </div>
                 </div>
               </div>
             </div>
           )}
-          <AddFacultyDialog
-            isOpen={isDialogOpen}
-            onClose={() => {
-              setDialogOpen(false);
-              setSelectedFaculty(null); // Reset selected faculty on dialog close
-            }}
-            onAddFaculty={handleAddFaculty}
-          />
+          {isDialogOpen && (
+            <AddFacultyDialog
+              isOpen={isDialogOpen}
+              onClose={() => setDialogOpen(false)}
+              onSave={handleAddFaculty}
+              faculty={selectedFaculty}
+            />
+          )}
         </>
       ) : (
-        <p>You do not have permission to access this page.</p>
-        // redirect to login page
+        <div className="flex items-center justify-center min-h-screen">
+          <div className="text-center">
+            <h1 className="text-3xl font-semibold mb-4">Unauthorized Access</h1>
+            <p>Redirecting to login page...</p>
+          </div>
+        </div>
       )}
     </div>
   );
