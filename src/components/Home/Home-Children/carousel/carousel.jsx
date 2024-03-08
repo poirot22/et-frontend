@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import img1 from "../../../../assets/Faculty.jpg";
 import img4 from "../../../../assets/FestFinal.JPG";
 import cover2 from "../../../../assets/Cover4.JPG";
-import cover from "../../../../assets/cover2.jpg";
+import cover from "../../../../assets/cover2.JPG";
 import "./carousel.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
