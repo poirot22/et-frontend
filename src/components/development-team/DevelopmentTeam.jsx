@@ -5,6 +5,7 @@ import { useInView } from "react-intersection-observer";
 import cvr from "../../assets/cvr.png";
 import shivaram from "../../assets/shivaram.jpg";
 import sainikhil from "../../assets/sainikhil.jpg";
+import bharghav from "../../assets/bharghav.jpg";
 
 const DevelopmentTeam = () => {
   const teamMembers = [
@@ -37,9 +38,9 @@ const DevelopmentTeam = () => {
     },
     {
       id: 3,
-      name: "Guide Name",
-      role: "Guide",
-      image: "https://placekitten.com/200/202",
+      name: "Mr. S. Bharghav",
+      role: "Assistant Professor & Guide (CSIT)",
+      image: bharghav,
       linkedin: "https://www.linkedin.com/in/guidename",
       github: "https://github.com/guidename",
       instagram: "https://www.instagram.com/guidename/",
@@ -47,8 +48,8 @@ const DevelopmentTeam = () => {
     
   ];
 
-  const guides = teamMembers.filter((member) => member.role === "Guide");
-  const students = teamMembers.filter((member) => member.role !== "Guide");
+  const guides = teamMembers.filter((member) => member.role === "Assistant Professor & Guide (CSIT)");
+  const students = teamMembers.filter((member) => member.role !== "Assistant Professor & Guide (CSIT)");
 
   // Animation for guides
   const fadeInGuides = useSpring({
@@ -77,7 +78,7 @@ const DevelopmentTeam = () => {
       </h1>
 
       <div className="mb-8">
-        <h2 className="text-2xl font-bold mb-4 text-gray-800">Guides</h2>
+        <h2 className="text-2xl font-bold mb-4 text-gray-800">Faculty Guide</h2>
         <animated.div style={fadeInGuides} className="flex justify-center items-center flex-wrap">
           {guides.map((member) => (
             <animated.div
@@ -104,8 +105,8 @@ const DevelopmentTeam = () => {
                 {member.name}
               </h2>
               <p className="text-gray-600 mb-2">{member.role}</p>
-              <p className="text-gray-600 mb-2">{member.id}</p>
-              <div className="flex justify-center space-x-4">
+              {/* <p className="text-gray-600 mb-2">{member.id}</p> */}
+              <div className="flex justify-center space-x-4 m-3">
                 <a
                   href={member.linkedin}
                   target="_blank"
@@ -165,7 +166,7 @@ const DevelopmentTeam = () => {
               </h2>
               <p className="text-gray-600 mb-2">{member.role}</p>
               <p className="text-gray-600 mb-2">{member.id}</p>
-              <div className="flex justify-center space-x-4">
+              <div className="flex justify-center space-x-4 m-3">
                 <a
                   href={member.linkedin}
                   target="_blank"

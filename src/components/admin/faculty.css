@@ -1,5 +1,5 @@
 .scrollbar::-webkit-scrollbar {
-    width: 6px;
+    width: 12px;
   }
 
   .scrollbar::-webkit-scrollbar-thumb {
