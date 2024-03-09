@@ -26,7 +26,7 @@ export default function Forum() {
         axios.get("http://localhost:9000/getStudentByRollNo/"+response.data.UserID).then((res)=>{
           
           setUserData(res.data.Student_Data);
-        })
+        });
       })
       .catch(error => {
         console.error("Error verifying user:", error);
