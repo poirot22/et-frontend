@@ -217,8 +217,9 @@ export default function Navbar() {
           >
             <a>Infrastructure</a>
           </li>
-          <li className="mr-8 m-2">
-            <a href="/">Research</a>
+          <li className="mr-8 m-2"
+           onClick={() => navigate("/Research")}>
+            <a >Research</a>
           </li>
           <li
             className="mr-8 m-2 relative flex"
@@ -253,10 +254,6 @@ export default function Navbar() {
                 {isHovered1 && (
                   <ul className="">
                     <li className="animate-color p-2">
-                      <div className="cursor-pointer">Sports</div>
-                    </li>
-                    <hr />
-                    <li className="animate-color p-2">
                       <div
                         className="cursor-pointer"
                         onClick={() => {
@@ -266,6 +263,15 @@ export default function Navbar() {
                         Club
                       </div>
                     </li>
+                    <li
+                      className="animate-color p-2"
+                      onClick={() => {
+                        navigate("/Activities");
+                      }}
+                    >
+                      <div className="cursor-pointer">Activities</div>
+                    </li>
+                    <hr />
                   </ul>
                 )}
               </div>
@@ -277,7 +283,7 @@ export default function Navbar() {
               navigate("/forum");
             }}
           >
-            <a>Forum</a>
+            <a>Action Center</a>
           </li>
           <li
             className="mr-8 m-2 relative flex"
@@ -403,20 +409,22 @@ export default function Navbar() {
                       <div className="cursor-pointer">Cyber Security</div>
                     </li>
                     <hr />
-                    <li className="m-2"
+                    <li
+                      className="m-2"
                       onClick={() => {
                         navigate("/csit");
                         setMenuOpen(false);
-                      } }
+                      }}
                     >
                       <div className="cursor-pointer">CSIT</div>
                     </li>
                     <hr />
-                    <li className="m-2"
+                    <li
+                      className="m-2"
                       onClick={() => {
                         navigate("/ds");
                         setMenuOpen(false);
-                      } }
+                      }}
                     >
                       <div className="cursor-pointer">Data Science</div>
                     </li>
@@ -452,10 +460,6 @@ export default function Navbar() {
               </div>
               {Hapenings && (
                 <ul className="animate-fade-in">
-                  <li className="m-2">
-                    <div className="cursor-pointer">Sports</div>
-                  </li>
-                  <hr />
                   <li
                     className="m-2"
                     onClick={() => {
@@ -465,6 +469,16 @@ export default function Navbar() {
                   >
                     <div className="cursor-pointer">Club</div>
                   </li>
+                  <li
+                    className="m-2"
+                    onClick={() => {
+                      navigate("/Activities");
+                      setMenuOpen(false);
+                    }}
+                  >
+                    <div className="cursor-pointer">Activities</div>
+                  </li>
+                  <hr />
                 </ul>
               )}
             </li>
@@ -476,7 +490,7 @@ export default function Navbar() {
                 setMenuOpen(false);
               }}
             >
-              Forum
+              Action Center
             </li>
             <hr />
             <li className="mr-8 m-2 relative">

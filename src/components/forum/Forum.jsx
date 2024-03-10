@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faComment, faUser, faCalendarCheck } from "@fortawesome/free-solid-svg-icons";
 import ProfileContent from "./ProfileContent";
 import ForumContent from "./ForumContent";
+import AttendanceContent from "./AttendanceContent";
 
 export default function Forum() {
   const [isLoggedIn, setIsLoggedIn] = useState(false); // State to manage user login status
@@ -25,7 +26,7 @@ export default function Forum() {
         axios.get("http://localhost:9000/getStudentByRollNo/"+response.data.UserID).then((res)=>{
           
           setUserData(res.data.Student_Data);
-        })
+        });
       })
       .catch(error => {
         console.error("Error verifying user:", error);
@@ -97,17 +98,3 @@ function Tabs({ setSelectedContent, selectedContent }) {
 
 
 
-function AttendanceContent({ userData }) {
-  return (
-    <div>
-      <h2 className="text-xl font-semibold mb-2">Attendance</h2>
-      <p>This is the attendance content.</p>
-      {userData && (
-        <div>
-          <p>User Name: {userData.firstName} {userData.lastName}</p>
-          {/* Add more user data fields as needed */}
-        </div>
-      )}
-    </div>
-  );
-}

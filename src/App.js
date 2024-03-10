@@ -22,6 +22,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import Bugreport from './components/Bugreport.jsx';
 import Activites from './components/Home/Home-Children/Activites.jsx';
 import Outcomes from './components/Home/Home-Children/Outcomes.jsx';
+import Research from './components/Home/Home-Children/research.jsx';
 
 function App() {
   const location = useLocation();
@@ -104,6 +105,7 @@ function App() {
         <Route path="/forum" element={<Forum />} />
         <Route path="/Activities" element={<Activites/>}/>
         <Route path="/Outcomes" element={<Outcomes/>}/>
+        <Route path="/Research" element={<Research/>}/>
         <Route
           path="/adminPortal"
           element={<Adminportal isAccessedByAdmin={true} />}

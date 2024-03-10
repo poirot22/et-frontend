@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { FaTimes } from "react-icons/fa";
 import "./faculty.css";
 
-const AddFacultyDialog = ({ isOpen, onClose, onAddFaculty }) => {
+const AddFacultyDialog = ({ isOpen, onClose, onSave }) => {
   const [formData, setFormData] = useState({
     id: "",
     firstName: "",
@@ -45,7 +45,7 @@ const AddFacultyDialog = ({ isOpen, onClose, onAddFaculty }) => {
     }
 
     // Call the onAddFaculty function with the form data
-    onAddFaculty(formData);
+    onSave(formData);
 
     // Clear form data after submission
     setFormData({

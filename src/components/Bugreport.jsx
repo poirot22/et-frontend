@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import bugreportImage from "../assets/bugreport.png";
 import axios from "axios";
+import { toast } from "react-toastify";
 
 export default function Bugreport() {
   const [bugDescription, setBugDescription] = useState("");
@@ -38,11 +39,17 @@ export default function Bugreport() {
     e.preventDefault();
 
     const bugReportData = {
-      bugDescription: bugDescription,
-      userId: studentId,
+      bug: bugDescription,
+      id: studentId,
     };
 
-    console.log("Bug report data:", bugReportData);
+    axios.post("http://localhost:9000/reportBug", bugReportData).then((res) => {
+      if(res.data.status === 201) {
+        toast.success("Bug reported successfully!");
+      } else {
+        toast.error("Error reporting bug. Please try again later.");
+      }
+    });
 
     setBugDescription("");
   };
