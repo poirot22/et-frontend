@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import * as XLSX from "xlsx";
 import axios from "axios";
 import { toast } from "react-toastify";
+import emailjs from "emailjs-com";
 
 export default function AttendanceComponent() {
   const [excelData, setExcelData] = useState(null);
@@ -36,7 +37,7 @@ export default function AttendanceComponent() {
       return;
     }
     axios
-      .post("http://localhost:9000/addAttandance", excelData)
+      .post("http://localhost:9000/addAttendance", excelData)
       .then((res) => {
         console.log(res);
         if (res.data.notSent.length > 0) {
@@ -44,10 +45,45 @@ export default function AttendanceComponent() {
           setNotSentData(res.data.notSent);
         }
         toast.success("Attendance data added successfully");
+
+        // Check attendance and send emails if attendance is less than 75%
+        excelData.forEach((row) => {
+          const { id, attendance } = row; // Assuming there's an 'attendance' field in your data
+          if (attendance < 75 && notSentData.includes(id)===false){
+            // Send email using EmailJS
+            sendEmail(
+              `${id}@cvr.ac.in`,
+              "Attendance Reminder",
+              `Your attendance is below 75%. Please ensure attendance is maintained.`
+            );
+          }
+        });
       })
       .catch((err) => {
         console.log(err);
         toast.error("Failed to add attendance data");
+      });
+  };
+
+  const sendEmail = (toEmail, subject, message) => {
+    const templateParams = {
+      to_email: toEmail,
+      subject: subject,
+      message: message,
+    };
+
+    emailjs
+      .send(
+        "service_4h24m6f",
+        "template_rkm6ne3",
+        templateParams,
+        "2fjwtkkub4ypg6Z8x"
+      )
+      .then((response) => {
+        console.log("Email sent successfully:", response);
+      })
+      .catch((error) => {
+        console.error("Error sending email:", error);
       });
   };
 
