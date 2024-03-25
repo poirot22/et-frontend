@@ -17,6 +17,20 @@ const Modal = ({ selectedFaculty, onClose }) => {
   const [publications, setPublications] = useState(false);
   const [workshops, setWorkshops] = useState(false);
   const [projects, setProjects] = useState(false);
+  const [titles, setTitles]=[];
+
+  useEffect(()=>{
+    console.log(selectedFaculty.publications);
+    for(let publicationId of selectedFaculty.publications){
+      console.log(publicationId);
+      axios.get('http://localhost:9000/getPublicationByID/'+publicationId).then((res)=>{
+        console.log(res.data.publication);
+        
+        
+      });
+    }
+  },[]);
+ 
 
   return (
     <div className="fixed top-0 left-0 w-full h-full bg-gray-900 bg-opacity-50 flex items-center justify-center overflow-auto">
@@ -58,7 +72,7 @@ const Modal = ({ selectedFaculty, onClose }) => {
               </li>
               <li className="w-full px-4 py-3 border-b border-gray-300">
                 <b>Total Papers Published: </b>
-                {selectedFaculty.publications_number}
+                {selectedFaculty.publications.length}
               </li>
               <li className="w-full px-4 py-3 border-b border-gray-300">
                 <b>Email: </b>
@@ -94,15 +108,8 @@ const Modal = ({ selectedFaculty, onClose }) => {
                 className="cursor-pointer"
               />
             </li>
-            {publications && (
-              <li className="w-full px-4 py-3 border-b border-gray-300 text-black text-base rounded-md">
-                {selectedFaculty.publications.map((item, index) => (
-                  <p className="pl-2 pt-3 text-base" key={index}>
-                    [{index}] {item}
-                  </p>
-                ))}
-              </li>
-            )}
+           {/* publications */}
+
           </ul>
           <ul className="w-full text-xl  text-blue-600 bg-white border rounded-md">
             <li
@@ -632,7 +639,7 @@ const Faculty = () => {
                   Add Publication
                 </button> */}
                 <div>
-                  <form onSubmit={handleSubmit} className="bg-blue-50 p-4">
+                  <form onSubmit={handleSubmit} className="p-4">
                     <div className="flex justify-center">
                       <h1 className="font-bold text-3xl">
                         Publications Section
@@ -729,7 +736,7 @@ const Faculty = () => {
                       <div className="font-bold text-2xl pt-2 pb-2">
                         Your Publications :{" "}
                       </div>
-                      {userData.publications.map()}
+                      
                   </div>
                 </div>
                 <form onSubmit={handleSubmit1} className="bg-gray-100 p-4">

@@ -1,32 +1,36 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&family=Roboto:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato&family=Montserrat:wght@500&family=Open+Sans:wght@500');
 .grid1{
-height: 650px;
+height: 750px;
 }
 
-.Title{
-    font-family: "Lato-heavy", sans-serif;
-    font-size: 3em;
+.Title {
+    font-family: "Montserrat", sans-serif;
     line-height: 1.3;
-    right:15%;
-    left:15%;
     z-index: 10;
     text-align: center;
+    position: absolute;
+    bottom: 20%; /* Adjust this value as needed */
+    left: 50%;
+    display: block;
+    max-width: 90%;
+    transform: translateX(-50%);
 }
+
+
 
 
 
 .carousel-caption {
-    
-    right: 15%;
-    bottom: 20px;
-    left: 15%;
     z-index: 10;
     padding-top: 20px;
     padding-bottom: 20px;
     color: #fff;
     text-align: center;
+    position: absolute;
+    bottom: 10px; /* Adjust this value as needed */
+    left: 50%;
+    transform: translateX(-50%);
 }
-
 
 
 
