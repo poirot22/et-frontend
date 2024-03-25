@@ -86,7 +86,7 @@ export default function Navbar() {
 
   return (
     <>
-      <div className="flex justify-center ">
+      <div className="flex justify-center mb-2 ">
         <div
           className="flex justify-center items-center my mr-4 lg:hidden"
           onClick={openMenu}
@@ -104,10 +104,10 @@ export default function Navbar() {
             />
           )}
         </div>
-        <img src={cvr} alt="Logo" className="h-16 w-16 hidden md:block" />
+        <img src={cvr} alt="Logo" className="h-20 w-20 hidden md:block mr-5" />
         <div className="flex justify-center">
-          <p className="lg:text-4xl m-auto font-bold heading text-center text-2xl">
-            Department of Emerging Technologies
+          <p className="lg:text-3xl font-black m-auto heading text-center text-2xl">
+            DEPARTMENT OF EMERGING TECHNOLOGIES
           </p>
         </div>
       </div>
