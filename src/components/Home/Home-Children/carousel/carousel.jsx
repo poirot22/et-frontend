@@ -62,17 +62,19 @@ export default function Carousel() {
   const CarouselItem = ({ src, title, description }) => (
     <div className="relative w-full grid1">
       <img src={src} alt={title} className="w-full h-full object-cover" />
-      {title !== "SlideOne" && (
-        <div className="absolute inset-0  bg-black bg-opacity-50 flex flex-col justify-end items-center text-white p-10 pb-28">
-            <h1 className="Title mb-10">{title}</h1>
-            <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onClick={handleClick}>
-              Learn More
-            </button>
-        </div>
-      )}
+        {title !== "SlideOne" && (
+            <div className="absolute inset-0 bg-black bg-opacity-50 flex flex-col justify-end items-center text-white p-10 pb-28">
+                
+                  <h1 className="Title mb-10 text-xl lg:text-5xl">{title}</h1>
+                  <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onClick={handleClick}>
+                      Learn More
+                  </button>
+              
+            </div>
+        )}
       {
         title==="SlideOne" && (
-          <div className="absolute inset-0 bg-black bg-opacity-20 flex flex-col justify-end items-center text-white p-10 pb-28">
+          <div className="absolute flex flex-col justify-end items-center text-white p-10 pb-28">
          
         </div>
         )

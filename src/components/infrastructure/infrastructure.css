@@ -12,6 +12,17 @@
     font-family: 'Open Sans', sans-serif;
 }
 
+
+.carousel1 {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: auto;
+  }
+
+
+
 .lab-heading{
     font-weight: 600;
     font-size:28px;
