@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useLocation } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-toastify";
 
@@ -10,20 +10,24 @@ export default function Comment() {
   const [newComment, setNewComment] = useState("");
   const [isLoggedIn, setIsLoggedIn] = useState(false); // State to manage user login status
   const [user, setUser] = useState(null); // State to store the user data
-  const [userData, setUserData] = useState(null);
+  const location = useLocation();
 
   useEffect(() => {
     const token = localStorage.getItem("usertoken");
     if (token) {
       setIsLoggedIn(true);
-      //   get userData from url
-      const urlsearchparams = new URLSearchParams(window.location.search);
-      const userData = urlsearchparams.get("userData");
-      // remove first and last character from userData
-      const user = userData.slice(1, -1);
-      setUser(user);
+
+      const { userData } = location.state;
+
+      // Parse userData if it's a string
+      const parsedUserData =
+        typeof userData === "string" ? JSON.parse(userData) : userData;
+
+      // Now you can access parsedUserData properties and set the user state
+      console.log("User data:", parsedUserData);
+      setUser(parsedUserData);
     }
-  }, []);
+  }, [location.state]);
 
   useEffect(() => {
     axios
@@ -50,22 +54,30 @@ export default function Comment() {
   }, [postId]);
 
   const handleAddComment = async () => {
+    if (!isLoggedIn) {
+      toast.error("Please log in to add a comment.");
+      return;
+    }
+
     axios
-      .post("http://localhost:9000/addComment/" + postId, {
+      .post(`http://localhost:9000/addComment/${postId}`, {
         comment: newComment,
-        postedBy: user,
+        postedBy: user.id, // Assuming user object has a 'name' property
       })
       .then((res) => {
         // Update the state to include the new comment
-        console.log(res.data.Comment);
+        console.log(res.data.comment);
         toast.success("Comment added successfully!");
-        setCommentContent([...commentContent, res.data.Comment]);
+        setCommentContent([...commentContent, res.data.comment]);
+      })
+      .catch((err) => {
+        console.error("Error adding comment:", err);
+        toast.error("Failed to add comment.");
       });
     setNewComment("");
   };
 
   const handleDeleteComment = async (commentId) => {
-    // Delete comment functionality
     axios
       .delete(`http://localhost:9000/deleteComment/${commentId}`)
       .then((res) => {
@@ -74,14 +86,12 @@ export default function Comment() {
         setCommentContent(
           commentContent.filter((comment) => comment._id !== commentId)
         );
+      })
+      .catch((err) => {
+        console.error("Error deleting comment:", err);
+        toast.error("Failed to delete comment.");
       });
   };
-
-  const handleReply = async (commentId) => {
-    // Find the comment object with the matching commentId
-    
-  };
-  
 
   return (
     <div className="w-full min-h-screen p-4">
@@ -122,33 +132,28 @@ export default function Comment() {
           </div>
 
           {/* Comments */}
-          {commentContent.length === 0 ? (
-            <div className="w-full rounded-lg shadow-lg bg-white mt-8 p-6">
-              <p className="text-lg text-gray-700">No comments</p>
-            </div>
-          ) : (
+          {commentContent.length > 0 && (
             <div className="w-full rounded-lg shadow-lg bg-white mt-8 p-6">
               <h3 className="text-2xl font-bold mb-4">Comments</h3>
               <ul className="space-y-4">
                 {commentContent.map((comment) => (
                   <li
-                    key={comment._id}
+                    key={comment?._id} // Added null check for comment._id
                     className="flex justify-between items-center"
                   >
                     <div className="flex-1">
-                      <p className="text-gray-700">{comment.content}</p>
-                      <p className="text-gray-500 text-sm">
-                        Commented by: {comment.commentedBy}
-                      </p>
+                      {comment && comment.content && (
+                        <p className="text-gray-700 whitespace-pre-line">
+                          {comment.content}
+                        </p>
+                      )}
+                      {comment && comment.postedBy && (
+                        <p className="text-sm text-gray-500">
+                          Posted by: {comment.postedBy}
+                        </p>
+                      )}
                     </div>
                     <div className="flex space-x-3">
-                      <button
-                        onClick={() => handleReply(comment._id)}
-                        className="text-blue-500 hover:text-blue-600 focus:outline-none transition-colors duration-300 ease-in-out"
-                      >
-                        Reply
-                      </button>
-
                       <button
                         onClick={() => handleDeleteComment(comment._id)}
                         className="text-red-500 hover:text-red-600 focus:outline-none transition-colors duration-300 ease-in-out"
@@ -164,9 +169,7 @@ export default function Comment() {
         </>
       ) : (
         <div className="w-full min-h-screen flex items-center justify-center">
-          <p>
-            Please Login to view comments.
-          </p>
+          <p>Please Login to view comments.</p>
         </div>
       )}
     </div>

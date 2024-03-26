@@ -23,12 +23,14 @@ import Bugreport from './components/Bugreport.jsx';
 import Activites from './components/Home/Home-Children/Activites.jsx';
 import Outcomes from './components/Home/Home-Children/Outcomes.jsx';
 import Research from './components/Home/Home-Children/research.jsx';
+import { useNavigate } from 'react-router-dom';
 
 function App() {
   const location = useLocation();
   const [isLoggedIn, setIsLoggedIn] = useState(false); // State to manage user login status
   const [isLoginFormVisible, setLoginFormVisible] = useState(false); // State to manage login form visibility
   const [showLogoutConfirmation, setShowLogoutConfirmation] = useState(false); // State to manage logout confirmation dialog
+  const navigate = useNavigate();
 
   // Check if the current location is '/admin' or '/adminPortal'
   const isAdminPage = location.pathname === '/admin' || location.pathname === '/adminPortal';
@@ -69,7 +71,7 @@ function App() {
   return (
     <div style={{ zoom: '90%' }} > {/* Set default zoom to 90% */}
       <div className="confirmation-modal fixed inset-0 flex items-center justify-center bg-black bg-opacity-50" style={{ display: showLogoutConfirmation ? 'flex' : 'none' }}>
-        <div className="confirmation-content bg-white p-6 rounded-lg shadow-lg">
+        <div className="confirmation-content bg-white p-6 rounded-lg shadow-lg z-50">
           <p className="mb-4">Are you sure you want to logout?</p>
           <div className="flex justify-end">
             <button onClick={confirmLogout} className="mr-2 px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600">Yes</button>
@@ -112,6 +114,7 @@ function App() {
         />
         <Route path="/comment/:postId" element={<Comment  />} />
         <Route path="/bugreport" element={<Bugreport />} />
+        <Route path="*" element={<Home/>} />
       </Routes>
       {!isAdminPage && (
         <>

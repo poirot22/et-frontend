@@ -3,8 +3,10 @@ import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faComment, faTrash } from "@fortawesome/free-solid-svg-icons";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 export default function ForumContent({ userData }) {
+  const navigator = useNavigate();
   const [openCreatePost, setOpenCreatePost] = useState(false);
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
@@ -37,35 +39,37 @@ export default function ForumContent({ userData }) {
       toast.error("Title and content are required");
       return;
     }
-
+  
     // Create JSON object with title and content
     const postData = {
       title: title,
       content: content,
       postedBy: userData.id,
     };
-
+  
     try {
       const res = await axios.post("http://localhost:9000/addPost2", postData);
       // Ensure that the response contains the newly created post
       const newPost = res.data.post;
-
+  
       // Update the state to include the new post at the beginning (or your desired position)
       setPosts([newPost, ...posts]); // Adds at the beginning
       // Alternatively, use: setPosts([...posts, newPost]); // Adds at the end
-
+  
       console.log("New post created:", newPost);
+      
+      toast.success("Post created successfully");
+      setOpenCreatePost(false);
+  
+      // Reset title and content state values
+      setTitle(null);
+      setContent(null);
     } catch (err) {
       console.error("Error creating post:", err);
+      toast.error("Error creating post");
     }
-    toast.success("Post created successfully");
-    setOpenCreatePost(false);
-
-    // Reset title and content state values
-    setTitle("");
-    setContent("");
-    window.location.reload();
   };
+  
 
   const handleDeletePost = (id) => {
     setConfirmDeleteId(id);
@@ -98,8 +102,9 @@ export default function ForumContent({ userData }) {
 
   // Filter posts based on search query
   const filteredPosts = posts.filter((post) =>
-    post.title.toLowerCase().includes(searchQuery.toLowerCase())
-  );
+  post.title && post.title.toLowerCase().includes(searchQuery.toLowerCase())
+);
+
 
   // Pagination
   const indexOfLastPost = currentPage * postsPerPage;
@@ -197,13 +202,9 @@ export default function ForumContent({ userData }) {
                     <button
                       className="flex items-center px-4 py-2 bg-blue-500 text-white rounded-md focus:outline-none hover:bg-blue-600"
                       onClick={() => {
-                        const userDataQueryParam = encodeURIComponent(
-                          JSON.stringify(userData._id)
-                        );
-                        window.open(
-                          `/comment/${post._id}?userData=${userDataQueryParam}`,
-                          "_blank"
-                        );
+                        navigator(`/comment/${post._id}`, { state: { userData: JSON.stringify(userData) } });
+
+
                       }}
                     >
                       <FontAwesomeIcon icon={faComment} className="mr-2" />

@@ -171,6 +171,7 @@ const Faculty = () => {
   const [isFaculty, setIsFaculty] = useState(false);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
 
+
   const [formData, setFormData] = useState({
     faculty_id: "",
     faculyName: "",
@@ -232,6 +233,7 @@ const Faculty = () => {
             )
             .then((res) => {
               console.log(res.data);
+              if(res.data.FacultyData.length > 0){
               formData.facultyName =
                 res.data.FacultyData[0].firstName +
                 " " +
@@ -242,6 +244,7 @@ const Faculty = () => {
                 res.data.FacultyData[0].lastName;
               console.log(formData1.facultyName);
               setUserData(res.data.FacultyData[0]);
+              }
             });
         })
         .catch((error) => {
@@ -736,7 +739,7 @@ const Faculty = () => {
                       <div className="font-bold text-2xl pt-2 pb-2">
                         Your Publications :{" "}
                       </div>
-                      
+                      {/* {userData.publications.map()} */}
                   </div>
                 </div>
                 <form onSubmit={handleSubmit1} className="bg-gray-100 p-4">

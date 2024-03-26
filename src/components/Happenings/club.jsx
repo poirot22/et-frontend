@@ -146,7 +146,7 @@ const Club = () => {
           <h1 className="pl-4 text-3xl font-semibold heading-top">Events</h1>
         </div>
         <div className="mt-5">
-        <VerticalTimeline>
+        <VerticalTimeline className="-z-40">
              {eventsData.map((event, index) => (
               <VerticalTimelineElement
                 key={index}

@@ -354,7 +354,7 @@ export default function AIML() {
 
   return (
     <>
-      <div className="relative h-80 header">
+      <div className="relative h-80 header -z-40">
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{

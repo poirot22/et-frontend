@@ -41,10 +41,18 @@ const Adminportal = ({ isAccessedByAdmin }) => {
     axios.get("http://localhost:9000/getFaculty").then((res) => {
       setFaculties(res.data.details);
       setFilteredFaculties(res.data.details);
-
+  
       const token = localStorage.getItem("admin");
       if (token) {
         setIsSecure(true);
+        const tokenTimeout = setTimeout(() => {
+          // Remove token from localStorage after 1 hour
+          localStorage.removeItem("admin");
+          // Reload the page
+          window.location.reload();
+        }, 3600000); // 1 hour in milliseconds
+  
+        return () => clearTimeout(tokenTimeout);
       } else {
         // Redirect to login page
         setTimeout(() => {
@@ -53,6 +61,7 @@ const Adminportal = ({ isAccessedByAdmin }) => {
       }
     });
   }, []);
+  
 
   const handleDeleteFaculty = (facultyId) => {
     const confirmDelete = window.confirm("Are you sure you want to delete?");
