@@ -62,7 +62,7 @@ export default function Slides1() {
     </div>
   );
   return (
-    <div className="relative carousel">
+    <div className="relative carousel -z-40">
       <div className="overflow-hidden carousel">
         <div
           className="whitespace-nowrap transition-transform duration-500"

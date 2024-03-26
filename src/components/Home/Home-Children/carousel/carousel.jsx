@@ -80,7 +80,7 @@ export default function Carousel() {
     </div>
   );
   return (
-    <div className="relative ">
+    <div className="relative -z-40">
       <div className="overflow-hidden">
         <div
           className="whitespace-nowrap transition-transform duration-500"

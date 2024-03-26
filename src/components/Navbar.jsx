@@ -352,195 +352,56 @@ export default function Navbar() {
       </div>
       {/* mobile menu */}
       {menuOpen && (
-        <div className="lg:hidden min-h-fit bg-gray-200 animate-left-right overflow-y-scroll absolute top-0 left-0 z-50 mt-16 rounded-r-lg shadow-2xl">
-          <ul className="flex flex-col items-start animate-fade-in">
-            <li
-              className="mr-8 m-2 relative"
-              onClick={() => {
-                navigate("/home");
-                setMenuOpen(false);
-              }}
-            >
-              Home
-            </li>
-            <hr />
-            <li
-              className="mr-8 m-2 relative"
-              onClick={() => {
-                console.log("clicked");
-                navigate("/faculty");
-                setMenuOpen(false);
-              }}
-            >
-              Faculty
-            </li>
-            <hr />
-            <li className="mr-8 m-2 relative">
-              <div>
-                <a href="" style={{ color: Academics ? "red" : "black" }}>
-                  Acadamics
-                </a>
-                <FontAwesomeIcon
-                  icon={faPlus}
-                  className="h-6 w-6 ml-2"
-                  onClick={openAcadamics}
-                />
-              </div>
-              <div>
-                {Academics && (
-                  <ul className="animate-fade-in">
-                    <li
-                      className="m-2"
-                      onClick={() => {
-                        navigate("/aiml");
-                        setMenuOpen(false);
-                      }}
-                    >
-                      <div className="cursor-pointer">AI/ML</div>
-                    </li>
-                    <hr />
-                    <li
-                      className="m-2"
-                      onClick={() => {
-                        navigate("/cs");
-                        setMenuOpen(false);
-                      }}
-                    >
-                      <div className="cursor-pointer">Cyber Security</div>
-                    </li>
-                    <hr />
-                    <li
-                      className="m-2"
-                      onClick={() => {
-                        navigate("/csit");
-                        setMenuOpen(false);
-                      }}
-                    >
-                      <div className="cursor-pointer">CSIT</div>
-                    </li>
-                    <hr />
-                    <li
-                      className="m-2"
-                      onClick={() => {
-                        navigate("/ds");
-                        setMenuOpen(false);
-                      }}
-                    >
-                      <div className="cursor-pointer">Data Science</div>
-                    </li>
-                  </ul>
-                )}
-              </div>
-            </li>
-            <hr />
-            <li
-              className="mr-8 m-2 relative"
-              onClick={() => {
-                navigate("/infrastructure");
-                setMenuOpen(false);
-              }}
-            >
-              <a>Infrastructure</a>
-            </li>
-            <hr />
-            <li className="mr-8 m-2 relative">
-              <a href="/">Research</a>
-            </li>
-            <hr />
-            <li className="mr-8 m-2 relative">
-              <div>
-                <a href="/" style={{ color: Hapenings ? "red" : "black" }}>
-                  Happenings
-                </a>
-                <FontAwesomeIcon
-                  icon={faPlus}
-                  className="h-6 w-6 ml-2"
-                  onClick={openHapenings}
-                />
-              </div>
-              {Hapenings && (
-                <ul className="animate-fade-in">
-                  <li
-                    className="m-2"
-                    onClick={() => {
-                      navigate("/club");
-                      setMenuOpen(false);
-                    }}
-                  >
-                    <div className="cursor-pointer">Club</div>
-                  </li>
-                  <li
-                    className="m-2"
-                    onClick={() => {
-                      navigate("/Activities");
-                      setMenuOpen(false);
-                    }}
-                  >
-                    <div className="cursor-pointer">Activities</div>
-                  </li>
-                  <hr />
-                </ul>
-              )}
-            </li>
-            <hr />
-            <li
-              className="mr-8 m-2 relative"
-              onClick={() => {
-                navigate("/forum");
-                setMenuOpen(false);
-              }}
-            >
-              Action Center
-            </li>
-            <hr />
-            <li className="mr-8 m-2 relative">
-              <div>
-                <a href="/" style={{ color: About ? "red" : "black" }}>
-                  About Us
-                </a>
-                <FontAwesomeIcon
-                  icon={faPlus}
-                  className="h-6 w-6 ml-2"
-                  onClick={openAbout}
-                />
-              </div>
-              {About && (
-                <ul className="animate-fade-in">
-                  <li
-                    className="m-2"
-                    onClick={() => {
-                      navigate("/contactus");
-                      setMenuOpen(false);
-                    }}
-                  >
-                    <div className="cursor-pointer">Contact Us</div>
-                  </li>
-                  <hr />
-                  <li
-                    className="m-2"
-                    onClick={() => {
-                      navigate("/development-team");
-                      setMenuOpen(false);
-                    }}
-                  >
-                    <div className="cursor-pointer">Development Team</div>
-                  </li>
-                  <hr />
-                  <li
-                    className="m-2"
-                    onClick={() => {
-                      navigate("/bugreport");
-                      setMenuOpen(false);
-                    }}
-                  >
-                    <div className="cursor-pointer">Report a Bug</div>
-                  </li>
-                </ul>
-              )}
-            </li>
-          </ul>
+  <div className="lg:hidden min-h-fit bg-gray-200 animate-left-right overflow-y-scroll absolute top-0 left-0 z-50 mt-16  shadow-2xl p-5">
+    <ul className="flex flex-col items-start animate-fade-in">
+      <li className="mr-8 m-2 relative font-bold" onClick={() => {navigate("/home"); setMenuOpen(false);}}>Home</li>
+      <li className="mr-8 m-2 relative font-bold" onClick={() => {navigate("/faculty"); setMenuOpen(false);}}>Faculty</li>
+      <li className="mr-8 m-2 relative">
+        <div className="flex items-center">
+          <a href="" className="mr-2 font-bold" style={{ color: Academics ? "red" : "black" }}>Academics</a>
+          <FontAwesomeIcon icon={faPlus} className="h-6 w-6 cursor-pointer" onClick={openAcadamics} style={{ color: Academics ? "red" : "black" }} />
         </div>
-      )}
+        {Academics && (
+          <ul className="animate-fade-in pl-8">
+            <li onClick={() => {navigate("/aiml"); setMenuOpen(false);}} className="cursor-pointer py-2">AI/ML</li>
+            <li onClick={() => {navigate("/cs"); setMenuOpen(false);}} className="cursor-pointer py-2">Cyber Security</li>
+            <li onClick={() => {navigate("/csit"); setMenuOpen(false);}} className="cursor-pointer py-2">CSIT</li>
+            <li onClick={() => {navigate("/ds"); setMenuOpen(false);}} className="cursor-pointer py-2">Data Science</li>
+          </ul>
+        )}
+      </li>
+      <li className="mr-8 m-2 relative font-bold" onClick={() => {navigate("/infrastructure"); setMenuOpen(false);}}>Infrastructure</li>
+      <li className="mr-8 m-2 relative font-bold" onClick={() => {navigate("/research"); setMenuOpen(false);}}>Research</li>
+      <li className="mr-8 m-2 relative">
+        <div className="flex items-center">
+          <a href="/" className="mr-2 font-bold" style={{ color: Hapenings ? "red" : "black" }}>Happenings</a>
+          <FontAwesomeIcon icon={faPlus} className="h-6 w-6 cursor-pointer" onClick={openHapenings} style={{ color: Hapenings ? "red" : "black" }} />
+        </div>
+        {Hapenings && (
+          <ul className="animate-fade-in pl-8">
+            <li onClick={() => {navigate("/club"); setMenuOpen(false);}} className="cursor-pointer py-2">Club</li>
+            <li onClick={() => {navigate("/activities"); setMenuOpen(false);}} className="cursor-pointer py-2">Activities</li>
+          </ul>
+        )}
+      </li>
+      <li className="mr-8 m-2 relativ font-bold" onClick={() => {navigate("/forum"); setMenuOpen(false);}}>Action Center</li>
+      <li className="mr-8 m-2 relative">
+        <div className="flex items-center">
+          <a href="/" className="mr-2 font-bold" style={{ color: About ? "red" : "black" }}>About Us</a>
+          <FontAwesomeIcon icon={faPlus} className="h-6 w-6 cursor-pointer" onClick={openAbout} style={{ color: About ? "red" : "black" }} />
+        </div>
+        {About && (
+          <ul className="animate-fade-in pl-8">
+            <li onClick={() => {navigate("/contactus"); setMenuOpen(false);}} className="cursor-pointer py-2">Contact Us</li>
+            <li onClick={() => {navigate("/development-team"); setMenuOpen(false);}} className="cursor-pointer py-2">Development Team</li>
+            <li onClick={() => {navigate("/bugreport"); setMenuOpen(false);}} className="cursor-pointer py-2">Report a Bug</li>
+          </ul>
+        )}
+      </li>
+    </ul>
+  </div>
+)}
+
     </>
   );
 }

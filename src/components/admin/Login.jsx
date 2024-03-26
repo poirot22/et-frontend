@@ -3,6 +3,7 @@ import "./LoginPage.css"; // Import CSS file for custom styles
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-toastify";
+import emailjs from "emailjs-com";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -16,6 +17,14 @@ const Login = () => {
   const [errors, setErrors] = useState({});
   const [isLoggedIn, setIsLoggedIn] = useState(false); // State to track login status
 
+  useEffect(() => {
+    const admin = JSON.parse(localStorage.getItem("admin"));
+    if (admin) {
+      setIsLoggedIn(true);
+      navigate("/adminPortal?isAccessedByAdmin=true");
+    }
+  }, []);
+
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData({
@@ -27,6 +36,35 @@ const Login = () => {
   const generateOTP = () => {
     // Generate a random 6-digit OTP
     const generatedOtp = Math.floor(100000 + Math.random() * 900000);
+
+    // Send the OTP to the user via email
+    const emailParams = {
+      to_email: formData.email,
+      otp: generatedOtp,
+      from_name: "Admin Portal",
+    };
+
+    // Send email using EmailJS
+
+    emailjs
+      .send(
+        "service_4h24m6f", // Service ID from EmailJS dashboard
+        "template_nvgh5fc", // Template ID from EmailJS dashboard
+
+        emailParams,
+
+        "2fjwtkkub4ypg6Z8x" // User ID from EmailJS dashboard
+      )
+      .then(
+        (result) => {
+          console.log("Email sent successfully:", result.text);
+        },
+
+        (error) => {
+          console.error("Error sending email:", error.text);
+        }
+      );
+
     console.log("Generated OTP:", generatedOtp);
     setOtp(generatedOtp.toString());
   };
@@ -89,22 +127,26 @@ const Login = () => {
       const text = "Welcome to Admin Portal";
       const typingDelay = 100; // Time delay between typing each letter
       let index = 0;
-
-      const textAnimation = setInterval(() => {
-        const animatedText = text.slice(0, index);
-        document.getElementById("typing-animation").innerText = animatedText;
-        index++;
-
-        if (index > text.length) {
-          clearInterval(textAnimation);
-        }
-      }, typingDelay);
+      const typingElement = document.getElementById("typing-animation");
+      
+      if (typingElement) {
+        const textAnimation = setInterval(() => {
+          const animatedText = text.slice(0, index);
+          typingElement.innerText = animatedText;
+          index++;
+  
+          if (index > text.length) {
+            clearInterval(textAnimation);
+          }
+        }, typingDelay);
+      }
     };
-
+  
     animateText();
-
+  
     return () => clearInterval(animateText);
   }, []);
+  
 
   return (
     <div className="min-h-screen flex flex-col lg:flex-row bg-gray-100">
