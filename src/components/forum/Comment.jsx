@@ -10,6 +10,8 @@ export default function Comment() {
   const [newComment, setNewComment] = useState("");
   const [isLoggedIn, setIsLoggedIn] = useState(false); // State to manage user login status
   const [user, setUser] = useState(null); // State to store the user data
+  const [currentPage, setCurrentPage] = useState(1); // State to manage the current page number
+  const [commentsPerPage] = useState(5); // Number of comments per page
   const location = useLocation();
 
   useEffect(() => {
@@ -34,8 +36,8 @@ export default function Comment() {
       .get(`http://localhost:9000/getPostById/${postId}`)
       .then((res) => {
         setPost(res.data.post);
-        const commentRequests = res.data.post.comments.map((comment) =>
-          axios.get(`http://localhost:9000/getCommentById/${comment}`)
+        const commentRequests = res.data.post.comments.map((commentId) =>
+          axios.get(`http://localhost:9000/getCommentById/${commentId}`)
         );
         Promise.all(commentRequests)
           .then((responses) => {
@@ -52,30 +54,45 @@ export default function Comment() {
         console.error("Error fetching post:", err);
       });
   }, [postId]);
+  
+
+  // Get current comments
+  const indexOfLastComment = currentPage * commentsPerPage;
+  const indexOfFirstComment = indexOfLastComment - commentsPerPage;
+  const currentComments = commentContent.slice(
+    indexOfFirstComment,
+    indexOfLastComment
+  );
+
+  // Change page
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   const handleAddComment = async () => {
-    if (!isLoggedIn) {
-      toast.error("Please log in to add a comment.");
+    if (!newComment) {
       return;
     }
-
-    axios
-      .post(`http://localhost:9000/addComment/${postId}`, {
-        comment: newComment,
-        postedBy: user.id, // Assuming user object has a 'name' property
-      })
+  
+    const commentData = {
+      content: newComment,
+      commentedBy: user.id,
+      commentedOn: postId,
+    };
+  
+    axios.post("http://localhost:9000/addComment", commentData)
       .then((res) => {
-        // Update the state to include the new comment
-        console.log(res.data.comment);
+        console.log(res.data);
         toast.success("Comment added successfully!");
-        setCommentContent([...commentContent, res.data.comment]);
+        setNewComment("");
+        setCommentContent([...commentContent, res.data.comment_added]);
       })
-      .catch((err) => {
-        console.error("Error adding comment:", err);
+      .catch((error) => {
+        console.error("Error adding comment:", error);
         toast.error("Failed to add comment.");
       });
-    setNewComment("");
+  
+    console.log("Comment data:", commentData);
   };
+  
 
   const handleDeleteComment = async (commentId) => {
     axios
@@ -98,7 +115,7 @@ export default function Comment() {
       {isLoggedIn ? (
         <>
           {/* Post content */}
-          <div className="w-full rounded-lg shadow-lg bg-white">
+          <div className="w-full rounded-lg shadow-md bg-white">
             <div className="p-6">
               <h3 className="text-2xl font-semibold mb-2">{post.title}</h3>
               <div className="flex items-center text-gray-500 text-sm mb-4">
@@ -132,14 +149,14 @@ export default function Comment() {
           </div>
 
           {/* Comments */}
-          {commentContent.length > 0 && (
+          {currentComments.length > 0 && (
             <div className="w-full rounded-lg shadow-lg bg-white mt-8 p-6">
               <h3 className="text-2xl font-bold mb-4">Comments</h3>
               <ul className="space-y-4">
-                {commentContent.map((comment) => (
-                  <li
+                {currentComments.map((comment) => (
+                  <div
                     key={comment?._id} // Added null check for comment._id
-                    className="flex justify-between items-center"
+                    className="flex justify-between items-center m-2 shadow-md p-4 bg-gray-100 rounded-lg"
                   >
                     <div className="flex-1">
                       {comment && comment.content && (
@@ -147,23 +164,41 @@ export default function Comment() {
                           {comment.content}
                         </p>
                       )}
-                      {comment && comment.postedBy && (
+                      {comment && comment.commentedBy && (
                         <p className="text-sm text-gray-500">
-                          Posted by: {comment.postedBy}
+                          Posted by: {comment.commentedBy}
                         </p>
                       )}
                     </div>
-                    <div className="flex space-x-3">
+                    {user && user.id === comment.commentedBy && (
                       <button
                         onClick={() => handleDeleteComment(comment._id)}
-                        className="text-red-500 hover:text-red-600 focus:outline-none transition-colors duration-300 ease-in-out"
+                        className="px-3 py-1 bg-red-500 text-white rounded-md focus:outline-none hover:bg-red-600 transition-colors duration-300 ease-in-out"
                       >
                         Delete
                       </button>
-                    </div>
-                  </li>
+                    )  
+                    }
+                  </div>
                 ))}
               </ul>
+            </div>
+          )}
+
+          {/* Pagination */}
+          {commentContent.length > commentsPerPage && (
+            <div className="flex justify-center mt-4">
+              {Array.from({ length: Math.ceil(commentContent.length / commentsPerPage) }, (_, index) => (
+                <button
+                  key={index}
+                  onClick={() => paginate(index + 1)}
+                  className={`px-3 py-1 mx-1 bg-gray-200 text-gray-700 rounded-md focus:outline-none hover:bg-gray-300 transition-colors duration-300 ease-in-out ${
+                    index + 1 === currentPage ? 'bg-gray-400' : ''
+                  }`}
+                >
+                  {index + 1}
+                </button>
+              ))}
             </div>
           )}
         </>

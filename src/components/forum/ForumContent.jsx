@@ -50,13 +50,11 @@ export default function ForumContent({ userData }) {
     try {
       const res = await axios.post("http://localhost:9000/addPost2", postData);
       // Ensure that the response contains the newly created post
-      const newPost = res.data.post;
-  
+     
       // Update the state to include the new post at the beginning (or your desired position)
-      setPosts([newPost, ...posts]); // Adds at the beginning
+      setPosts([res.data.post_added, ...posts]); // Adds at the beginning
       // Alternatively, use: setPosts([...posts, newPost]); // Adds at the end
   
-      console.log("New post created:", newPost);
       
       toast.success("Post created successfully");
       setOpenCreatePost(false);
@@ -64,6 +62,7 @@ export default function ForumContent({ userData }) {
       // Reset title and content state values
       setTitle(null);
       setContent(null);
+      // window.location.reload();
     } catch (err) {
       console.error("Error creating post:", err);
       toast.error("Error creating post");
