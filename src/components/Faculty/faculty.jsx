@@ -17,18 +17,38 @@ const Modal = ({ selectedFaculty, onClose }) => {
   const [publications, setPublications] = useState(false);
   const [workshops, setWorkshops] = useState(false);
   const [projects, setProjects] = useState(false);
-  const [titles, setTitles]=[];
+  const [titles, setTitles]=useState([]);
+  const [workshopTitles, setWorkshopTitles]=useState([]);
 
   useEffect(()=>{
-    console.log(selectedFaculty.publications);
-    for(let publicationId of selectedFaculty.publications){
-      console.log(publicationId);
-      axios.get('http://localhost:9000/getPublicationByID/'+publicationId).then((res)=>{
-        console.log(res.data.publication);
-        
-        
-      });
+    if(selectedFaculty.publications.length>1){
+      const newTitles=[];
+      console.log(selectedFaculty.publications);
+      for(let publicationId of selectedFaculty.publications){
+        if(publicationId!==""){
+          console.log(publicationId);
+          axios.get('http://localhost:9000/getPublicationByID/'+publicationId).then((res)=>{
+            console.log(res.data.publication);
+            newTitles.push(res.data.publication.title);
+            
+          });
+      }
+      }
+      setTitles(newTitles);
+  }
+
+    if(selectedFaculty.workshops.length>0){
+      const titles=[];
+      console.log(selectedFaculty.workshops);
+      for(let id of selectedFaculty.workshops){
+        axios.get('http://localhost:9000/getWorkshopByID/'+id).then((res)=>{
+          console.log(id);
+          titles.push(res.data.workshop.title);
+        })
+      }
+      setWorkshopTitles(titles);
     }
+
   },[]);
  
 
@@ -109,6 +129,16 @@ const Modal = ({ selectedFaculty, onClose }) => {
               />
             </li>
            {/* publications */}
+           {titles && (
+            <li className="w-full px-4 py-3 border-b border-gray-300 text-black text-base rounded-md">
+              {titles.map((item, index)=>(
+                <p key={index}>
+                  [{index+1}] {item}
+                </p>
+              ))}
+            </li>
+           )}
+           
 
           </ul>
           <ul className="w-full text-xl  text-blue-600 bg-white border rounded-md">
@@ -122,15 +152,17 @@ const Modal = ({ selectedFaculty, onClose }) => {
                 className="cursor-pointer"
               />
             </li>
-            {workshops && (
+            { workshopTitles && (
               <li className="w-full px-4 py-3 border-b border-gray-300 text-black text-base rounded-md">
-                {selectedFaculty.workshops.map((item, index) => (
-                  <p className="pl-2 pt-3 text-base" key={index}>
-                    [{index}] {item}
-                  </p>
-                ))}
-              </li>
-            )}
+              {workshopTitles.map((item, index)=>(
+                <p key={index}>
+                  [{index+1}] {item}
+                </p>
+              ))}
+            </li>
+            )
+
+            }
           </ul>
           <ul className="w-full text-xl  text-blue-600 bg-white border rounded-md">
             <li

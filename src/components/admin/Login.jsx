@@ -65,7 +65,6 @@ const Login = () => {
         }
       );
 
-    console.log("Generated OTP:", generatedOtp);
     setOtp(generatedOtp.toString());
   };
 
@@ -77,6 +76,7 @@ const Login = () => {
       // Proceed with desired action (e.g., grant access to admin interface)
       toast.success("OTP verified successfully");
       localStorage.setItem("admin", JSON.stringify({ token }));
+      
       setIsLoggedIn(true); // Set isLoggedIn to true after OTP verification
       navigate("/adminPortal?isAccessedByAdmin=true");
     } else {

@@ -46,15 +46,12 @@ const Adminportal = ({ isAccessedByAdmin }) => {
       if (token) {
         setIsSecure(true);
         const tokenTimeout = setTimeout(() => {
-          // Remove token from localStorage after 1 hour
           localStorage.removeItem("admin");
-          // Reload the page
           window.location.reload();
-        }, 3600000); // 1 hour in milliseconds
+        }, 3600000); 
   
         return () => clearTimeout(tokenTimeout);
       } else {
-        // Redirect to login page
         setTimeout(() => {
           window.location.href = "/admin";
         }, 3000);

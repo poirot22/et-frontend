@@ -14,7 +14,11 @@ export default function Info() {
             Message from the HOD
           </h1>
         </div>
-        <img class="hod-image mt-5 w-full md:w-2/3 p-2 mr-5" src={hodnew} alt="" />
+        <img
+          class="hod-image mt-5 w-full md:w-2/3 p-2 mr-5"
+          src={hodnew}
+          alt=""
+        />
         <div class="text-justify p-2  Message">
           <div>
             <p className="mb-0">
@@ -35,56 +39,26 @@ export default function Info() {
               department was renamed as Department of Emerging Technologies (ET)
               in 2022 and now also includes the UG programmes in AIML, Data
               Science and Cyber Security.
+              <br />
+              The program is designed with an intent to educate the engineering
+              students on the emerging areas of Artificial Intelligence (AI),
+              Machine Learning (ML), Internet of Things (IoT) and Data Sciences
+              (DS) by introducing them as core courses. The program also
+              educates the students with the related courses like statistics, R
+              Programming, Big Data Analytics & Platforms, etc. Further, each
+              student can choose from various streams in their professional
+              electives that includes cutting edge technologies like Cyber
+              Security (CS), Blockchain technologies, NoSQL Databases, Social
+              Media Analytics, Neural Networks & Fuzzy Systems, Deep Learning
+              and many more.
+              <br />
+              The Department has 8 laboratory units consisting of 258 systems,
+              catering to the B. Tech curriculum. The systems use standard
+              licensed software as a college policy including open source.
             </p>
-           
           </div>
-          <br />
-          {show && (
-            <p className="mt-0 mb-0">
-              The program is designed with an intent to educate the engineering
-              students on the emerging areas of Artificial Intelligence (AI),
-              Machine Learning (ML), Internet of Things (IoT) and Data Sciences
-              (DS) by introducing them as core courses. The program also
-              educates the students with the related courses like statistics, R
-              Programming, Big Data Analytics & Platforms, etc. Further, each
-              student can choose from various streams in their professional
-              electives that includes cutting edge technologies like Cyber
-              Security (CS), Blockchain technologies, NoSQL Databases, Social
-              Media Analytics, Neural Networks & Fuzzy Systems, Deep Learning
-              and many more.
-            </p>
-          )}
-         {show &&(
-             <p className="mt-0 mb-0">
-             The Department has 8 laboratory units consisting of 258 systems,
-             catering to the B. Tech curriculum. The systems use standard
-             licensed software as a college policy including open source.
-           </p>
-         )}
-         {show &&(
-            <button class="md:hidden text-gray-500" onClick={() => setShow(false)}>Read Less</button>
-         )}
-         <p className="hidden md:flex mt-0 mb-0">
-              The program is designed with an intent to educate the engineering
-              students on the emerging areas of Artificial Intelligence (AI),
-              Machine Learning (ML), Internet of Things (IoT) and Data Sciences
-              (DS) by introducing them as core courses. The program also
-              educates the students with the related courses like statistics, R
-              Programming, Big Data Analytics & Platforms, etc. Further, each
-              student can choose from various streams in their professional
-              electives that includes cutting edge technologies like Cyber
-              Security (CS), Blockchain technologies, NoSQL Databases, Social
-              Media Analytics, Neural Networks & Fuzzy Systems, Deep Learning
-              and many more.
-            </p>
-            <br />
-            <p className="hidden md:flex mt-0">
-             The Department has 8 laboratory units consisting of 258 systems,
-             catering to the B. Tech curriculum. The systems use standard
-             licensed software as a college policy including open source.
-           </p>
+
           <p className="name font-semibold">Dr. H. N. Lakshmi</p>
-            
         </div>
       </div>
     </>
