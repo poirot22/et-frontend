@@ -6,6 +6,7 @@ import cvr from "../../assets/cvr.png";
 import shivaram from "../../assets/shivaram.jpg";
 import sainikhil from "../../assets/sainikhil.jpg";
 import bharghav from "../../assets/bharghav.jpg";
+import saitejas from "../../assets/saitejas.jpg";
 
 const DevelopmentTeam = () => {
   const teamMembers = [
@@ -16,16 +17,16 @@ const DevelopmentTeam = () => {
       image: sainikhil,
       linkedin: "https://www.linkedin.com/in/gubbala-sai-nikhil-633aa420b/",
       github: "https://github.com/Nikhil5022",
-      instagram: "https://www.instagram.com/sainikhilgubbala/?igsh=OWJjZm13NjA3NXk1",
+      instagram: "https://www.instagram.com/sainikhilgubbala/",
     },
     {
       id: "20B81A3396",
       name: "Hulsoor Sai Tejas",
       role: "Developer",
-      image: "",
-      linkedin: "https://www.linkedin.com/in/janesmith",
-      github: "https://github.com/janesmith",
-      instagram: "https://www.instagram.com/janesmith/",
+      image: saitejas,
+      linkedin: "https://www.linkedin.com/in/saitejas-hulsoor/",
+      github: "https://github.com/poirot22/",
+      instagram: "https://www.instagram.com/tejas_mmii/?hl=en",
     },
     {
       id: "20B81A33A2",

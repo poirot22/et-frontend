@@ -353,7 +353,7 @@ export default function Navbar() {
       {/* mobile menu */}
       {menuOpen && (
   <div className="lg:hidden min-h-fit bg-gray-200 animate-left-right overflow-y-scroll absolute top-0 left-0 z-50 mt-16  shadow-2xl p-5">
-    <ul className="flex flex-col items-start animate-fade-in">
+    <ul className="flex flex-col items-start ">
       <li className="mr-8 m-2 relative font-bold" onClick={() => {navigate("/home"); setMenuOpen(false);}}>Home</li>
       <li className="mr-8 m-2 relative font-bold" onClick={() => {navigate("/faculty"); setMenuOpen(false);}}>Faculty</li>
       <li className="mr-8 m-2 relative">
