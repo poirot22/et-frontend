@@ -14,7 +14,7 @@ export default function Events() {
     const [events,setEvents]=useState([]);
 
     React.useState(()=>{
-        axios.get("http://localhost:9000/getAllEvents")
+        axios.get("https://et-server-cyan.vercel.app/getAllEvents")
         .then((res)=>{
             setEvents(res.data.events);
         })

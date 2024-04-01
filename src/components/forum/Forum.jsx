@@ -16,14 +16,14 @@ export default function Forum() {
     const userToken = localStorage.getItem("usertoken");
     if (userToken) {
       setIsLoggedIn(true);
-      axios.get("http://localhost:9000/verify", {
+      axios.get("https://et-server-cyan.vercel.app/verify", {
         headers: {
           Authorization: `Bearer ${userToken}`
         }
       })
       .then(response => {
         setStudentId(response.data.UserID);
-        axios.get("http://localhost:9000/getStudentByRollNo/"+response.data.UserID).then((res)=>{
+        axios.get("https://et-server-cyan.vercel.app/getStudentByRollNo/"+response.data.UserID).then((res)=>{
           
           setUserData(res.data.Student_Data);
         });

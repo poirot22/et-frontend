@@ -11,7 +11,7 @@ export default function Research() {
     const [selectedYear, setSelectedYear] = useState('');
 
     useEffect(()=>{
-        axios.get("http://localhost:9000/getPublication")
+        axios.get("https://et-server-cyan.vercel.app/getPublication")
         .then((res)=>{
             //console.log(res.data.details);
             setPublication(res.data.details);
@@ -23,7 +23,7 @@ export default function Research() {
     }, []);
 
     useEffect(()=>{
-        axios.get("http://localhost:9000/getWorkshop")
+        axios.get("https://et-server-cyan.vercel.app/getWorkshop")
         .then((res)=>{
         
             setWorkshop(res.data.details);

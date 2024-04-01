@@ -25,7 +25,7 @@ export default function AddUser() {
     // Here you can perform actions like saving the form data
     console.log(formData);
     axios
-      .post("http://localhost:9000/addStudent", formData)
+      .post("https://et-server-cyan.vercel.app/addStudent", formData)
       .then((res) => {
         toast.success("User added successfully");
       })

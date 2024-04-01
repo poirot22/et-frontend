@@ -19,7 +19,7 @@ export default function ForumContent({ userData }) {
   useEffect(() => {
     // Call the API to get all posts
     axios
-      .get("http://localhost:9000/getAllPosts")
+      .get("https://et-server-cyan.vercel.app/getAllPosts")
       .then((res) => {
         // Sort posts by date before setting state
         const sortedPosts = res.data.posts.sort((a, b) => {
@@ -48,7 +48,7 @@ export default function ForumContent({ userData }) {
     };
   
     try {
-      const res = await axios.post("http://localhost:9000/addPost2", postData);
+      const res = await axios.post("https://et-server-cyan.vercel.app/addPost2", postData);
       // Ensure that the response contains the newly created post
      
       // Update the state to include the new post at the beginning (or your desired position)
@@ -77,7 +77,7 @@ export default function ForumContent({ userData }) {
   const confirmDelete = () => {
     toast.success("Post deleted successfully");
     axios
-      .delete("http://localhost:9000/deletePost/" + confirmDeleteId)
+      .delete("https://et-server-cyan.vercel.app/deletePost/" + confirmDeleteId)
       .then((res) => {
         // Filter out the deleted post from the posts array
         setPosts(posts.filter((post) => post._id !== confirmDeleteId));

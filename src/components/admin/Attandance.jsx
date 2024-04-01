@@ -37,7 +37,7 @@ export default function AttendanceComponent() {
       return;
     }
     axios
-      .post("http://localhost:9000/addAttendance", excelData)
+      .post("https://et-server-cyan.vercel.app/addAttendance", excelData)
       .then((res) => {
         console.log(res);
         if (res.data.notSent.length > 0) {

@@ -27,7 +27,7 @@ const Modal = ({ selectedFaculty, onClose }) => {
       for(let publicationId of selectedFaculty.publications){
         if(publicationId!==""){
           console.log(publicationId);
-          axios.get('http://localhost:9000/getPublicationByID/'+publicationId).then((res)=>{
+          axios.get('https://et-server-cyan.vercel.app/getPublicationByID/'+publicationId).then((res)=>{
             console.log(res.data.publication);
             newTitles.push(res.data.publication.title);
             
@@ -41,7 +41,7 @@ const Modal = ({ selectedFaculty, onClose }) => {
       const titles=[];
       console.log(selectedFaculty.workshops);
       for(let id of selectedFaculty.workshops){
-        axios.get('http://localhost:9000/getWorkshopByID/'+id).then((res)=>{
+        axios.get('https://et-server-cyan.vercel.app/getWorkshopByID/'+id).then((res)=>{
           console.log(id);
           titles.push(res.data.workshop.title);
         })
@@ -247,7 +247,7 @@ const Faculty = () => {
       setIsLoggedIn(true);
       // Call the API to verify the user and get the student ID
       axios
-        .get("http://localhost:9000/verify", {
+        .get("https://et-server-cyan.vercel.app/verify", {
           headers: {
             Authorization: `Bearer ${userToken}`,
           },
@@ -261,7 +261,7 @@ const Faculty = () => {
           formData1.faculty_id = response.data.UserID;
           axios
             .get(
-              "http://localhost:9000/getFacultyByRollNo/" + response.data.UserID
+              "https://et-server-cyan.vercel.app/getFacultyByRollNo/" + response.data.UserID
             )
             .then((res) => {
               console.log(res.data);
@@ -287,7 +287,7 @@ const Faculty = () => {
   }, []);
 
   const addPublications = (formData) => {
-    axios.post("http://localhost:9000/addPublication", formData).then((res) => {
+    axios.post("https://et-server-cyan.vercel.app/addPublication", formData).then((res) => {
       toast.success("Publication Added");
     });
   };
@@ -313,7 +313,7 @@ const Faculty = () => {
   const addWorkshops = (formData) => {
     userData.workshops.push(formData.title);
     console.log(formData.title);
-    axios.post("http://localhost:9000/addWorkshop", formData).then((res) => {
+    axios.post("https://et-server-cyan.vercel.app/addWorkshop", formData).then((res) => {
       toast.success("Workshop Added successfully");
       console.log(res);
     });
@@ -339,7 +339,7 @@ const Faculty = () => {
   };
   useEffect(() => {
     axios
-      .get("http://localhost:9000/getFaculty")
+      .get("https://et-server-cyan.vercel.app/getFaculty")
       .then((res) => {
         console.log(res.data.details);
         setFaculty(res.data.details);
@@ -423,7 +423,7 @@ const Faculty = () => {
     console.log(updatedData);
     try {
       const res = await axios.post(
-        "http://localhost:9000/updateFaculty/" + updatedData._id,
+        "https://et-server-cyan.vercel.app/updateFaculty/" + updatedData._id,
         updatedData
       );
       console.log(res.data);

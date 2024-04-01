@@ -14,7 +14,7 @@ export default function Bugreport() {
     if (userToken) {
       setIsLoggedIn(true);
       axios
-        .get("http://localhost:9000/verify", {
+        .get("https://et-server-cyan.vercel.app/verify", {
           headers: {
             Authorization: `Bearer ${userToken}`,
           },
@@ -23,7 +23,7 @@ export default function Bugreport() {
           setStudentId(response.data.UserID);
           axios
             .get(
-              "http://localhost:9000/getStudentByRollNo/" + response.data.UserID
+              "https://et-server-cyan.vercel.app/getStudentByRollNo/" + response.data.UserID
             )
             .then((res) => {
               setUserData(res.data.Student_Data);
@@ -43,7 +43,7 @@ export default function Bugreport() {
       id: studentId,
     };
 
-    axios.post("http://localhost:9000/reportBug", bugReportData).then((res) => {
+    axios.post("https://et-server-cyan.vercel.app/reportBug", bugReportData).then((res) => {
       if(res.data.status === 201) {
         toast.success("Bug reported successfully!");
       } else {

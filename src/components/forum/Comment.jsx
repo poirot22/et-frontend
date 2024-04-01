@@ -33,11 +33,11 @@ export default function Comment() {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:9000/getPostById/${postId}`)
+      .get(`https://et-server-cyan.vercel.app/getPostById/${postId}`)
       .then((res) => {
         setPost(res.data.post);
         const commentRequests = res.data.post.comments.map((commentId) =>
-          axios.get(`http://localhost:9000/getCommentById/${commentId}`)
+          axios.get(`https://et-server-cyan.vercel.app/getCommentById/${commentId}`)
         );
         Promise.all(commentRequests)
           .then((responses) => {
@@ -78,7 +78,7 @@ export default function Comment() {
       commentedOn: postId,
     };
   
-    axios.post("http://localhost:9000/addComment", commentData)
+    axios.post("https://et-server-cyan.vercel.app/addComment", commentData)
       .then((res) => {
         console.log(res.data);
         toast.success("Comment added successfully!");
@@ -96,7 +96,7 @@ export default function Comment() {
 
   const handleDeleteComment = async (commentId) => {
     axios
-      .delete(`http://localhost:9000/deleteComment/${commentId}`)
+      .delete(`https://et-server-cyan.vercel.app/deleteComment/${commentId}`)
       .then((res) => {
         console.log(res.data);
         toast.success("Comment deleted successfully!");

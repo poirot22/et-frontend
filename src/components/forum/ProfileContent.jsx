@@ -31,7 +31,7 @@ export default function ProfileContent({ userData }) {
       for (const postId of uniquePostIdsArray) {
         try {
           const res = await axios.get(
-            "http://localhost:9000/getPostById/" + postId
+            "https://et-server-cyan.vercel.app/getPostById/" + postId
           );
           fetchedPosts.push(res.data.post);
         } catch (error) {
@@ -68,7 +68,7 @@ export default function ProfileContent({ userData }) {
   const handleDeletePost = async () => {
     // Consume the API to delete the post
     try {
-      await axios.delete(`http://localhost:9000/deletePost/${postToDelete}`);
+      await axios.delete(`https://et-server-cyan.vercel.app/deletePost/${postToDelete}`);
       toast.success("Post deleted successfully");
       // Remove the post from the UI
       setPosts(posts.filter((post) => post._id !== postToDelete));

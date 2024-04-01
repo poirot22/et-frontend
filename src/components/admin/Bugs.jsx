@@ -11,7 +11,7 @@ export default function Bugs() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:9000/getAllBugs")
+      .get("https://et-server-cyan.vercel.app/getAllBugs")
       .then((res) => {
         setBugs(res.data.bugs);
       })
@@ -22,7 +22,7 @@ export default function Bugs() {
 
   const handleBugResolved = (id, email) => {
     axios
-      .put(`http://localhost:9000/resolveBug/${id}`)
+      .put(`https://et-server-cyan.vercel.app/resolveBug/${id}`)
       .then((res) => {
         const updatedBugs = bugs.map((bug) => {
           if (bug._id === id) {
@@ -49,7 +49,7 @@ export default function Bugs() {
 
   const handleUndoResolved = (id, email) => {
     axios
-      .put(`http://localhost:9000/unresolveBug/${id}`)
+      .put(`https://et-server-cyan.vercel.app/unresolveBug/${id}`)
       .then((res) => {
         setResolvedBugs(resolvedBugs.filter((bugId) => bugId !== id));
         const updatedBugs = bugs.map((bug) => {
@@ -96,7 +96,7 @@ export default function Bugs() {
 
   const handleDelete = (id) => {
     axios
-      .delete(`http://localhost:9000/deleteBug/${id}`)
+      .delete(`https://et-server-cyan.vercel.app/deleteBug/${id}`)
       .then((res) => {
         setBugs(bugs.filter((bug) => bug._id !== id));
         toast.success("Bug deleted successfully");

@@ -103,7 +103,7 @@ const Login = () => {
       try {
         // Assuming you have an API endpoint at localhost:9000/verifyAdmin
         const response = await axios
-          .post("http://localhost:9000/verifyAdmin", formData)
+          .post("https://et-server-cyan.vercel.app/verifyAdmin", formData)
           .then((response) => {
             console.log(response.data);
             if (response.data.status === 200) {

@@ -38,7 +38,7 @@ const Adminportal = ({ isAccessedByAdmin }) => {
   const [openbugs, setOpenbugs] = useState(false);
 
   useEffect(() => {
-    axios.get("http://localhost:9000/getFaculty").then((res) => {
+    axios.get("https://et-server-cyan.vercel.app/getFaculty").then((res) => {
       setFaculties(res.data.details);
       setFilteredFaculties(res.data.details);
   
@@ -65,7 +65,7 @@ const Adminportal = ({ isAccessedByAdmin }) => {
 
     if (confirmDelete) {
       axios
-        .delete(`http://localhost:9000/deleteFaculty/${facultyId}`)
+        .delete(`https://et-server-cyan.vercel.app/deleteFaculty/${facultyId}`)
         .then((res) => {
           setFaculties((prevFaculties) =>
             prevFaculties.filter((faculty) => faculty._id !== facultyId)
@@ -95,7 +95,7 @@ const Adminportal = ({ isAccessedByAdmin }) => {
   }, [searchQuery, designationFilter, branchFilter, faculties]);
 
   const handleAddFaculty = (formData) => {
-    axios.post("http://localhost:9000/addFaculty", formData).then((res) => {
+    axios.post("https://et-server-cyan.vercel.app/addFaculty", formData).then((res) => {
       toast.success("Faculty added successfully");
       console.log(res);
       setFaculties((prevFaculties) => [...prevFaculties, formData]);
@@ -123,7 +123,7 @@ const Adminportal = ({ isAccessedByAdmin }) => {
     // Logic to save changes for faculty
     axios
       .put(
-        `http://localhost:9000/updateFaculty/${selectedFaculty._id}`,
+        `https://et-server-cyan.vercel.app/updateFaculty/${selectedFaculty._id}`,
         selectedFaculty
       )
       .then((res) => {

@@ -8,7 +8,7 @@ export default function Events() {
   const [allEvents, setAllEvents] = useState([]);
 
   useEffect(() => {
-    axios.get("http://localhost:9000/getAllEvents").then((res) => {
+    axios.get("https://et-server-cyan.vercel.app/getAllEvents").then((res) => {
       setAllEvents(res.data.events);
     });
   }, []);
@@ -57,11 +57,11 @@ export default function Events() {
     e.preventDefault();
     console.log(formData);
 
-    axios.post("http://localhost:9000/addEvent", formData).then((res) => {
+    axios.post("https://et-server-cyan.vercel.app/addEvent", formData).then((res) => {
       if (res.data.status === 201) {
         // Fetch updated list of events from the server
         axios
-          .get("http://localhost:9000/getAllEvents")
+          .get("https://et-server-cyan.vercel.app/getAllEvents")
           .then((res) => {
             setAllEvents(res.data.events);
             toast.success("Event added successfully!");
@@ -103,7 +103,7 @@ export default function Events() {
 
   const deleteEvent = (eventId) => {
     axios
-      .delete(`http://localhost:9000/deleteEvent/${eventId}`)
+      .delete(`https://et-server-cyan.vercel.app/deleteEvent/${eventId}`)
       .then((res) => {
         console.log(res.data);
         setAllEvents(allEvents.filter((event) => event._id !== eventId));
